@@ -1,0 +1,38 @@
+{
+  "name": "create-7inch-app",
+  "version": "0.1.0",
+  "author": "lwy1010",
+  "main": "index.js",
+  "bin": {
+    "create-7inch-app": "index.js"
+  },
+  "scripts": {
+    "release": "npm publish"
+  },
+  "dependencies": {
+    "enquirer": "^2.3.6",
+    "kolorist": "^1.2.10",
+    "minimist": "^1.2.5"
+  },
+  "files": [
+    "index.js",
+    "template-*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/7inch/create-7inch-app.git"
+  },
+  "homepage": "https://github.com/7inch/create-7inch-app/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/7inch/create-7inch-app/issues"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 100,
+    "tabWidth": 2
+  },
+  "engines": {
+    "node": "^12"
+  },
+  "license": "MIT"
+}
