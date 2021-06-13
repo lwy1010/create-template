@@ -4,11 +4,11 @@ const path = require('path');
 
 const argv = require('minimist')(process.argv.slice(2));
 const { prompt } = require('enquirer');
-const { cyan, stripColors } = require('kolorist');
+const { cyan, green, stripColors } = require('kolorist');
 
 const cwd = process.cwd();
 
-const TEMPLATES = [cyan('admin-ts')];
+const TEMPLATES = [cyan('admin-ts'), green('h5-ts')];
 
 const renameFiles = { _gitignore: '.gitignore' };
 
@@ -91,7 +91,6 @@ async function init() {
   pkg.name = path.basename(root);
   write('package.json', JSON.stringify(pkg, null, 2));
 
-  console.log(process.env.npm_execpath, 'process.env.npm_execpath');
   const pkgManager = /yarn/.test(process.env.npm_execpath) ? 'yarn' : 'npm';
 
   console.log(`\nDone. Now run:\n`);
