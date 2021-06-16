@@ -3,6 +3,11 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 
-import 'vant/lib/index.css';
+import configVant from '@/configs/vant';
 
-createApp(App).use(router).use(store).mount('#app');
+const app = createApp(App);
+
+// setup vant
+configVant(app);
+
+app.use(router).use(store).mount('#app');

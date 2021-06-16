@@ -43,36 +43,11 @@
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
 import { useRouter } from 'vue-router';
-import {
-  Tag,
-  Col,
-  Icon,
-  Cell,
-  CellGroup,
-  Swipe,
-  Toast,
-  SwipeItem,
-  ActionBar,
-  ActionBarIcon,
-  ActionBarButton,
-} from 'vant';
+import { Toast } from 'vant';
 
 export default defineComponent({
   name: 'Goods',
-  components: {
-    [Tag.name]: Tag,
-    [Col.name]: Col,
-    [Icon.name]: Icon,
-    [Cell.name]: Cell,
-    [CellGroup.name]: CellGroup,
-    [Swipe.name]: Swipe,
-    [SwipeItem.name]: SwipeItem,
-    [ActionBar.name]: ActionBar,
-    [ActionBarIcon.name]: ActionBarIcon,
-    [ActionBarButton.name]: ActionBarButton,
-  },
-
-  setup: () => {
+  setup() {
     const router = useRouter();
 
     const goods = reactive({

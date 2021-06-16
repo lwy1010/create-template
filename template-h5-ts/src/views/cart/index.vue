@@ -22,16 +22,10 @@
 
 <script lang="ts">
 import { computed, defineComponent, reactive } from 'vue';
-import { Checkbox, CheckboxGroup, Card, SubmitBar, Toast } from 'vant';
+import { Toast } from 'vant';
 
 export default defineComponent({
   name: 'Cart',
-  components: {
-    [Card.name]: Card,
-    [Checkbox.name]: Checkbox,
-    [SubmitBar.name]: SubmitBar,
-    [CheckboxGroup.name]: CheckboxGroup,
-  },
   setup() {
     const checkedGoods = reactive(['1', '2', '3']);
     const goods = reactive([
