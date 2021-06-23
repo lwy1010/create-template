@@ -1,4 +1,4 @@
-import settings from '@/configs/settings';
+import settings from "@/configs/settings";
 
 const title = settings.title;
 

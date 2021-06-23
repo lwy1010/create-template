@@ -1,4 +1,4 @@
 export default {
   // page base title
-  title: '7inch-admin-template',
+  title: "7inch-admin-template",
 };

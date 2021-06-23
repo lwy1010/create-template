@@ -1,9 +1,9 @@
-import SvgIcon from '@/components/SvgIcon/index.vue';
-import { App } from 'vue';
+import SvgIcon from "@/components/SvgIcon/index.vue";
+import { App } from "vue";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const svgs = import.meta.globEager('../icons/*.svg');
+const svgs = import.meta.globEager("../icons/*.svg");
 
 export default function (app: App) {
-  app.component('SvgIcon', SvgIcon);
+  app.component("SvgIcon", SvgIcon);
 }

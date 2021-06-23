@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from 'vue-router';
+import { RouteRecordRaw } from "vue-router";
 
 export function filterHiddenRoute(routes: Array<RouteRecordRaw>) {
   const routeList: Array<RouteRecordRaw> = [];

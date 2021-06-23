@@ -1,4 +1,4 @@
-import { App } from 'vue';
+import { App } from "vue";
 import {
   ActionBar,
   ActionBarButton,
@@ -13,7 +13,7 @@ import {
   Swipe,
   SwipeItem,
   Tag,
-} from 'vant';
+} from "vant";
 
 // import vant on demand
 const components = [

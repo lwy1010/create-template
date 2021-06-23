@@ -15,11 +15,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { _RouteRecordBase } from 'vue-router';
+import { defineComponent } from "vue";
+import { _RouteRecordBase } from "vue-router";
 
 export default defineComponent({
-  name: 'MenuProItem',
+  name: "MenuProItem",
   props: {
     item: {
       type: Object,

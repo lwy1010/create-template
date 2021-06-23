@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent } from "vue";
 export default defineComponent({
-  name: 'SvgIcon',
+  name: "SvgIcon",
   props: {
     iconName: {
       type: String,

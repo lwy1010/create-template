@@ -24,17 +24,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
-import { useStore } from 'vuex';
-import { useRouter } from 'vue-router';
-import Breadcrumb from '@/components/Breadcrumb/index.vue';
+import { defineComponent, computed } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+import Breadcrumb from "@/components/Breadcrumb/index.vue";
 
 export default defineComponent({
-  name: 'HeaderPro',
+  name: "HeaderPro",
   components: {
     Breadcrumb,
   },
-  emits: ['toggle-collapse'],
+  emits: ["toggle-collapse"],
   props: {
     collapse: {
       type: Boolean,
@@ -49,9 +49,9 @@ export default defineComponent({
 
     const handleLogout = () => {
       store
-        .dispatch('app/logout')
+        .dispatch("app/logout")
         .then(() => {
-          router.push('/login');
+          router.push("/login");
         })
         .catch((error) => {
           Promise.reject(error);

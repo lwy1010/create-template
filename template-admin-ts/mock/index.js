@@ -1,6 +1,6 @@
-const user = require('./user');
+const user = require("./user");
 
 module.exports = {
-  'POST /login': user.login,
-  'POST /logout': user.logout,
+  "POST /login": user.login,
+  "POST /logout": user.logout,
 };

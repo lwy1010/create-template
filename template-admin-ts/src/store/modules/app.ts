@@ -1,4 +1,4 @@
-import { login, logout } from '@/api/user';
+import { login, logout } from "@/api/user";
 import {
   readToken,
   updateToken,
@@ -9,20 +9,20 @@ import {
   readSidebarStatus,
   updateSidebarStatus,
   deleteSidebarStatus,
-} from '@/utils/cookies';
-import { Commit } from 'vuex';
-import { UserInfo, AppState, LoginData } from '@/types';
+} from "@/utils/cookies";
+import { Commit } from "vuex";
+import { UserInfo, AppState, LoginData } from "@/types";
 
 const state: AppState = {
-  sidebarStatus: readSidebarStatus() !== 'closed',
-  token: readToken() || '',
+  sidebarStatus: readSidebarStatus() !== "closed",
+  token: readToken() || "",
   userInfo: readUserInfo(),
 };
 
 const mutations = {
   toggleCollapse(state: AppState) {
     state.sidebarStatus = !state.sidebarStatus;
-    state.sidebarStatus ? updateSidebarStatus('opened') : updateSidebarStatus('closed');
+    state.sidebarStatus ? updateSidebarStatus("opened") : updateSidebarStatus("closed");
   },
 
   setToken(state: AppState, token: string) {
@@ -40,8 +40,8 @@ const actions = {
     return new Promise((resolve, reject) => {
       login({ username, password })
         .then(({ data }) => {
-          commit('setToken', data.token);
-          commit('setUserInfo', data.userInfo);
+          commit("setToken", data.token);
+          commit("setUserInfo", data.userInfo);
           updateToken(data.token);
           updateUserInfo(data.userInfo);
           resolve();
@@ -54,8 +54,8 @@ const actions = {
     return new Promise((resolve, reject) => {
       logout()
         .then(() => {
-          commit('setToken', '');
-          commit('setUserInfo', null);
+          commit("setToken", "");
+          commit("setUserInfo", null);
           deleteToken();
           deleteUserInfo();
           deleteSidebarStatus();

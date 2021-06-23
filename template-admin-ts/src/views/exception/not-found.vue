@@ -9,17 +9,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { useRouter } from 'vue-router';
+import { defineComponent } from "vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
-  name: 'NotFound',
+  name: "NotFound",
   setup() {
     const router = useRouter();
 
     return {
       backToHome: () => {
-        router.push({ path: '/' });
+        router.push({ path: "/" });
       },
     };
   },

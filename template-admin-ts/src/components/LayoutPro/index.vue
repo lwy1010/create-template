@@ -9,14 +9,14 @@
 </template>
 
 <script lant="ts">
-import AsidePro from './AsidePro/index.vue';
-import HeaderPro from './HeaderPro/index.vue';
-import MainPro from './MainPro/index.vue';
-import { useStore } from 'vuex';
-import { computed, defineComponent } from 'vue';
+import AsidePro from "./AsidePro/index.vue";
+import HeaderPro from "./HeaderPro/index.vue";
+import MainPro from "./MainPro/index.vue";
+import { useStore } from "vuex";
+import { computed, defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'LayoutPro',
+  name: "LayoutPro",
   components: {
     AsidePro,
     HeaderPro,
@@ -27,7 +27,7 @@ export default defineComponent({
     const isSidebarCollapse = computed(() => !store.state.app.sidebarStatus);
 
     function toggleCollapse() {
-      store.commit('app/toggleCollapse');
+      store.commit("app/toggleCollapse");
     }
 
     return {

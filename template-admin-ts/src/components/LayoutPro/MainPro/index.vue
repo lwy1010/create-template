@@ -5,10 +5,10 @@
 </template>
 
 <script lant="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'MainPro',
+  name: "MainPro",
 });
 </script>
 

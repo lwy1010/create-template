@@ -20,34 +20,34 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from 'vue';
-import { useRouter } from 'vue-router';
-import { useStore } from 'vuex';
+import { defineComponent, reactive, ref } from "vue";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 
 export default defineComponent({
-  name: 'Login',
+  name: "Login",
   setup() {
     const store = useStore();
     const router = useRouter();
 
     const loginForm = reactive({
-      username: '',
-      password: '',
+      username: "",
+      password: "",
     });
 
     const formRef = ref();
 
     const rules = {
-      username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
-      password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
+      username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+      password: [{ required: true, message: "请输入密码", trigger: "blur" }],
     };
 
     const handleLogin = () => {
       formRef.value.validate(async (valid: boolean) => {
         if (valid) {
           try {
-            await store.dispatch('app/login', loginForm);
-            router.push({ path: '/' });
+            await store.dispatch("app/login", loginForm);
+            router.push({ path: "/" });
           } catch (error) {
             console.log(error);
           }

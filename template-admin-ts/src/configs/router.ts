@@ -1,12 +1,12 @@
-import router from '@/router';
-import NProgress from 'nprogress';
-import 'nprogress/nprogress.css';
-import getPageTitle from '@/utils/getPageTitle';
-import { readToken } from '@/utils/cookies';
+import router from "@/router";
+import NProgress from "nprogress";
+import "nprogress/nprogress.css";
+import getPageTitle from "@/utils/getPageTitle";
+import { readToken } from "@/utils/cookies";
 
 NProgress.configure({ showSpinner: false });
 
-const whiteList = ['/login'];
+const whiteList = ["/login"];
 
 router.beforeEach((to, from, next) => {
   // start progress bar
@@ -14,9 +14,9 @@ router.beforeEach((to, from, next) => {
 
   // determine whether the user has logged in by token
   if (readToken()) {
-    if (to.path === '/login') {
+    if (to.path === "/login") {
       // redirect to the home page if user is login
-      next({ path: '/' });
+      next({ path: "/" });
       NProgress.done();
     } else {
       next();
@@ -28,7 +28,7 @@ router.beforeEach((to, from, next) => {
       next();
     } else {
       // other pages that do not have permission to access are redirected to the login page.
-      next({ path: '/login' });
+      next({ path: "/login" });
       NProgress.done();
     }
   }

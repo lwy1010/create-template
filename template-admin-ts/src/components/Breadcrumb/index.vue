@@ -9,13 +9,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
-import { filterHiddenRoute, findRouteItemByPath } from '@/utils';
-import { uniqBy } from 'lodash-es';
+import { computed, defineComponent } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { filterHiddenRoute, findRouteItemByPath } from "@/utils";
+import { uniqBy } from "lodash-es";
 
 export default defineComponent({
-  name: 'Breadcrumb',
+  name: "Breadcrumb",
   setup() {
     const router = useRouter();
     const route = useRoute();
@@ -24,7 +24,7 @@ export default defineComponent({
 
     const breadcrumbList = computed(() => {
       const filteredRoutes = findRouteItemByPath(routes.value, route.path);
-      return uniqBy([{ path: '/', meta: { title: '首页' } }, ...filteredRoutes], 'path');
+      return uniqBy([{ path: "/", meta: { title: "首页" } }, ...filteredRoutes], "path");
     });
 
     return { breadcrumbList };

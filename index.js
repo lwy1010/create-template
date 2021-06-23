@@ -1,25 +1,25 @@
 #!/usr/bin/env node
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 
-const argv = require('minimist')(process.argv.slice(2));
-const { prompt } = require('enquirer');
-const { cyan, green, stripColors } = require('kolorist');
+const argv = require("minimist")(process.argv.slice(2));
+const { prompt } = require("enquirer");
+const { cyan, green, stripColors } = require("kolorist");
 
 const cwd = process.cwd();
 
-const TEMPLATES = [cyan('admin-ts'), green('h5-ts')];
+const TEMPLATES = [cyan("admin-ts"), green("h5-ts")];
 
-const renameFiles = { _gitignore: '.gitignore' };
+const renameFiles = { _gitignore: ".gitignore" };
 
 async function init() {
   let targetDir = argv._[0];
   if (!targetDir) {
     const { name } = await prompt({
-      type: 'input',
-      name: 'name',
+      type: "input",
+      name: "name",
       message: `Project name:`,
-      initial: '7inch-project',
+      initial: "7inch-project",
     });
     targetDir = name;
   }
@@ -33,9 +33,9 @@ async function init() {
     const existing = fs.readdirSync(root);
     if (existing.length) {
       const { yes } = await prompt({
-        type: 'confirm',
-        name: 'yes',
-        initial: 'Y',
+        type: "confirm",
+        name: "yes",
+        initial: "Y",
         message:
           `Target directory ${targetDir} is not empty.\n` + `Remove existing files and continue?`,
       });
@@ -49,11 +49,11 @@ async function init() {
 
   // determine template
   let template = argv.t || argv.template;
-  let message = 'Select a template:';
+  let message = "Select a template:";
   let isValidTemplate = false;
 
   // --template expects a value
-  if (typeof template === 'string') {
+  if (typeof template === "string") {
     const availableTemplates = TEMPLATES.map(stripColors);
     isValidTemplate = availableTemplates.includes(template);
     message = `${template} isn't a valid template. Please choose from below:`;
@@ -61,8 +61,8 @@ async function init() {
 
   if (!template || !isValidTemplate) {
     const { t } = await prompt({
-      type: 'select',
-      name: 't',
+      type: "select",
+      name: "t",
       message,
       choices: TEMPLATES,
     });
@@ -83,22 +83,22 @@ async function init() {
   };
 
   const files = fs.readdirSync(templateDir);
-  for (const file of files.filter((f) => f !== 'package.json')) {
+  for (const file of files.filter((f) => f !== "package.json")) {
     write(file);
   }
 
   const pkg = require(path.join(templateDir, `package.json`));
   pkg.name = path.basename(root);
-  write('package.json', JSON.stringify(pkg, null, 2));
+  write("package.json", JSON.stringify(pkg, null, 2));
 
-  const pkgManager = /yarn/.test(process.env.npm_execpath) ? 'yarn' : 'npm';
+  const pkgManager = /yarn/.test(process.env.npm_execpath) ? "yarn" : "npm";
 
   console.log(`\nDone. Now run:\n`);
   if (root !== cwd) {
     console.log(`  cd ${path.relative(cwd, root)}`);
   }
-  console.log(`  ${pkgManager === 'yarn' ? `yarn` : `npm install`}`);
-  console.log(`  ${pkgManager === 'yarn' ? `yarn dev` : `npm run dev`}`);
+  console.log(`  ${pkgManager === "yarn" ? `yarn` : `npm install`}`);
+  console.log(`  ${pkgManager === "yarn" ? `yarn dev` : `npm run dev`}`);
   console.log();
 }
 

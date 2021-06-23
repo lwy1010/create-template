@@ -24,14 +24,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
-import MenuItemPro from './MenuItemPro.vue';
-import { isUrl } from '@/utils/is';
-import { useRoute, useRouter } from 'vue-router';
-import { filterHiddenRoute } from '@/utils';
+import { defineComponent, computed } from "vue";
+import MenuItemPro from "./MenuItemPro.vue";
+import { isUrl } from "@/utils/is";
+import { useRoute, useRouter } from "vue-router";
+import { filterHiddenRoute } from "@/utils";
 
 export default defineComponent({
-  name: 'AsidePro',
+  name: "AsidePro",
   components: {
     MenuItemPro,
   },
@@ -45,7 +45,7 @@ export default defineComponent({
     const route = useRoute();
     const router = useRouter();
 
-    const asideWidth = computed(() => (props.collapse ? '54px' : '210px'));
+    const asideWidth = computed(() => (props.collapse ? "54px" : "210px"));
 
     const routes = computed(() => filterHiddenRoute(router.options.routes));
 

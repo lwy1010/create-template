@@ -27,7 +27,6 @@
     "url": "https://github.com/7inch/create-7inch-app/issues"
   },
   "prettier": {
-    "singleQuote": true,
     "printWidth": 100,
     "tabWidth": 2
   },

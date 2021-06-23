@@ -21,43 +21,43 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, reactive } from 'vue';
-import { Toast } from 'vant';
+import { computed, defineComponent, reactive } from "vue";
+import { Toast } from "vant";
 
 export default defineComponent({
-  name: 'Cart',
+  name: "Cart",
   setup() {
-    const checkedGoods = reactive(['1', '2', '3']);
+    const checkedGoods = reactive(["1", "2", "3"]);
     const goods = reactive([
       {
-        id: '1',
-        title: '进口香蕉',
-        desc: '约250g，2根',
+        id: "1",
+        title: "进口香蕉",
+        desc: "约250g，2根",
         price: 200,
         num: 1,
-        thumb: 'https://img.yzcdn.cn/public_files/2017/10/24/2f9a36046449dafb8608e99990b3c205.jpeg',
+        thumb: "https://img.yzcdn.cn/public_files/2017/10/24/2f9a36046449dafb8608e99990b3c205.jpeg",
       },
       {
-        id: '2',
-        title: '陕西蜜梨',
-        desc: '约600g',
+        id: "2",
+        title: "陕西蜜梨",
+        desc: "约600g",
         price: 690,
         num: 1,
-        thumb: 'https://img.yzcdn.cn/public_files/2017/10/24/f6aabd6ac5521195e01e8e89ee9fc63f.jpeg',
+        thumb: "https://img.yzcdn.cn/public_files/2017/10/24/f6aabd6ac5521195e01e8e89ee9fc63f.jpeg",
       },
       {
-        id: '3',
-        title: '美国伽力果',
-        desc: '约680g/3个',
+        id: "3",
+        title: "美国伽力果",
+        desc: "约680g/3个",
         price: 2680,
         num: 1,
-        thumb: 'https://img.yzcdn.cn/public_files/2017/10/24/320454216bbe9e25c7651e1fa51b31fd.jpeg',
+        thumb: "https://img.yzcdn.cn/public_files/2017/10/24/320454216bbe9e25c7651e1fa51b31fd.jpeg",
       },
     ]);
 
     const submitBarText = computed(() => {
       const count = checkedGoods.length;
-      return `结算${count ? `(${count})` : ''}`;
+      return `结算${count ? `(${count})` : ""}`;
     });
 
     const totalPrice = computed(() => {
@@ -68,7 +68,7 @@ export default defineComponent({
     });
 
     const onSubmit = () => {
-      Toast('点击结算');
+      Toast("点击结算");
     };
 
     const formatPrice = (price: number) => {
@@ -88,7 +88,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scpoed>
-/* stylelint-disable selector-class-pattern */
 .card-goods {
   padding: 10px 0;
   background-color: #fff;
