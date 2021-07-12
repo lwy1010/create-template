@@ -1,6 +1,12 @@
 <template>
   <div class="login">
-    <el-form :model="loginForm" :rules="rules" ref="formRef" class="login-form">
+    <el-form
+      :model="loginForm"
+      :rules="rules"
+      ref="formRef"
+      class="login-form"
+      label-position="top"
+    >
       <el-form-item prop="username" label="用户名:">
         <el-input size="medium" v-model.trim="loginForm.username" placeholder="用户名"></el-input>
       </el-form-item>
