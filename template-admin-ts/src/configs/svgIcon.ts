@@ -1,4 +1,4 @@
-import SvgIcon from "@/components/SvgIcon/index.vue";
+import SvgIcon from "@/components/svg-icon/index.vue";
 import { App } from "vue";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

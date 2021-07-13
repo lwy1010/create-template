@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import LayoutPro from "@/components/LayoutPro/index.vue";
+import LayoutPro from "@/components/layout-pro/index.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {

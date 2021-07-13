@@ -9,9 +9,9 @@
 </template>
 
 <script lant="ts">
-import AsidePro from "./AsidePro/index.vue";
-import HeaderPro from "./HeaderPro/index.vue";
-import MainPro from "./MainPro/index.vue";
+import AsidePro from "./aside-pro/index.vue";
+import HeaderPro from "./header-pro/index.vue";
+import MainPro from "./main-pro/index.vue";
 import { useStore } from "vuex";
 import { computed, defineComponent } from "vue";
 
