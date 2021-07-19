@@ -1,4 +1,3 @@
-import { App } from "vue";
 import {
   ActionBar,
   ActionBarButton,
@@ -32,7 +31,7 @@ const components = [
   SubmitBar,
 ];
 
-export default function (app: App) {
+export default function (app) {
   components.forEach((component) => {
     app.component(component.name, component);
   });

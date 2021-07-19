@@ -20,11 +20,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, reactive } from "vue";
+<script>
+import { computed, reactive } from "vue";
 import { Toast } from "vant";
 
-export default defineComponent({
+export default {
   name: "Cart",
   setup() {
     const checkedGoods = reactive(["1", "2", "3"]);
@@ -71,7 +71,7 @@ export default defineComponent({
       Toast("点击结算");
     };
 
-    const formatPrice = (price: number) => {
+    const formatPrice = (price) => {
       return (price / 100).toFixed(2);
     };
 
@@ -84,7 +84,7 @@ export default defineComponent({
       totalPrice,
     };
   },
-});
+};
 </script>
 
 <style lang="scss" scpoed>

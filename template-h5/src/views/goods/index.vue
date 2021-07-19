@@ -40,12 +40,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive } from "vue";
+<script>
+import { reactive } from "vue";
 import { useRouter } from "vue-router";
 import { Toast } from "vant";
 
-export default defineComponent({
+export default {
   name: "Goods",
   setup() {
     const router = useRouter();
@@ -80,7 +80,7 @@ export default defineComponent({
       sorry,
     };
   },
-});
+};
 </script>
 
 <style lang="scss" scoped>
