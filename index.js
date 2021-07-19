@@ -8,7 +8,7 @@ const { cyan, green, stripColors } = require("kolorist");
 
 const cwd = process.cwd();
 
-const TEMPLATES = [cyan("admin-ts"), green("h5")];
+const TEMPLATES = [cyan("admin"), green("h5")];
 
 const renameFiles = { _gitignore: ".gitignore" };
 
