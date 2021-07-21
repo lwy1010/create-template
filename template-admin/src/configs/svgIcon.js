@@ -1,6 +1,6 @@
 import SvgIcon from "@/components/svg-icon/index.vue";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// eslint-disable-next-line no-unused-vars
 const svgs = import.meta.globEager("../icons/*.svg");
 
 export default function (app) {
