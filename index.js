@@ -4,11 +4,11 @@ const path = require("path");
 
 const argv = require("minimist")(process.argv.slice(2));
 const { prompt } = require("enquirer");
-const { cyan, green, stripColors } = require("kolorist");
+const { cyan, green, yellow, stripColors } = require("kolorist");
 
 const cwd = process.cwd();
 
-const TEMPLATES = [cyan("admin"), green("h5")];
+const TEMPLATES = [cyan("admin"), green("h5"), yellow("rest-api")];
 
 const renameFiles = { _gitignore: ".gitignore" };
 
