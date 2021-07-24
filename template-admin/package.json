@@ -11,6 +11,7 @@
     "prettier": "prettier \"src/**/*.{js,ts,json,css,scss,vue,md}\" --write"
   },
   "dependencies": {
+    "@vueuse/core": "^5.1.4",
     "axios": "^0.21.1",
     "element-plus": "^1.0.2-beta.55",
     "js-cookie": "^2.2.1",

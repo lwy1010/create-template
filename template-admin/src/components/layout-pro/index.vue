@@ -13,7 +13,8 @@ import AsidePro from "./aside-pro/index.vue";
 import HeaderPro from "./header-pro/index.vue";
 import MainPro from "./main-pro/index.vue";
 import { useStore } from "vuex";
-import { computed } from "vue";
+import { computed, watch } from "vue";
+import { useWindowSize } from "@vueuse/core";
 
 export default {
   name: "LayoutPro",
@@ -24,11 +25,20 @@ export default {
   },
   setup() {
     const store = useStore();
+    const { width } = useWindowSize();
+
+    watch(width, (value) => {
+      if (value <= 820 && isSidebarCollapse.value === false) {
+        store.commit("app/closeCollapse");
+      }
+      if (value > 820 && isSidebarCollapse.value === true) {
+        store.commit("app/openCollapse");
+      }
+    });
+
     const isSidebarCollapse = computed(() => !store.state.app.sidebarStatus);
 
-    function toggleCollapse() {
-      store.commit("app/toggleCollapse");
-    }
+    const toggleCollapse = () => store.commit("app/toggleCollapse");
 
     return {
       isSidebarCollapse,

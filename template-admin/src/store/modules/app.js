@@ -30,6 +30,16 @@ const mutations = {
   setUserInfo(state, userInfo) {
     state.userInfo = userInfo;
   },
+
+  closeCollapse(state) {
+    state.sidebarStatus = false;
+    updateSidebarStatus("closed");
+  },
+
+  openCollapse(state) {
+    state.sidebarStatus = true;
+    updateSidebarStatus("opened");
+  },
 };
 
 const actions = {
