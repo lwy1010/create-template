@@ -19,7 +19,14 @@
         ></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button size="medium" class="btn" type="primary" @click="handleLogin">登录</el-button>
+        <el-button
+          :loading="isLoading"
+          size="medium"
+          class="btn"
+          type="primary"
+          @click="handleLogin"
+          >登录</el-button
+        >
       </el-form-item>
     </el-form>
   </div>
@@ -29,6 +36,7 @@
 import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
+import { ElMessage } from "element-plus";
 
 export default {
   name: "Login",
@@ -41,6 +49,8 @@ export default {
       password: "",
     });
 
+    const isLoading = ref(false);
+
     const formRef = ref();
 
     const rules = {
@@ -52,10 +62,13 @@ export default {
       formRef.value.validate(async (valid) => {
         if (valid) {
           try {
+            isLoading.value = true;
             await store.dispatch("app/login", loginForm);
+            isLoading.value = false;
+            ElMessage.success({ message: "登录成功" });
             router.push({ path: "/" });
           } catch (error) {
-            console.log(error);
+            isLoading.value = false;
           }
         }
       });
@@ -65,6 +78,7 @@ export default {
       loginForm,
       rules,
       formRef,
+      isLoading,
       handleLogin,
     };
   },
