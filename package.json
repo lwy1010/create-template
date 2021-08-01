@@ -1,13 +1,14 @@
 {
   "name": "create-7inch-app",
-  "version": "0.2.0",
+  "version": "0.3.0-beta.1",
   "author": "lwy1010",
   "main": "index.js",
   "bin": {
     "create-7inch-app": "index.js"
   },
   "scripts": {
-    "release": "npm publish"
+    "release": "npx bumpp --commit --tag --push",
+    "publish": "npm publish"
   },
   "dependencies": {
     "enquirer": "^2.3.6",
