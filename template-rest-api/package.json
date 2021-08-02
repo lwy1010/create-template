@@ -1,9 +1,54 @@
 {
   "name": "template-rest-api",
   "version": "0.0.1",
-  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "eslint": "eslint \"src/**/*.{js,ts}\" --fix",
+    "prettier": "prettier \"src/**/*.{js,ts,json,md}\" --write"
+  },
   "dependencies": {
-    "express": "^4.17.1"
+    "cheerio": "^1.0.0-rc.10",
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "joi": "^17.4.1",
+    "mongoose": "^5.13.4",
+    "mongoose-paginate-v2": "^1.4.1",
+    "superagent": "^6.1.0"
+  },
+  "devDependencies": {
+    "@7inch/eslint-config-node": "^0.1.0",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "eslint": "^7.31.0",
+    "lint-staged": "^11.1.1",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2",
+    "yorkie": "^2.0.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@7inch/eslint-config-node"
+    ]
+  },
+  "prettier": {
+    "printWidth": 100,
+    "tabWidth": 2
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix",
+    "*.{js,ts,md}": "prettier --write"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "commitlint --edit $1"
+  },
+  "engines": {
+    "node": "^12"
   },
   "license": "MIT"
 }
