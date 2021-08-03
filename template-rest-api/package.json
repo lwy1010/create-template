@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "nodemon app.js",
     "eslint": "eslint \"src/**/*.{js,ts}\" --fix",
-    "prettier": "prettier \"src/**/*.{js,ts,json,md}\" --write"
+    "prettier": "prettier \"src/**/*.{js,ts,json,md}\" --write",
+    "postinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.10",

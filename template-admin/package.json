@@ -1,5 +1,5 @@
 {
-  "name": "template-admin-ts",
+  "name": "template-admin",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -8,7 +8,8 @@
     "serve": "vite preview",
     "eslint": "eslint \"src/**/*.{vue,js,ts}\" --fix",
     "stylelint": "stylelint \"src/**/*.{vue,css,scss}\" --fix",
-    "prettier": "prettier \"src/**/*.{js,ts,json,css,scss,vue,md}\" --write"
+    "prettier": "prettier \"src/**/*.{js,ts,json,css,scss,vue,md}\" --write",
+    "postinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@vueuse/core": "^5.1.4",
