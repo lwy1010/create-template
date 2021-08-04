@@ -3,8 +3,8 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-import configVant from "@/configs/vant";
-import "@/configs/vconsole";
+import configVant from "@/plugins/vant";
+import "@/plugins/vconsole";
 
 const app = createApp(App);
 
