@@ -1,5 +1,8 @@
 <template>
-  <el-menu-item v-if="!hasMultiChild(item)" :index="item.redirect || item.path">
+  <el-menu-item
+    v-if="!hasMultiChild(item) && !item.meta.showExpand"
+    :index="item.redirect || item.path"
+  >
     <svg-icon v-if="item.meta?.icon" :icon-name="item.meta.icon"></svg-icon>
     <template #title>{{ item.meta?.title }}</template>
   </el-menu-item>

@@ -1,6 +1,17 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import LayoutPro from "@/components/layout-pro/index.vue";
 
+/* 
+  meta : {
+    // the name show in sidebar and breadcrumb
+    title: 'title'
+    // the icon show in the sidebar
+    icon: 'svg-name' 
+    // if set true, it will always show the root menu
+    alwaysShow: true  
+  }
+*/
+
 const routes = [
   {
     path: "/login",
