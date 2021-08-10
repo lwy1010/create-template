@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const config = require("config");
+const cors = require("cors");
 
 const app = express();
 const port = process.env.PORT || config.get("port");
@@ -10,6 +11,8 @@ const movieRouter = require("./routes/movie");
 const userRouter = require("./routes/user");
 
 app.use(express.json());
+app.use(cors());
+
 app.use("/movie", movieRouter);
 app.use("/user", userRouter);
 

@@ -7,6 +7,7 @@ specifiers:
   bcryptjs: ^2.4.3
   cheerio: ^1.0.0-rc.10
   config: ^3.3.6
+  cors: ^2.8.5
   eslint: ^7.31.0
   express: ^4.17.1
   joi: ^17.4.1
@@ -24,6 +25,7 @@ dependencies:
   bcryptjs: 2.4.3
   cheerio: 1.0.0-rc.10
   config: 3.3.6
+  cors: 2.8.5
   express: 4.17.1
   joi: 17.4.2
   jsonwebtoken: 8.5.1
@@ -853,6 +855,14 @@ packages:
 
   /core-util-is/1.0.2:
     resolution: {integrity: sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=}
+    dev: false
+
+  /cors/2.8.5:
+    resolution: {integrity: sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==}
+    engines: {node: '>= 0.10'}
+    dependencies:
+      object-assign: 4.1.1
+      vary: 1.1.2
     dev: false
 
   /cosmiconfig/7.0.0:
@@ -2620,6 +2630,11 @@ packages:
     resolution: {integrity: sha512-i4sc/Kj8htBrAiH1viZ0TgU8Y5XqCaV/FziYK6TBczxmeKm3AEFWqqF3195yKudrarqy7Zu80Ra5dobFjn9X/Q==}
     dependencies:
       boolbase: 1.0.0
+    dev: false
+
+  /object-assign/4.1.1:
+    resolution: {integrity: sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=}
+    engines: {node: '>=0.10.0'}
     dev: false
 
   /object-inspect/1.11.0:
