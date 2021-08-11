@@ -2,7 +2,7 @@ import router from "@/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import getPageTitle from "@/utils/getPageTitle";
-import { readToken } from "@/utils/cookies";
+import { readUserInfo } from "@/utils/cookies";
 
 NProgress.configure({ showSpinner: false });
 
@@ -13,7 +13,7 @@ router.beforeEach((to, from, next) => {
   NProgress.start();
 
   // determine whether the user has logged in by token
-  if (readToken()) {
+  if (readUserInfo()?.token) {
     if (to.path === "/login") {
       // redirect to the home page if user is login
       next({ path: "/" });

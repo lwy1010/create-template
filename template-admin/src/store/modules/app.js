@@ -1,8 +1,5 @@
-import { login, logout } from "@/api/user";
+import { login } from "@/api/user";
 import {
-  readToken,
-  updateToken,
-  deleteToken,
   readUserInfo,
   updateUserInfo,
   deleteUserInfo,
@@ -13,7 +10,6 @@ import {
 
 const state = {
   sidebarStatus: readSidebarStatus() !== "closed",
-  token: readToken() || "",
   userInfo: readUserInfo(),
 };
 
@@ -21,10 +17,6 @@ const mutations = {
   toggleCollapse(state) {
     state.sidebarStatus = !state.sidebarStatus;
     state.sidebarStatus ? updateSidebarStatus("opened") : updateSidebarStatus("closed");
-  },
-
-  setToken(state, token) {
-    state.token = token;
   },
 
   setUserInfo(state, userInfo) {
@@ -44,14 +36,12 @@ const mutations = {
 
 const actions = {
   login({ commit }, loginInfo) {
-    const { username, password } = loginInfo;
+    const { email, password } = loginInfo;
     return new Promise((resolve, reject) => {
-      login({ username, password })
+      login({ email, password })
         .then(({ data }) => {
-          commit("setToken", data.token);
-          commit("setUserInfo", data.userInfo);
-          updateToken(data.token);
-          updateUserInfo(data.userInfo);
+          commit("setUserInfo", data);
+          updateUserInfo(data);
           resolve();
         })
         .catch((error) => reject(error));
@@ -59,20 +49,13 @@ const actions = {
   },
 
   logout({ commit }) {
-    return new Promise((resolve, reject) => {
-      logout()
-        .then(() => {
-          commit("setToken", "");
-          commit("setUserInfo", null);
-          deleteToken();
-          deleteUserInfo();
-          deleteSidebarStatus();
-          resolve();
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
+    try {
+      commit("setUserInfo", null);
+      deleteUserInfo();
+      deleteSidebarStatus();
+    } catch (error) {
+      console.log(error);
+    }
   },
 };
 

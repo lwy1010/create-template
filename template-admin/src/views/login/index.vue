@@ -7,8 +7,8 @@
       class="login-form"
       label-position="top"
     >
-      <el-form-item prop="username" label="用户名:">
-        <el-input size="medium" v-model.trim="loginForm.username" placeholder="用户名"></el-input>
+      <el-form-item prop="email" label="邮箱:">
+        <el-input size="medium" v-model.trim="loginForm.email" placeholder="邮箱"></el-input>
       </el-form-item>
       <el-form-item prop="password" label="密码:">
         <el-input
@@ -45,7 +45,7 @@ export default {
     const router = useRouter();
 
     const loginForm = reactive({
-      username: "",
+      email: "",
       password: "",
     });
 
@@ -54,7 +54,7 @@ export default {
     const formRef = ref();
 
     const rules = {
-      username: [{ required: true, message: "请输入用户名", trigger: "blur" }],
+      email: [{ required: true, message: "请输入邮箱", trigger: "blur" }],
       password: [{ required: true, message: "请输入密码", trigger: "blur" }],
     };
 

@@ -32,27 +32,15 @@
     "babel-plugin-import": "^1.13.3",
     "eslint": "^7.22.0",
     "lint-staged": "^10.5.4",
-    "mockjs": "^1.1.0",
     "prettier": "^2.3.0",
     "sass": "^1.34.1",
     "stylelint": "^13.12.0",
     "vite": "^2.4.2",
-    "vite-plugin-mockit": "^1.0.2",
     "vite-plugin-svg-sprite-component": "^1.0.8",
     "yorkie": "^2.0.0"
   },
   "eslintConfig": {
-    "extends": "@7inch/eslint-config",
-    "overrides": [
-      {
-        "files": [
-          "mock/*.js"
-        ],
-        "rules": {
-          "no-undef": "off"
-        }
-      }
-    ]
+    "extends": "@7inch/eslint-config"
   },
   "stylelint": {
     "extends": [

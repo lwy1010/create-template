@@ -1,12 +1,6 @@
 import Cookies from "js-cookie";
 
-// token cookies
-const token = "token";
-export const readToken = () => Cookies.get(token);
-export const updateToken = (tokenStr) => Cookies.set(token, tokenStr);
-export const deleteToken = () => Cookies.remove(token);
-
-// user cookies
+// user
 const userInfo = "userInfo";
 export const readUserInfo = () => Cookies.getJSON(userInfo);
 export const updateUserInfo = (info) => Cookies.set(userInfo, info);
