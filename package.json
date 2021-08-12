@@ -1,6 +1,6 @@
 {
   "name": "create-7inch-app",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "author": "lwy1010",
   "main": "index.js",
   "bin": {
@@ -8,8 +8,7 @@
   },
   "scripts": {
     "postinstall": "npx only-allow pnpm",
-    "release": "npx bumpp --commit --tag --push",
-    "publish": "npm publish"
+    "release": "npx bumpp --commit --tag --push && npm publish --access public"
   },
   "dependencies": {
     "enquirer": "^2.3.6",
