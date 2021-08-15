@@ -1,0 +1,6 @@
+{
+  "name": "template-miniprogram",
+  "dependencies": {
+    "@vant/weapp": "^1.8.0"
+  }
+}
