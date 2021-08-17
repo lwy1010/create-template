@@ -4,9 +4,11 @@
   500xx表示服务端的接口错误
 */
 const statusCodes = [
+  { code: 40000, message: "Access denied. No token provided." },
   { code: 40001, message: "Invalid email or password." },
   { code: 40002, message: "User already registered." },
   { code: 40003, message: "The movie with the given id was not found." },
+  { code: 40004, message: "Invalid token." },
 ];
 
 /**

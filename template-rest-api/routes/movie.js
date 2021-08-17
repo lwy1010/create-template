@@ -1,10 +1,11 @@
 const express = require("express");
 const { Movie, validateMovie } = require("../models/movie");
 const { successRes, errorRes, validateRes } = require("../utils/response");
+const auth = require("../middleware/auth");
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", [auth], async (req, res) => {
   const { limit, page, name } = req.query;
   const query = { name: { $regex: name || "" } };
   const options = { page, limit: limit || 10 };
@@ -14,7 +15,7 @@ router.get("/", async (req, res) => {
   res.send(successRes(docs));
 });
 
-router.post("/", async (req, res) => {
+router.post("/", [auth], async (req, res) => {
   const { error } = validateMovie(req.body);
   if (error) {
     return res.send(validateRes(error.details[0].message));
@@ -27,7 +28,7 @@ router.post("/", async (req, res) => {
   res.send(successRes(movie));
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", [auth], async (req, res) => {
   const { error } = validateMovie(req.body);
   if (error) {
     return res.send(validateRes(error.details[0].message));
@@ -43,7 +44,7 @@ router.put("/:id", async (req, res) => {
   res.send(successRes(movie));
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", [auth], async (req, res) => {
   const movie = await Movie.findById(req.params.id);
   if (!movie) {
     return res.send(errorRes(40003));
@@ -52,7 +53,7 @@ router.get("/:id", async (req, res) => {
   res.send(successRes(movie));
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", [auth], async (req, res) => {
   const movie = await Movie.findByIdAndRemove(req.params.id);
   if (!movie) {
     return res.send(errorRes(40003));

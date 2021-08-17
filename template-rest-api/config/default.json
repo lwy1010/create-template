@@ -1,5 +1,6 @@
 {
   "jwtPrivateKey": "unsecureKey",
   "db": "mongodb://localhost/template-rest-api",
-  "port": "1010"
+  "port": "1010",
+  "requiresAuth": true
 }
