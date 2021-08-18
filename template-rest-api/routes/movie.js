@@ -2,6 +2,7 @@ const express = require("express");
 const { Movie, validateMovie } = require("../models/movie");
 const { successRes, errorRes, validateRes } = require("../utils/response");
 const auth = require("../middleware/auth");
+const adminAuth = require("../middleware/adminAuth");
 
 const router = express.Router();
 
@@ -53,7 +54,7 @@ router.get("/:id", [auth], async (req, res) => {
   res.send(successRes(movie));
 });
 
-router.delete("/:id", [auth], async (req, res) => {
+router.delete("/:id", [auth, adminAuth], async (req, res) => {
   const movie = await Movie.findByIdAndRemove(req.params.id);
   if (!movie) {
     return res.send(errorRes(40003));

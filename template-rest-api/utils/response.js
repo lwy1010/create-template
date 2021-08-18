@@ -9,6 +9,7 @@ const statusCodes = [
   { code: 40002, message: "User already registered." },
   { code: 40003, message: "The movie with the given id was not found." },
   { code: 40004, message: "Invalid token." },
+  { code: 40005, message: "Access denied. No permission" },
 ];
 
 /**

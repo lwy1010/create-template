@@ -21,6 +21,7 @@ async function start() {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
+    useFindAndModify: false,
   });
   console.log(`Connected to ${db}...`);
   app.listen(port, () => {
