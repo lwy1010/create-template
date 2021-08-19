@@ -11,9 +11,9 @@ router.get("/", [auth], async (req, res) => {
   const query = { name: { $regex: name || "" } };
   const options = { page, limit: limit || 10 };
 
-  const { docs } = await Movie.paginate(query, options);
+  const movies = await Movie.paginate(query, options);
 
-  res.send(successRes(docs));
+  res.send(successRes(movies));
 });
 
 router.post("/", [auth], async (req, res) => {

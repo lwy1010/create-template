@@ -37,7 +37,8 @@ userSchema.method("generateAuthToken", function () {
       email: this.email,
       isAdmin: this.isAdmin,
     },
-    config.get("jwtPrivateKey")
+    config.get("jwtPrivateKey"),
+    { expiresIn: "1h" }
   );
   return token;
 });
