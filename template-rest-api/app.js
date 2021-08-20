@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require("config");
 const cors = require("cors");
+const error = require("./middleware/error");
 
 const app = express();
 const port = process.env.PORT || config.get("port");
@@ -12,6 +13,7 @@ const userRouter = require("./routes/user");
 
 app.use(express.json());
 app.use(cors());
+app.use(error);
 
 app.use("/movie", movieRouter);
 app.use("/user", userRouter);

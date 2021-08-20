@@ -4,12 +4,12 @@
   500xx表示服务端的接口错误
 */
 const statusCodes = [
-  { code: 40000, message: "Access denied. No token provided." },
   { code: 40001, message: "Invalid email or password." },
   { code: 40002, message: "User already registered." },
   { code: 40003, message: "The movie with the given id was not found." },
   { code: 40004, message: "Invalid token." },
   { code: 40005, message: "Access denied. No permission" },
+  { code: 40006, message: "Access denied. No token provided." },
 ];
 
 /**
@@ -33,8 +33,8 @@ const successRes = (data) => {
 const errorRes = (statusCode) => {
   let error = statusCodes.find((error) => error.code === statusCode);
 
-  // 如果没匹配到自定义的状态码，默认就是服务器错误
-  if (!error) error = { code: 50000, message: "服务器错误" };
+  // 如果没匹配到自定义的状态码，默认就是50000，表示服务器错误
+  if (!error) error = { code: 50000, message: "Server Error." };
 
   return {
     message: error.message,

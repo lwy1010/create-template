@@ -9,7 +9,7 @@ module.exports = function (req, res, next) {
 
   const token = req.header("auth-token");
   if (!token) {
-    return res.send(errorRes(40000));
+    return res.send(errorRes(40006));
   }
 
   try {
