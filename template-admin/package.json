@@ -8,13 +8,13 @@
     "serve": "vite preview",
     "eslint": "eslint \"src/**/*.{vue,js,ts}\" --fix",
     "stylelint": "stylelint \"src/**/*.{vue,css,scss}\" --fix",
-    "prettier": "prettier \"src/**/*.{js,ts,json,css,scss,vue,md}\" --write",
-    "postinstall": "npx only-allow pnpm"
+    "prettier": "prettier \"src/**/*.{js,ts,json,css,scss,vue,md}\" --write"
   },
   "dependencies": {
     "@vueuse/core": "^5.1.4",
     "axios": "^0.21.1",
-    "element-plus": "^1.0.2-beta.55",
+    "dayjs": "^1.10.6",
+    "element-plus": "^1.0.2-beta.65",
     "js-cookie": "^2.2.1",
     "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
@@ -36,6 +36,7 @@
     "sass": "^1.34.1",
     "stylelint": "^13.12.0",
     "vite": "^2.4.2",
+    "vite-plugin-components": "^0.13.2",
     "vite-plugin-svg-sprite-component": "^1.0.8",
     "yorkie": "^2.0.0"
   },
