@@ -48,22 +48,24 @@ async function getMovieDetail(href) {
   return movie;
 }
 
-async function subscribe() {
-  await mongoose.connect(config.get("db"), {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-  });
-  await Movie.deleteMany({});
+module.exports = async () => {
+  try {
+    await mongoose.connect(config.get("db"), {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    });
+    await Movie.deleteMany({});
 
-  const res = await superagent.get("https://movie.douban.com/cinema/nowplaying/guangzhou");
-  const $ = cheerio.load(res.text);
-  $("#nowplaying ul.lists .list-item").each(async (i, el) => {
-    const href = $(el).find(".stitle a").attr("href");
-    const movieDetail = await getMovieDetail(href);
-    const movie = new Movie(movieDetail);
-    await movie.save();
-    console.log(`Saved info of《${movie.name}》`);
-  });
-}
-
-subscribe();
+    const res = await superagent.get("https://movie.douban.com/cinema/nowplaying/guangzhou");
+    const $ = cheerio.load(res.text);
+    $("#nowplaying ul.lists .list-item").each(async (i, el) => {
+      const href = $(el).find(".stitle a").attr("href");
+      const movieDetail = await getMovieDetail(href);
+      const movie = new Movie(movieDetail);
+      await movie.save();
+      console.log(`Saved info of《${movie.name}》`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
