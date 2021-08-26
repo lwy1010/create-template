@@ -2,7 +2,7 @@ import router from "@/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import getPageTitle from "@/utils/getPageTitle";
-import { readUserInfo } from "@/utils/cookies";
+import { readUserInfo } from "@/utils/localStorage";
 
 NProgress.configure({ showSpinner: false });
 

@@ -11,11 +11,11 @@
     "prettier": "prettier \"src/**/*.{js,ts,json,css,scss,vue,md}\" --write"
   },
   "dependencies": {
+    "@7inch/storage": "^0.1.2",
     "@vueuse/core": "^5.1.4",
     "axios": "^0.21.1",
     "dayjs": "^1.10.6",
     "element-plus": "^1.0.2-beta.65",
-    "js-cookie": "^2.2.1",
     "lodash-es": "^4.17.21",
     "nprogress": "^0.2.0",
     "vue": "^3.0.11",

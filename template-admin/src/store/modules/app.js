@@ -6,7 +6,7 @@ import {
   readSidebarStatus,
   updateSidebarStatus,
   deleteSidebarStatus,
-} from "@/utils/cookies";
+} from "@/utils/localStorage";
 
 const state = {
   sidebarStatus: readSidebarStatus() !== "closed",
