@@ -8,11 +8,19 @@ import {
   Checkbox,
   CheckboxGroup,
   Col,
+  Image,
+  List,
+  Sidebar,
+  SidebarItem,
   SubmitBar,
   Swipe,
   SwipeItem,
+  Tabbar,
+  TabbarItem,
   Tag,
   ConfigProvider,
+  Lazyload,
+  Loading,
 } from "vant";
 
 // import vant on demand
@@ -30,7 +38,14 @@ const components = [
   CheckboxGroup,
   Checkbox,
   SubmitBar,
+  Sidebar,
+  SidebarItem,
+  Tabbar,
+  TabbarItem,
+  List,
+  Image,
   ConfigProvider,
+  Loading,
 ];
 
 /* 
@@ -44,6 +59,7 @@ export function setThemeVars() {
 }
 
 export default function (app) {
+  app.use(Lazyload, { lazyComponent: true });
   components.forEach((component) => {
     app.component(component.name, component);
   });

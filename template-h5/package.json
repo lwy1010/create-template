@@ -2,19 +2,20 @@
   "name": "template-h5",
   "version": "0.0.1",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "serve": "vite preview",
+    "dev": "vite --host",
+    "build": "vite build --mode=production",
+    "serve": "vite preview --host",
     "eslint": "eslint \"src/**/*.{vue,js,ts}\" --fix",
     "stylelint": "stylelint \"src/**/*.{vue,css,scss}\" --fix",
     "prettier": "prettier \"src/**/*.{js,ts,json,css,scss,vue,md}\" --write",
     "postinstall": "npx only-allow pnpm"
   },
   "dependencies": {
-    "vant": "^3.1.5",
+    "axios": "^0.21.1",
+    "vant": "^3.2.1",
     "vconsole": "^3.8.1",
-    "vue": "^3.1.1",
-    "vue-router": "^4.0.8",
+    "vue": "^3.2.6",
+    "vue-router": "^4.0.11",
     "vuex": "^4.0.1"
   },
   "devDependencies": {

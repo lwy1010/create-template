@@ -2,21 +2,21 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
   {
-    name: "cart",
-    path: "/cart",
-    component: () => import("../views/cart/index.vue"),
-    meta: { title: "购物车" },
+    name: "home",
+    path: "/",
+    component: () => import("@/views/home/index.vue"),
+    meta: { title: "首页" },
   },
   {
-    name: "goods",
-    path: "/goods",
-    component: () => import("../views/goods/index.vue"),
-    meta: { title: "商品详情" },
+    home: "mine",
+    path: "/mine",
+    component: () => import("@/views/mine/index.vue"),
+    meta: { title: "我的" },
   },
   {
     name: "notFound",
     path: "/:path(.*)+",
-    redirect: { name: "goods" },
+    redirect: { name: "home" },
   },
 ];
 
