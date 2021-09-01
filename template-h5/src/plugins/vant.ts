@@ -1,3 +1,5 @@
+import { App } from "vue";
+
 import {
   ActionBar,
   ActionBarButton,
@@ -58,7 +60,7 @@ export function setThemeVars() {
   };
 }
 
-export default function (app) {
+export default function (app: App) {
   app.use(Lazyload, { lazyComponent: true });
   components.forEach((component) => {
     app.component(component.name, component);

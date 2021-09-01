@@ -3,12 +3,11 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build --mode=production",
+    "build": "vite build",
     "serve": "vite preview --host",
     "eslint": "eslint \"src/**/*.{vue,js,ts}\" --fix",
     "stylelint": "stylelint \"src/**/*.{vue,css,scss}\" --fix",
-    "prettier": "prettier \"src/**/*.{js,ts,json,css,scss,vue,md}\" --write",
-    "postinstall": "npx only-allow pnpm"
+    "prettier": "prettier \"src/**/*.{js,ts,json,css,scss,vue,md}\" --write"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -19,10 +18,11 @@
     "vuex": "^4.0.1"
   },
   "devDependencies": {
-    "@7inch/eslint-config": "^0.1.0",
-    "@7inch/stylelint-config": "^0.1.0",
+    "@7inch/eslint-config-vue": "^0.2.0",
+    "@7inch/stylelint-config": "^0.1.1",
     "@commitlint/cli": "^12.0.0",
     "@commitlint/config-conventional": "^12.0.0",
+    "@types/node": "^16.7.10",
     "@vitejs/plugin-vue": "^1.1.4",
     "@vue/compiler-sfc": "^3.0.5",
     "eslint": "^7.20.0",
@@ -31,12 +31,13 @@
     "prettier": "^2.2.1",
     "sass": "^1.32.8",
     "stylelint": "^13.11.0",
+    "typescript": "^4.4.2",
     "vite": "^2.4.2",
     "vite-plugin-style-import": "^1.0.0",
     "yorkie": "^2.0.0"
   },
   "eslintConfig": {
-    "extends": "@7inch/eslint-config"
+    "extends": "@7inch/eslint-config-vue"
   },
   "stylelint": {
     "extends": [

@@ -1,6 +1,6 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
   {
     name: "home",
     path: "/",
@@ -8,7 +8,7 @@ const routes = [
     meta: { title: "首页" },
   },
   {
-    home: "mine",
+    name: "mine",
     path: "/mine",
     component: () => import("@/views/mine/index.vue"),
     meta: { title: "我的" },

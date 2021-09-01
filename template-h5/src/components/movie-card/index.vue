@@ -15,15 +15,18 @@
   </div>
 </template>
 
-<script>
-import { computed } from "vue";
+<script lang="ts">
+import { defineComponent, computed, PropType } from "vue";
+import { Movie } from "@/types/movie";
 
-export default {
+export default defineComponent({
   name: "MovieCard",
-  props: ["movie"],
+  props: {
+    movie: Object as PropType<Movie>,
+  },
   setup(props) {
     const casts = computed(() => {
-      if (!props.movie.casts?.length) return "未知";
+      if (!props?.movie?.casts?.length) return "未知";
       return props.movie.casts.map((cast) => cast.name).join(", ");
     });
 
@@ -31,7 +34,7 @@ export default {
       casts,
     };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

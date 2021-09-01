@@ -8,24 +8,25 @@
   </van-list>
 </template>
 
-<script>
-import { ref } from "vue";
+<script lang="ts">
+import { defineComponent, ref } from "vue";
 import { readMovies } from "@/api/home";
 import MovieCard from "@/components/movie-card/index.vue";
+import { Movie, Params } from "@/types/movie";
 
-export default {
+export default defineComponent({
   name: "Home",
   components: {
     MovieCard,
   },
   setup() {
-    const list = ref([]);
+    const list = ref<Array<Movie>>([]);
 
     const loading = ref(false);
 
     const finished = ref(false);
 
-    const params = ref({ page: 1, limit: 10 });
+    const params = ref<Params>({ page: 1, limit: 10 });
 
     const onLoad = async () => {
       try {
@@ -49,7 +50,7 @@ export default {
       onLoad,
     };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

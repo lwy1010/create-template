@@ -7,11 +7,12 @@
   </van-config-provider>
 </template>
 
-<script>
+<script lang="ts">
 import { setThemeVars } from "@/plugins/vant";
 import TabMenu from "@/components/tab-menu/index.vue";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "App",
   components: {
     TabMenu,
@@ -21,7 +22,7 @@ export default {
 
     return { themeVars };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
