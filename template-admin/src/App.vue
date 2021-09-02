@@ -4,13 +4,14 @@
   </el-config-provider>
 </template>
 
-<script>
+<script lang="ts">
 import zhCn from "element-plus/lib/locale/lang/zh-cn";
+import { defineComponent } from "vue";
 
-export default {
+export default defineComponent({
   name: "App",
   setup() {
     return { locale: zhCn };
   },
-};
+});
 </script>

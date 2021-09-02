@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import LayoutPro from "@/components/layout-pro/index.vue";
 
 /* 
@@ -12,7 +12,7 @@ import LayoutPro from "@/components/layout-pro/index.vue";
   }
 */
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
   {
     path: "/login",
     component: () => import("@/views/login/index.vue"),

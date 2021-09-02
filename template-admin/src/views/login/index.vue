@@ -32,7 +32,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
@@ -59,13 +59,13 @@ export default {
     };
 
     const handleLogin = () => {
-      formRef.value.validate(async (valid) => {
+      formRef.value.validate(async (valid: boolean) => {
         if (valid) {
           try {
             isLoading.value = true;
             await store.dispatch("app/login", loginForm);
             isLoading.value = false;
-            ElMessage.success({ message: "登录成功" });
+            ElMessage({ type: "success", message: "登录成功" });
             router.push({ path: "/" });
           } catch (error) {
             isLoading.value = false;

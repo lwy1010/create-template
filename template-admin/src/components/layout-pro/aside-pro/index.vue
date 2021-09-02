@@ -23,14 +23,14 @@
   </el-aside>
 </template>
 
-<script>
-import { computed } from "vue";
-import MenuItemPro from "./MenuItemPro.vue";
+<script lang="ts">
+import { defineComponent, computed } from "vue";
+import MenuItemPro from "./menu-item-pro.vue";
 import { isUrl } from "@/utils/is";
 import { useRoute, useRouter } from "vue-router";
-import { filterHiddenRoute } from "@/utils";
+import { filterHiddenRoute } from "@/utils/route";
 
-export default {
+export default defineComponent({
   name: "AsidePro",
   components: {
     MenuItemPro,
@@ -49,7 +49,7 @@ export default {
 
     const routes = computed(() => filterHiddenRoute(router.options.routes));
 
-    const handleSelect = (path) => (isUrl(path) ? window.open(path) : router.push(path));
+    const handleSelect = (path: string) => (isUrl(path) ? window.open(path) : router.push(path));
 
     return {
       route,
@@ -58,7 +58,7 @@ export default {
       asideWidth,
     };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
@@ -77,7 +77,6 @@ export default {
       }
     }
 
-    /* stylelint-disable selector-class-pattern */
     & ::v-deep(.el-menu.el-menu--inline .el-menu-item),
     & ::v-deep(.el-submenu .el-submenu .el-submenu__title) {
       background: #1f2d3d !important;

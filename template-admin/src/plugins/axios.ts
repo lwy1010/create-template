@@ -9,7 +9,8 @@ const service = axios.create({
 service.interceptors.response.use(
   ({ data }) => {
     if (data.code !== 0) {
-      ElMessage.error({ message: data.message || "Error" });
+      ElMessage({ type: "error", message: data.message });
+
       return Promise.reject(data);
     }
     return data;

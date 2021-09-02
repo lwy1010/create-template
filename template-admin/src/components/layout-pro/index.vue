@@ -8,15 +8,15 @@
   </el-container>
 </template>
 
-<script>
+<script lang="ts">
 import AsidePro from "./aside-pro/index.vue";
 import HeaderPro from "./header-pro/index.vue";
 import MainPro from "./main-pro/index.vue";
 import { useStore } from "vuex";
-import { computed, watch } from "vue";
+import { defineComponent, computed, watch } from "vue";
 import { useWindowSize } from "@vueuse/core";
 
-export default {
+export default defineComponent({
   name: "LayoutPro",
   components: {
     AsidePro,
@@ -40,12 +40,9 @@ export default {
 
     const toggleCollapse = () => store.commit("app/toggleCollapse");
 
-    return {
-      isSidebarCollapse,
-      toggleCollapse,
-    };
+    return { isSidebarCollapse, toggleCollapse };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

@@ -17,21 +17,26 @@
   </el-submenu>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+import { _RouteRecordBase } from "vue-router";
+
+export default defineComponent({
   name: "MenuProItem",
   props: {
     item: {
-      type: Object,
+      type: Object as PropType<_RouteRecordBase>,
       required: true,
     },
   },
   setup() {
-    const hasMultiChild = (item) => (item.children ? item.children.length > 1 : false);
+    const hasMultiChild = (item: _RouteRecordBase) => {
+      return item.children ? item.children.length > 1 : false;
+    };
 
     return { hasMultiChild };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

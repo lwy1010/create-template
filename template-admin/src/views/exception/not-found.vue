@@ -8,10 +8,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
 import { useRouter } from "vue-router";
 
-export default {
+export default defineComponent({
   name: "NotFound",
   setup() {
     const router = useRouter();
@@ -20,7 +21,7 @@ export default {
       backToHome: () => router.push({ path: "/" }),
     };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

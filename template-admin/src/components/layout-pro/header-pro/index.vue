@@ -23,13 +23,13 @@
   </el-header>
 </template>
 
-<script>
-import { computed } from "vue";
+<script lang="ts">
+import { computed, defineComponent } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 import Breadcrumb from "@/components/breadcrumb/index.vue";
 
-export default {
+export default defineComponent({
   name: "HeaderPro",
   components: {
     Breadcrumb,
@@ -47,7 +47,7 @@ export default {
 
     const username = computed(() => store.state.app.userInfo?.name);
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
       store
         .dispatch("app/logout")
         .then(() => {
@@ -60,7 +60,7 @@ export default {
 
     return { username, handleLogout };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

@@ -13,7 +13,6 @@ export default defineConfig({
     }),
   ],
   resolve: {
-    // eslint-disable-next-line no-undef
     alias: { "@": path.resolve(__dirname, "./src") },
   },
   server: {

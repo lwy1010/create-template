@@ -4,9 +4,10 @@
   </svg>
 </template>
 
-<script>
-import { computed } from "vue";
-export default {
+<script lang="ts">
+import { defineComponent, computed } from "vue";
+
+export default defineComponent({
   name: "SvgIcon",
   props: {
     iconName: {
@@ -15,9 +16,11 @@ export default {
     },
   },
   setup(props) {
-    return { iconHref: computed(() => `#icon-${props.iconName}`) };
+    const iconHref = computed(() => `#icon-${props.iconName}`);
+
+    return { iconHref };
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

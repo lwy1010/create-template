@@ -1,4 +1,6 @@
 import { login } from "@/api/user";
+import { RootState, AppState } from "@/types/store";
+import { UserInfo, LoginData } from "@/types/user";
 import {
   readUserInfo,
   updateUserInfo,
@@ -8,18 +10,21 @@ import {
   deleteSidebarStatus,
 } from "@/utils/localStorage";
 
-const state = {
+import { MutationTree, ActionTree, Module } from "vuex";
+
+const state: AppState = {
   sidebarStatus: readSidebarStatus() !== "closed",
   userInfo: readUserInfo(),
+  token: "",
 };
 
-const mutations = {
+const mutations: MutationTree<AppState> = {
   toggleCollapse(state) {
     state.sidebarStatus = !state.sidebarStatus;
     state.sidebarStatus ? updateSidebarStatus("opened") : updateSidebarStatus("closed");
   },
 
-  setUserInfo(state, userInfo) {
+  setUserInfo(state, userInfo: UserInfo) {
     state.userInfo = userInfo;
   },
 
@@ -34,15 +39,15 @@ const mutations = {
   },
 };
 
-const actions = {
-  login({ commit }, loginInfo) {
+const actions: ActionTree<AppState, RootState> = {
+  login({ commit }, loginInfo: LoginData) {
     const { email, password } = loginInfo;
     return new Promise((resolve, reject) => {
       login({ email, password })
         .then(({ data }) => {
           commit("setUserInfo", data);
           updateUserInfo(data);
-          resolve();
+          resolve(data);
         })
         .catch((error) => reject(error));
     });
@@ -64,4 +69,4 @@ export default {
   state,
   mutations,
   actions,
-};
+} as Module<AppState, RootState>;
