@@ -1,27 +1,26 @@
-const mongoose = require("mongoose");
-const Joi = require("joi");
-const jwt = require("jsonwebtoken");
-const config = require("config");
+import { Schema, model, Document } from "mongoose";
+import Joi from "joi";
+import jwt from "jsonwebtoken";
+import config from "config";
+import { User, UserRule } from "@/types/user";
 
-const userSchema = new mongoose.Schema({
+interface UserSchema extends User {
+  generateAuthToken(): string;
+}
+
+const userSchema = new Schema<UserSchema>({
   name: {
     type: String,
     required: true,
-    minlength: 2,
-    maxlength: 50,
   },
   email: {
     type: String,
     required: true,
-    minlength: 5,
-    maxlength: 255,
     unique: true,
   },
   password: {
     type: String,
     required: true,
-    minlength: 6,
-    maxlength: 255,
   },
   isAdmin: {
     type: Boolean,
@@ -29,7 +28,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-userSchema.method("generateAuthToken", function () {
+userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign(
     {
       _id: this._id,
@@ -41,10 +40,10 @@ userSchema.method("generateAuthToken", function () {
     { expiresIn: "1h" }
   );
   return token;
-});
+};
 
-const validateUser = (user, type) => {
-  const userRule = {
+const validateUser = (user: User, type: string = "signup") => {
+  const userRule: UserRule = {
     email: Joi.string().min(5).max(255).required().email(),
     password: Joi.string().min(6).max(255).required(),
   };
@@ -53,14 +52,10 @@ const validateUser = (user, type) => {
     return schema.validate(user);
   }
   userRule.name = Joi.string().min(2).max(50).required();
-  console.log(userRule, "userRule");
   const schema = Joi.object(userRule);
   return schema.validate(user);
 };
 
-const User = mongoose.model("User", userSchema);
+const UserModel = model<UserSchema & Document>("User", userSchema);
 
-module.exports = {
-  User,
-  validateUser,
-};
+export { UserModel, validateUser };

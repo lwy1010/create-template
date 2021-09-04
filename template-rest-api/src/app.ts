@@ -1,15 +1,15 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const config = require("config");
-const cors = require("cors");
-const error = require("./middleware/error");
+import express from "express";
+import mongoose from "mongoose";
+import config from "config";
+import cors from "cors";
+import error from "@/middleware/error";
 
 const app = express();
 const port = process.env.PORT || config.get("port");
-const db = config.get("db");
+const db = config.get("db") as string;
 
-const movieRouter = require("./routes/movie");
-const userRouter = require("./routes/user");
+import movieRouter from "@/routes/movie";
+import userRouter from "@/routes/user";
 
 app.use(express.json());
 app.use(cors());
@@ -22,8 +22,6 @@ async function start() {
   await mongoose.connect(db, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
   });
   console.log(`Connected to ${db}...`);
   app.listen(port, () => {

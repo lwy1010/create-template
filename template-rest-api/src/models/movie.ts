@@ -1,8 +1,9 @@
-const mongoose = require("mongoose");
-const Joi = require("joi");
-const mongoosePaginate = require("mongoose-paginate-v2");
+import { Schema, model, Document, PaginateModel } from "mongoose";
+import Joi from "joi";
+import mongoosePaginate from "mongoose-paginate-v2";
+import { Movie } from "@/types/movie";
 
-const movieSchema = new mongoose.Schema({
+const schema = new Schema({
   id: { type: String, required: true },
   name: { type: String, required: true },
   author: { type: String, required: true },
@@ -16,7 +17,7 @@ const movieSchema = new mongoose.Schema({
   video: { type: String },
 });
 
-const validateMovie = (movie) => {
+const validateMovie = (movie: Movie) => {
   const schema = Joi.object({
     id: Joi.string().required(),
     name: Joi.string().required(),
@@ -34,11 +35,8 @@ const validateMovie = (movie) => {
   return schema.validate(movie);
 };
 
-movieSchema.plugin(mongoosePaginate);
+schema.plugin(mongoosePaginate);
 
-const Movie = mongoose.model("Movie", movieSchema);
+const MovieModel: PaginateModel<Movie & Document> = model("Movie", schema);
 
-module.exports = {
-  Movie,
-  validateMovie,
-};
+export { MovieModel, validateMovie };

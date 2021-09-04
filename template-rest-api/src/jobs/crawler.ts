@@ -1,16 +1,15 @@
-const superagent = require("superagent");
-const cheerio = require("cheerio");
-const { Movie } = require("../models/movie");
-const mongoose = require("mongoose");
-const config = require("config");
+import superagent from "superagent";
+import cheerio from "cheerio";
+import { MovieModel } from "@/models/movie";
+import mongoose from "mongoose";
+import config from "config";
+import { Movie } from "@/types/movie";
 
-async function getMovieDetail(href) {
+async function getMovieDetail(href: string) {
   const res = await superagent.get(href);
   const $ = cheerio.load(res.text);
-  const idMatched = href.match(/subject\/(\d+)/);
-  const movie = {};
+  const movie = {} as Movie;
 
-  movie.id = idMatched[1];
   // 名称
   movie.name = $(`[property="v:itemreviewed"]`).text();
   // 导演名
@@ -35,22 +34,26 @@ async function getMovieDetail(href) {
   $("ul.celebrities-list li:not(.fake)").each((i, elm) => {
     const name = $(elm).find("a.name").text();
     const matched = $(elm)
-      .find(".avatar")
-      .attr("style")
-      .match(/(https[s]?:[^)]+)/);
+      ?.find(".avatar")
+      ?.attr("style")
+      ?.match(/(https[s]?:[^)]+)/);
     if (!matched || !matched.length) return;
     movie.casts.push({ name, avatar: matched[1] });
   });
   const trailer = $("li.label-trailer a");
-  if (trailer.length) {
-    movie.cover = trailer.attr("style").match(/(https[s]?:[^)]+)/)[1];
+  if (trailer?.length) {
+    const matched = trailer.attr("style")?.match(/(https[s]?:[^)]+)/);
+    if (matched?.length) {
+      movie.cover = matched[0];
+    }
     // 预告片
-    movie.video = await getMovieTrailer(trailer.attr("href"));
+    movie.video = await getMovieTrailer(trailer.attr("href") as string);
   }
+
   return movie;
 }
 
-async function getMovieTrailer(href) {
+async function getMovieTrailer(href: string) {
   const res = await superagent.get(href);
   const $ = cheerio.load(res.text);
   return $("source").attr("src");
@@ -62,18 +65,20 @@ async function crawlMovies() {
       useUnifiedTopology: true,
       useNewUrlParser: true,
     });
-    await Movie.deleteMany({});
+    await MovieModel.deleteMany({});
 
     const res = await superagent.get("https://movie.douban.com/cinema/nowplaying/guangzhou");
     const $ = cheerio.load(res.text);
 
     const promises = $("#nowplaying ul.lists .list-item").map(async (i, el) => {
       const href = $(el).find(".stitle a").attr("href");
-      const movieDetail = await getMovieDetail(href);
-      if (movieDetail.video && movieDetail.duration) {
-        const movie = new Movie(movieDetail);
-        await movie.save();
-        console.log(`Saved info of《${movie.name}》`);
+      if (href) {
+        const movieDetail = await getMovieDetail(href);
+        if (movieDetail.video && movieDetail.duration) {
+          const movie = new MovieModel(movieDetail);
+          await movie.save();
+          console.log(`Saved info of《${movie.name}》`);
+        }
       }
     });
 
@@ -86,4 +91,4 @@ async function crawlMovies() {
   }
 }
 
-module.exports = crawlMovies;
+export default crawlMovies;

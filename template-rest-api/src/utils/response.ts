@@ -17,7 +17,7 @@ const statusCodes = [
  *
  * @param {object | array} data
  */
-const successRes = (data) => {
+const successRes = (data: unknown) => {
   return {
     message: "ok",
     code: 0,
@@ -30,7 +30,7 @@ const successRes = (data) => {
  *
  * @param {number} statusCode
  */
-const errorRes = (statusCode) => {
+const errorRes = (statusCode: number) => {
   let error = statusCodes.find((error) => error.code === statusCode);
 
   // 如果没匹配到自定义的状态码，默认就是50000，表示服务器错误
@@ -48,7 +48,7 @@ const errorRes = (statusCode) => {
  *
  * @param {string} message
  */
-const validateRes = (message) => {
+const validateRes = (message: string) => {
   return {
     message,
     code: 40000, // 40000 表示客服端请求的参数有误，参数校验失败
@@ -56,4 +56,4 @@ const validateRes = (message) => {
   };
 };
 
-module.exports = { successRes, errorRes, validateRes };
+export { successRes, errorRes, validateRes };
