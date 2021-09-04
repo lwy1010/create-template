@@ -13,6 +13,7 @@ import { defineComponent, ref } from "vue";
 import { readMovies } from "@/api/home";
 import MovieCard from "@/components/movie-card/index.vue";
 import { Movie, Params } from "@/types/movie";
+import { throttle } from "lodash-es";
 
 export default defineComponent({
   name: "Home",
@@ -28,7 +29,7 @@ export default defineComponent({
 
     const params = ref<Params>({ page: 1, limit: 10 });
 
-    const onLoad = async () => {
+    const onLoad = throttle(async () => {
       try {
         const { data } = await readMovies(params.value);
         list.value = [...list.value, ...data.docs];
@@ -41,7 +42,7 @@ export default defineComponent({
       } catch (error) {
         loading.value = false;
       }
-    };
+    }, 500);
 
     return {
       list,

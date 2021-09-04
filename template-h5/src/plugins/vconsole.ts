@@ -1,6 +1,6 @@
-import { isDevEnv } from "@/utils";
 import VConsole from "vconsole";
+import settings from "@/settings";
 
-if (isDevEnv()) {
+if (settings.isShowVconsole) {
   new VConsole();
 }

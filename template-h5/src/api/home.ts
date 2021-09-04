@@ -1,8 +1,8 @@
 import request from "@/plugins/axios";
-import { Params } from "@/types/movie";
+import { Params, MovieRecord } from "@/types/movie";
 
 export function readMovies(params: Params) {
-  return request({
+  return request<MovieRecord>({
     url: "/movie",
     method: "get",
     params,

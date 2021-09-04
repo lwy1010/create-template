@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "lodash-es": "^4.17.21",
     "vant": "^3.2.1",
     "vconsole": "^3.8.1",
     "vue": "^3.2.6",
@@ -18,10 +19,11 @@
     "vuex": "^4.0.1"
   },
   "devDependencies": {
-    "@7inch/eslint-config-vue": "^0.2.0",
+    "@7inch/eslint-config-vue": "^0.3.0",
     "@7inch/stylelint-config": "^0.1.1",
     "@commitlint/cli": "^12.0.0",
     "@commitlint/config-conventional": "^12.0.0",
+    "@types/lodash-es": "^4.17.4",
     "@types/node": "^16.7.10",
     "@vitejs/plugin-vue": "^1.1.4",
     "@vue/compiler-sfc": "^3.0.5",

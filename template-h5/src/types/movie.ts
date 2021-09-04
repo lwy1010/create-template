@@ -4,6 +4,13 @@ export interface Params {
   name?: string;
 }
 
+export interface MovieRecord {
+  docs: Array<Movie>;
+  totalDocs: number;
+  limit: number;
+  page: number;
+}
+
 export interface Cast {
   _id: string;
   name: string;
