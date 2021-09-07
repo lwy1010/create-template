@@ -6,7 +6,7 @@
 const statusCodes = [
   { code: 40001, message: "Invalid email or password." },
   { code: 40002, message: "User already registered." },
-  { code: 40003, message: "The movie with the given id was not found." },
+  { code: 40003, message: "The post with the given id was not found." },
   { code: 40004, message: "Invalid token." },
   { code: 40005, message: "Access denied. No permission" },
   { code: 40006, message: "Access denied. No token provided." },
