@@ -21,11 +21,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/7inch/create-7inch-app.git"
+    "url": "git+https://github.com/lwy1010/create-7inch-app.git"
   },
-  "homepage": "https://github.com/7inch/create-7inch-app/blob/main/README.md",
+  "homepage": "https://github.com/lwy1010/create-7inch-app/blob/main/README.md",
   "bugs": {
-    "url": "https://github.com/7inch/create-7inch-app/issues"
+    "url": "https://github.com/lwy1010/create-7inch-app/issues"
   },
   "prettier": {
     "printWidth": 100,
