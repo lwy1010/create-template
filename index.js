@@ -8,7 +8,7 @@ const { cyan, green, yellow, stripColors, magenta } = require("kolorist");
 
 const cwd = process.cwd();
 
-const TEMPLATES = [cyan("admin"), green("h5"), yellow("rest-api"), magenta("miniprogram")];
+const TEMPLATES = [cyan("vue-admin-ts"), green("h5"), yellow("rest-api"), magenta("miniprogram")];
 
 const renameFiles = { _gitignore: ".gitignore" };
 

@@ -1,5 +1,5 @@
 {
-  "name": "template-admin",
+  "name": "template-vue-admin-ts",
   "version": "0.0.1",
   "private": true,
   "scripts": {
