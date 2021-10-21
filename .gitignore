@@ -4,7 +4,5 @@ dist
 dist-ssr
 *.local
 package-lock.json
-yarn.lock
 miniprogram_npm
-template-*/pnpm-lock.yaml
 *.log

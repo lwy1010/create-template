@@ -7,7 +7,6 @@
     "create-7inch-app": "index.js"
   },
   "scripts": {
-    "postinstall": "npx only-allow pnpm",
     "release": "npx bumpp --commit --tag --push && npm publish --access public"
   },
   "dependencies": {
