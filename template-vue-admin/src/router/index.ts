@@ -1,5 +1,8 @@
+import { App } from "vue";
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import LayoutPro from "@/components/layout-pro/index.vue";
+import { createRouterGuards } from "@/router/routerGuards";
+
+import Layout from "@/layout/index.vue";
 
 /* 
   meta : {
@@ -20,7 +23,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/",
-    component: LayoutPro,
+    component: Layout,
     redirect: "/dashboard",
     meta: { title: "首页", icon: "dashboard" },
     children: [
@@ -33,7 +36,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/nested",
-    component: LayoutPro,
+    component: Layout,
     redirect: "/nested/menu1",
     meta: { title: "嵌套菜单", icon: "menu" },
     children: [
@@ -92,5 +95,11 @@ const router = createRouter({
   scrollBehavior: () => ({ left: 0, top: 0 }),
   routes,
 });
+
+export function setupRouter(app: App) {
+  app.use(router);
+  // 创建路由守卫
+  createRouterGuards(router);
+}
 
 export default router;

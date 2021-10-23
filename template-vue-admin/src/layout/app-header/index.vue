@@ -30,7 +30,7 @@ import { useRouter } from "vue-router";
 import Breadcrumb from "@/components/breadcrumb/index.vue";
 
 export default defineComponent({
-  name: "HeaderPro",
+  name: "AppHeader",
   components: {
     Breadcrumb,
   },

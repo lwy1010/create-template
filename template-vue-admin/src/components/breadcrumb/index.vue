@@ -11,7 +11,7 @@
 <script lang="ts">
 import { computed } from "vue";
 import { useRouter, useRoute } from "vue-router";
-import { filterHiddenRoute, findRouteItemByPath } from "@/utils/route";
+import { filterHiddenRoute, findRouteItemByPath } from "@/utils/router";
 import { uniqBy } from "lodash-es";
 
 export default {

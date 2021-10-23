@@ -1,27 +1,27 @@
 <template>
   <el-container class="layout-pro">
-    <aside-pro :collapse="isSidebarCollapse"></aside-pro>
+    <app-aside :collapse="isSidebarCollapse"></app-aside>
     <el-container class="main-container">
-      <header-pro @toggle-collapse="toggleCollapse" :collapse="isSidebarCollapse"></header-pro>
-      <main-pro></main-pro>
+      <app-header @toggle-collapse="toggleCollapse" :collapse="isSidebarCollapse"></app-header>
+      <app-main></app-main>
     </el-container>
   </el-container>
 </template>
 
 <script lang="ts">
-import AsidePro from "./aside-pro/index.vue";
-import HeaderPro from "./header-pro/index.vue";
-import MainPro from "./main-pro/index.vue";
+import AppAside from "@/layout/app-aside/index.vue";
+import AppHeader from "@/layout/app-header/index.vue";
+import AppMain from "@/layout/app-main/index.vue";
 import { useStore } from "vuex";
 import { defineComponent, computed, watch } from "vue";
 import { useWindowSize } from "@vueuse/core";
 
 export default defineComponent({
-  name: "LayoutPro",
+  name: "Layout",
   components: {
-    AsidePro,
-    HeaderPro,
-    MainPro,
+    AppAside,
+    AppHeader,
+    AppMain,
   },
   setup() {
     const store = useStore();

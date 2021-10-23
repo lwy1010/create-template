@@ -10,14 +10,14 @@
         :collapse-transition="false"
         :collapse="collapse"
       >
-        <menu-item-pro v-for="menu in routes" :key="menu.path" :item="menu">
+        <menu-item v-for="menu in routes" :key="menu.path" :item="menu">
           <template #default="item">
             <slot v-bind="item">
               <i v-if="item.meta?.icon" :class="item.meta.icon" />
               <span v-if="item.meta?.title">{{ item.meta.title }}</span>
             </slot>
           </template>
-        </menu-item-pro>
+        </menu-item>
       </el-menu>
     </el-scrollbar>
   </el-aside>
@@ -25,15 +25,15 @@
 
 <script lang="ts">
 import { defineComponent, computed } from "vue";
-import MenuItemPro from "./menu-item-pro.vue";
+import MenuItem from "./menu-item.vue";
 import { isUrl } from "@/utils/is";
 import { useRoute, useRouter } from "vue-router";
-import { filterHiddenRoute } from "@/utils/route";
+import { filterHiddenRoute } from "@/utils/router";
 
 export default defineComponent({
-  name: "AsidePro",
+  name: "AppAside",
   components: {
-    MenuItemPro,
+    MenuItem,
   },
   props: {
     collapse: {

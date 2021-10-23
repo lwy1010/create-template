@@ -11,9 +11,9 @@
       <svg-icon v-if="item.meta?.icon" :icon-name="item.meta.icon"></svg-icon>
       <span>{{ item.meta.title }}</span>
     </template>
-    <menu-item-pro v-for="child in item.children" :key="child.path" :item="child">
+    <menu-item v-for="child in item.children" :key="child.path" :item="child">
       <slot v-bind="child" />
-    </menu-item-pro>
+    </menu-item>
   </el-submenu>
 </template>
 
@@ -22,7 +22,7 @@ import { defineComponent, PropType } from "vue";
 import { _RouteRecordBase } from "vue-router";
 
 export default defineComponent({
-  name: "MenuProItem",
+  name: "MenuItem",
   props: {
     item: {
       type: Object as PropType<_RouteRecordBase>,

@@ -1,4 +1,4 @@
-import request from "@/plugins/axios";
+import request from "@/utils/request";
 import { LoginData } from "@/types/user";
 
 export function login(data: LoginData) {
