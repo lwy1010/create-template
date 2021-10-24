@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { computed, defineComponent } from "vue";
-import { useStore } from "vuex";
+import { useAppStore } from "@/store/app";
 import { useRouter } from "vue-router";
 import Breadcrumb from "@/components/breadcrumb/index.vue";
 
@@ -42,20 +42,14 @@ export default defineComponent({
     },
   },
   setup() {
-    const store = useStore();
+    const appStore = useAppStore();
     const router = useRouter();
 
-    const username = computed(() => store.state.app.userInfo?.name);
+    const username = computed(() => appStore.userInfo?.name);
 
-    const handleLogout = async () => {
-      store
-        .dispatch("app/logout")
-        .then(() => {
-          router.push("/login");
-        })
-        .catch((error) => {
-          Promise.reject(error);
-        });
+    const handleLogout = () => {
+      appStore.logout();
+      router.push("/login");
     };
 
     return { username, handleLogout };

@@ -35,13 +35,13 @@
 <script lang="ts">
 import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
-import { useStore } from "vuex";
+import { useAppStore } from "@/store/app";
 import { ElMessage } from "element-plus";
 
 export default {
   name: "Login",
   setup() {
-    const store = useStore();
+    const appStore = useAppStore();
     const router = useRouter();
 
     const loginForm = reactive({
@@ -63,7 +63,7 @@ export default {
         if (valid) {
           try {
             isLoading.value = true;
-            await store.dispatch("app/login", loginForm);
+            await appStore.login(loginForm);
             isLoading.value = false;
             ElMessage({ type: "success", message: "登录成功" });
             router.push({ path: "/" });

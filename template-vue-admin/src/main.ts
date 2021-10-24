@@ -2,8 +2,8 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import { setupElementPlus, setupIconComponent } from "@/plugins";
 import router, { setupRouter } from "@/router";
+import { setupStore } from "@/store";
 
-import store from "@/store";
 import "@/styles/index.scss";
 
 async function bootstrap() {
@@ -15,7 +15,8 @@ async function bootstrap() {
   // 配置element plus
   setupElementPlus(app);
 
-  app.use(store);
+  // 配置store
+  setupStore(app);
 
   // 挂载路由
   await setupRouter(app);

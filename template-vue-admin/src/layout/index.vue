@@ -12,7 +12,7 @@
 import AppAside from "@/layout/app-aside/index.vue";
 import AppHeader from "@/layout/app-header/index.vue";
 import AppMain from "@/layout/app-main/index.vue";
-import { useStore } from "vuex";
+import { useAppStore } from "@/store/app";
 import { defineComponent, computed, watch } from "vue";
 import { useWindowSize } from "@vueuse/core";
 
@@ -24,21 +24,21 @@ export default defineComponent({
     AppMain,
   },
   setup() {
-    const store = useStore();
+    const appStore = useAppStore();
     const { width } = useWindowSize();
 
     watch(width, (value) => {
       if (value <= 820 && isSidebarCollapse.value === false) {
-        store.commit("app/closeCollapse");
+        appStore.closeCollapse();
       }
       if (value > 820 && isSidebarCollapse.value === true) {
-        store.commit("app/openCollapse");
+        appStore.closeCollapse();
       }
     });
 
-    const isSidebarCollapse = computed(() => !store.state.app.sidebarStatus);
+    const isSidebarCollapse = computed(() => !appStore.sidebarStatus);
 
-    const toggleCollapse = () => store.commit("app/toggleCollapse");
+    const toggleCollapse = () => appStore.toggleCollapse();
 
     return { isSidebarCollapse, toggleCollapse };
   },
