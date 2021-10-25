@@ -49,4 +49,21 @@ async function signup(req: Request, res: Response) {
   res.send(successRes(userInfo));
 }
 
-export default { login, signup };
+/**
+ * @description 根据userId获取用户信息
+ */
+async function getUserInfo(req: Request, res: Response) {
+  const { userId } = req.body;
+  if (!userId) {
+    res.send(errorRes(40007));
+  }
+  try {
+    const user = await UserModel.findById(userId);
+    const userInfo = pick(user, ["name", "email", "_id", "isAdmin"]);
+    res.send(successRes(userInfo));
+  } catch (error) {
+    res.send(successRes({}));
+  }
+}
+
+export default { login, signup, getUserInfo };

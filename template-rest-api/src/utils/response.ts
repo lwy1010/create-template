@@ -10,6 +10,7 @@ const statusCodes = [
   { code: 40004, message: "Invalid token." },
   { code: 40005, message: "Access denied. No permission" },
   { code: 40006, message: "Access denied. No token provided." },
+  { code: 40007, message: "Access denied. No user id provided." },
 ];
 
 /**
