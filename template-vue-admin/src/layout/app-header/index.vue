@@ -28,6 +28,7 @@ import { computed, defineComponent } from "vue";
 import { useAppStore } from "@/store/app";
 import { useRouter } from "vue-router";
 import Breadcrumb from "@/components/breadcrumb/index.vue";
+import { usePermissonStore } from "@/store/permission";
 
 export default defineComponent({
   name: "AppHeader",
@@ -43,12 +44,14 @@ export default defineComponent({
   },
   setup() {
     const appStore = useAppStore();
+    const permissionStore = usePermissonStore();
     const router = useRouter();
 
     const username = computed(() => appStore.userInfo?.name);
 
     const handleLogout = () => {
       appStore.logout();
+      permissionStore.resetState();
       router.push("/login");
     };
 

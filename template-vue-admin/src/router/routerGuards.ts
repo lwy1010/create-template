@@ -1,8 +1,9 @@
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import getPageTitle from "@/utils/getPageTitle";
-import { readUserInfo } from "@/utils/localStorage";
 import { Router } from "vue-router";
+import { useAppStore } from "@/store/app";
+import { usePermissonStore } from "@/store/permission";
 
 NProgress.configure({ showSpinner: false });
 
@@ -10,15 +11,31 @@ const whiteList = ["/login"];
 
 export function createRouterGuards(router: Router) {
   router.beforeEach((to, from, next) => {
+    const appStore = useAppStore();
+    const permissionStore = usePermissonStore();
     NProgress.start();
 
-    if (readUserInfo()?.token) {
+    if (appStore?.userInfo?.token) {
       if (to.path === "/login") {
         next({ path: "/" });
         NProgress.done();
       } else {
-        next();
-        NProgress.done();
+        if (permissionStore.isAddedAsyncRoutes) {
+          next();
+        } else {
+          try {
+            permissionStore.generateRoutes(appStore.roles);
+            permissionStore.asyncRoutes.forEach((asyncRoute) => {
+              router.addRoute(asyncRoute);
+            });
+            permissionStore.setIsAddedAsyncRoutes(true);
+            next({ ...to, replace: true });
+          } catch (error) {
+            appStore.logout();
+            next("/login");
+            NProgress.done();
+          }
+        }
       }
     } else {
       if (whiteList.indexOf(to.path) !== -1) {

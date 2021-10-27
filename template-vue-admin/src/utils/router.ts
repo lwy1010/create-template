@@ -1,4 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
+import { CustomRouteMeta } from "@/types/router";
 
 export function filterHiddenRoute(routes: Array<RouteRecordRaw>) {
   const routeList: Array<RouteRecordRaw> = [];
@@ -31,4 +32,26 @@ export function findRouteItemByPath(routes: Array<RouteRecordRaw>, path: string)
     }
   }
   return routeList;
+}
+
+export function hasPermission(roles: string[], route: RouteRecordRaw) {
+  if (route?.meta?.roles) {
+    return roles.some((role) => (route.meta as CustomRouteMeta).roles?.includes(role));
+  } else {
+    return true;
+  }
+}
+
+export function filterAsyncRoutes(routes: RouteRecordRaw[], roles: string[]) {
+  const filterRoutes: RouteRecordRaw[] = [];
+  routes.forEach((route) => {
+    const tmp = { ...route };
+    if (hasPermission(roles, tmp)) {
+      if (tmp.children) {
+        tmp.children = filterAsyncRoutes(tmp.children, roles);
+      }
+      filterRoutes.push(tmp);
+    }
+  });
+  return filterRoutes;
 }

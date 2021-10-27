@@ -29,6 +29,7 @@ import MenuItem from "./menu-item.vue";
 import { isUrl } from "@/utils/is";
 import { useRoute, useRouter } from "vue-router";
 import { filterHiddenRoute } from "@/utils/router";
+import { usePermissonStore } from "@/store/permission";
 
 export default defineComponent({
   name: "AppAside",
@@ -42,12 +43,13 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const permissionStore = usePermissonStore();
     const route = useRoute();
     const router = useRouter();
 
     const asideWidth = computed(() => (props.collapse ? "54px" : "210px"));
 
-    const routes = computed(() => filterHiddenRoute(router.options.routes));
+    const routes = computed(() => filterHiddenRoute(permissionStore.routes));
 
     const handleSelect = (path: string) => (isUrl(path) ? window.open(path) : router.push(path));
 

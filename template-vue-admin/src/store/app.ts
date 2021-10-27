@@ -10,13 +10,25 @@ import {
 import { UserInfo, LoginData } from "@/types/user";
 import { login } from "@/api/user";
 
+interface AppStoreState {
+  sidebarStatus: boolean;
+  userInfo: UserInfo | null;
+}
+
 export const useAppStore = defineStore("app", {
-  state() {
+  state(): AppStoreState {
     return {
       sidebarStatus: readSidebarStatus() !== "closed",
       userInfo: readUserInfo(),
-      token: "",
     };
+  },
+  getters: {
+    roles() {
+      if (this.userInfo?.isAdmin) {
+        return ["admin"];
+      }
+      return [];
+    },
   },
   actions: {
     toggleCollapse() {
@@ -47,13 +59,9 @@ export const useAppStore = defineStore("app", {
       });
     },
     logout() {
-      try {
-        this.setUserInfo(null);
-        deleteUserInfo();
-        deleteSidebarStatus();
-      } catch (error) {
-        console.log(error);
-      }
+      this.setUserInfo(null);
+      deleteUserInfo();
+      deleteSidebarStatus();
     },
   },
 });
