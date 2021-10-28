@@ -16,6 +16,9 @@ service.interceptors.response.use(
     return data;
   },
   (error) => {
+    if (error.message.includes("timeout")) {
+      ElMessage({ type: "error", message: "网络超时" });
+    }
     return Promise.reject(error);
   }
 );

@@ -6,6 +6,7 @@
       ref="formRef"
       class="login-form"
       label-position="top"
+      @keydown.enter="handleLogin"
     >
       <el-form-item prop="email" label="邮箱:">
         <el-input size="medium" v-model.trim="loginForm.email" placeholder="邮箱"></el-input>
@@ -66,7 +67,9 @@ export default {
             await appStore.login(loginForm);
             isLoading.value = false;
             ElMessage({ type: "success", message: "登录成功" });
-            router.push({ path: "/" });
+            setTimeout(() => {
+              router.push({ path: "/" });
+            }, 500);
           } catch (error) {
             isLoading.value = false;
           }
