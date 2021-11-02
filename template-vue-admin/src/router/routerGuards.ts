@@ -1,6 +1,6 @@
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import getPageTitle from "@/utils/getPageTitle";
+import { getPageTitle } from "@/utils";
 import { Router } from "vue-router";
 import { useAppStore } from "@/store/app";
 import { usePermissonStore } from "@/store/permission";

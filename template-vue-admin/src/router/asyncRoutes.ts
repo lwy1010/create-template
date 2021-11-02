@@ -1,4 +1,4 @@
-import Layout from "@/layout/index.vue";
+import { Layout } from "@/router/constants";
 import { RouteRecordRaw } from "vue-router";
 
 /* 
