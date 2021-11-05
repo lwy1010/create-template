@@ -14,10 +14,6 @@
     "kolorist": "^1.2.10",
     "minimist": "^1.2.5"
   },
-  "files": [
-    "index.js",
-    "template-*"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lwy1010/create-7inch-app.git"
