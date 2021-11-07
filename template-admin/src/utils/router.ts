@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
-import { CustomRouteMeta } from "@/types/router";
+import { CustomRouteMeta } from "@/types";
 
 export function filterHiddenRoute(routes: Array<RouteRecordRaw>) {
   const routeList: Array<RouteRecordRaw> = [];

@@ -1,5 +1,5 @@
 import request from "@/utils/request";
-import { LoginData } from "@/types/user";
+import { LoginData } from "@/types";
 
 export function login(data: LoginData) {
   return request({

@@ -10,20 +10,21 @@
 
 <script lang="ts">
 import { computed } from "vue";
-import { useRouter, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 import { filterHiddenRoute, findRouteItemByPath } from "@/utils/router";
 import { uniqBy } from "lodash-es";
+import { usePermissonStore } from "@/store/permission";
 
 export default {
   name: "Breadcrumb",
   setup() {
-    const router = useRouter();
     const route = useRoute();
+    const permissionStore = usePermissonStore();
 
-    const routes = computed(() => filterHiddenRoute(router.options.routes));
+    const routes = filterHiddenRoute(permissionStore.routes);
 
     const breadcrumbList = computed(() => {
-      const filteredRoutes = findRouteItemByPath(routes.value, route.path);
+      const filteredRoutes = findRouteItemByPath(routes, route.path);
       return uniqBy([{ path: "/", meta: { title: "首页" } }, ...filteredRoutes], "path");
     });
 
