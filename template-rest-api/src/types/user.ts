@@ -8,6 +8,7 @@ export interface User {
   password: string;
   token?: string;
   isAdmin?: boolean;
+  avatar?: string;
 }
 
 export interface UserRule {

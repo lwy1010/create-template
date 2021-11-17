@@ -2,7 +2,7 @@ import { PostModel, validatePost } from "@/models/post";
 import { successRes, errorRes, validateRes } from "@/utils/response";
 import { Request, Response } from "express";
 
-async function createPost(req: Request, res: Response) {
+export async function createPost(req: Request, res: Response) {
   const { error } = validatePost(req.body);
   if (error) {
     return res.send(validateRes(error.details[0].message));
@@ -15,7 +15,7 @@ async function createPost(req: Request, res: Response) {
   res.send(successRes(post));
 }
 
-async function updatePost(req: Request, res: Response) {
+export async function updatePost(req: Request, res: Response) {
   const { error } = validatePost(req.body);
   if (error) {
     return res.send(validateRes(error.details[0].message));
@@ -31,7 +31,7 @@ async function updatePost(req: Request, res: Response) {
   res.send(successRes(post));
 }
 
-async function readPosts(req: Request, res: Response) {
+export async function readPosts(req: Request, res: Response) {
   const { limit, page } = req.body;
   const options = { page, limit: limit || 10 };
 
@@ -40,7 +40,7 @@ async function readPosts(req: Request, res: Response) {
   res.send(successRes(posts));
 }
 
-async function readPost(req: Request, res: Response) {
+export async function readPost(req: Request, res: Response) {
   const post = await PostModel.findById(req.params.id);
   if (!post) {
     return res.send(errorRes(40003));
@@ -49,7 +49,7 @@ async function readPost(req: Request, res: Response) {
   res.send(successRes(post));
 }
 
-async function deletePost(req: Request, res: Response) {
+export async function deletePost(req: Request, res: Response) {
   const post = await PostModel.findByIdAndRemove(req.params.id);
   if (!post) {
     return res.send(errorRes(40003));
@@ -57,5 +57,3 @@ async function deletePost(req: Request, res: Response) {
 
   res.send(successRes(post));
 }
-
-export default { createPost, updatePost, readPost, readPosts, deletePost };

@@ -26,6 +26,7 @@ const userSchema = new Schema<UserSchema>({
     type: Boolean,
     default: false,
   },
+  avatar: String,
 });
 
 userSchema.methods.generateAuthToken = function () {

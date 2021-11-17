@@ -1,7 +1,7 @@
 import express from "express";
 import auth from "@/middleware/auth";
 import adminAuth from "@/middleware/adminAuth";
-import postService from "@/services/post";
+import * as postService from "@/services/post";
 
 const router = express.Router();
 

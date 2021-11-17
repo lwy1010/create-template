@@ -1,10 +1,11 @@
 import { UserModel, validateUser } from "@/models/user";
 import bcryptjs from "bcryptjs";
 import { successRes, errorRes, validateRes } from "@/utils/response";
-import { pick } from "lodash";
+import { pick, omit } from "lodash";
 import { Request, Response } from "express";
+import { getAvatarLink } from "@/utils/common";
 
-async function login(req: Request, res: Response) {
+export async function login(req: Request, res: Response) {
   const { error } = validateUser(req.body, "login");
   if (error) {
     return res.send(validateRes(error.details[0].message));
@@ -27,7 +28,7 @@ async function login(req: Request, res: Response) {
   res.send(successRes(userInfo));
 }
 
-async function signup(req: Request, res: Response) {
+export async function signup(req: Request, res: Response) {
   const { error } = validateUser(req.body);
   if (error) {
     return res.send(validateRes(error.details[0].message));
@@ -38,13 +39,15 @@ async function signup(req: Request, res: Response) {
     return res.send(errorRes(4002));
   }
 
-  user = new UserModel(pick(req.body, ["name", "email", "password"]));
+  const commonInfo = { avatar: getAvatarLink(req.body?.name) };
+
+  user = new UserModel({ ...pick(req.body, ["name", "email", "password"]), ...commonInfo });
   const salt = await bcryptjs.genSalt(10);
   user.password = await bcryptjs.hash(user.password, salt);
   await user.save();
 
   const token = user.generateAuthToken();
-  const userInfo = { ...pick(user, ["name", "email", "_id", "isAdmin"]), token };
+  const userInfo = { ...pick(user, ["name", "email", "_id", "isAdmin", "avatar"]), token };
 
   res.send(successRes(userInfo));
 }
@@ -52,7 +55,7 @@ async function signup(req: Request, res: Response) {
 /**
  * @description 根据userId获取用户信息
  */
-async function getUserInfo(req: Request, res: Response) {
+export async function getUserInfo(req: Request, res: Response) {
   const { userId } = req.body;
   if (!userId) {
     res.send(errorRes(40007));
@@ -65,5 +68,3 @@ async function getUserInfo(req: Request, res: Response) {
     res.send(successRes({}));
   }
 }
-
-export default { login, signup, getUserInfo };
