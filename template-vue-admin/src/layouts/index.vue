@@ -1,5 +1,5 @@
 <template>
-  <el-container class="layout-pro">
+  <el-container class="layouts">
     <app-aside :collapse="isSidebarCollapse"></app-aside>
     <el-container class="main-container">
       <app-header @toggle-collapse="toggleCollapse" :collapse="isSidebarCollapse"></app-header>
@@ -9,15 +9,15 @@
 </template>
 
 <script lang="ts">
-import AppAside from "@/layout/app-aside/index.vue";
-import AppHeader from "@/layout/app-header/index.vue";
-import AppMain from "@/layout/app-main/index.vue";
+import AppAside from "@/layouts/app-aside/index.vue";
+import AppHeader from "@/layouts/app-header/index.vue";
+import AppMain from "@/layouts/app-main/index.vue";
 import { useAppStore } from "@/store/app";
 import { defineComponent, computed, watch } from "vue";
 import { useWindowSize } from "@vueuse/core";
 
 export default defineComponent({
-  name: "Layout",
+  name: "Layouts",
   components: {
     AppAside,
     AppHeader,
@@ -28,6 +28,7 @@ export default defineComponent({
     const { width } = useWindowSize();
 
     watch(width, (value) => {
+      console.log("ddd");
       if (value <= 820 && isSidebarCollapse.value === false) {
         appStore.closeCollapse();
       }
@@ -46,7 +47,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.layout-pro {
+.layouts {
   min-height: 100vh;
 
   .main-container {
