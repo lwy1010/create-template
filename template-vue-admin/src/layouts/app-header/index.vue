@@ -8,10 +8,10 @@
     </div>
     <div class="right-menu">
       <div class="dropdown-menu">
-        <el-dropdown trigger="click">
+        <el-dropdown trigger="click" size="small">
           <span class="el-dropdown-link"
-            >{{ username }}<i class="el-icon-arrow-down el-icon--right"
-          /></span>
+            >{{ username }}<el-icon class="el-icon--right"><arrow-down></arrow-down> </el-icon
+          ></span>
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item @click="handleLogout">退出登录</el-dropdown-item>
@@ -29,11 +29,13 @@ import { useAppStore } from "@/store/app";
 import { useRouter } from "vue-router";
 import Breadcrumb from "@/components/breadcrumb/index.vue";
 import { usePermissonStore } from "@/store/permission";
+import { ArrowDown } from "@element-plus/icons";
 
 export default defineComponent({
   name: "AppHeader",
   components: {
     Breadcrumb,
+    ArrowDown,
   },
   emits: ["toggle-collapse"],
   props: {
@@ -95,6 +97,8 @@ export default defineComponent({
       margin-right: 20px;
       .el-dropdown-link {
         cursor: pointer;
+        display: flex;
+        align-items: center;
       }
     }
   }

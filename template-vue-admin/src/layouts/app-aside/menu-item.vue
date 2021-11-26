@@ -6,7 +6,7 @@
     <svg-icon v-if="item.meta?.icon" :icon-name="item.meta.icon"></svg-icon>
     <template #title>{{ item.meta?.title }}</template>
   </el-menu-item>
-  <el-submenu v-else :index="item.path">
+  <el-sub-menu v-else :index="item.path">
     <template v-if="item.meta?.icon || item.meta?.title" #title>
       <svg-icon v-if="item.meta?.icon" :icon-name="item.meta.icon"></svg-icon>
       <span>{{ item.meta.title }}</span>
@@ -14,7 +14,7 @@
     <menu-item v-for="child in item.children" :key="child.path" :item="child">
       <slot v-bind="child" />
     </menu-item>
-  </el-submenu>
+  </el-sub-menu>
 </template>
 
 <script lang="ts">
@@ -40,7 +40,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.svg-icon {
-  margin-right: 10px;
+.el-menu-item {
+  & * {
+    vertical-align: middle;
+  }
+  .svg-icon {
+    margin-right: 10px;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import { setupElementPlus, setupIconComponent } from "@/plugins";
+import { setupIconComponent } from "@/plugins";
 import router, { setupRouter } from "@/router";
 import { setupStore } from "@/store";
 
@@ -11,9 +11,6 @@ async function bootstrap() {
 
   // 配置svg图标组件
   setupIconComponent(app);
-
-  // 配置element plus
-  setupElementPlus(app);
 
   // 配置store
   setupStore(app);

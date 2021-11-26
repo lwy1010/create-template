@@ -28,12 +28,11 @@ export default defineComponent({
     const { width } = useWindowSize();
 
     watch(width, (value) => {
-      console.log("ddd");
       if (value <= 820 && isSidebarCollapse.value === false) {
         appStore.closeCollapse();
       }
       if (value > 820 && isSidebarCollapse.value === true) {
-        appStore.closeCollapse();
+        appStore.openCollapse();
       }
     });
 
