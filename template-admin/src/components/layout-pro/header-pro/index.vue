@@ -1,0 +1,97 @@
+<template>
+  <el-header height="48px">
+    <div class="left-menu">
+      <div class="menu-fold" :class="{ collapse }" @click="$emit('toggle-collapse')">
+        <svg-icon icon-name="outdent"></svg-icon>
+      </div>
+      <breadcrumb></breadcrumb>
+    </div>
+    <div class="right-menu">
+      <div class="dropdown-menu">
+        <el-dropdown trigger="click" size="small">
+          <span class="el-dropdown-link"
+            >{{ username }}<el-icon class="el-icon--right"><arrow-down></arrow-down> </el-icon
+          ></span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item @click="handleLogout">退出登录</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
+    </div>
+  </el-header>
+</template>
+
+<script setup lang="ts">
+import { computed, defineProps, defineEmits } from "vue";
+import { useAppStore } from "@/store/app";
+import { useRouter } from "vue-router";
+import Breadcrumb from "@/components/breadcrumb/index.vue";
+import { usePermissonStore } from "@/store/permission";
+import { ArrowDown } from "@element-plus/icons";
+
+defineProps({
+  collapse: {
+    type: Boolean,
+    required: true,
+  },
+});
+
+defineEmits(["toggle-collapse"]);
+
+const appStore = useAppStore();
+const permissionStore = usePermissonStore();
+const router = useRouter();
+
+const username = computed(() => appStore.userInfo?.name);
+
+const handleLogout = () => {
+  appStore.logout();
+  permissionStore.resetState();
+  router.push("/login");
+};
+</script>
+
+<style lang="scss" scoped>
+.el-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .left-menu {
+    display: flex;
+    align-items: center;
+
+    .menu-fold {
+      font-size: 16px;
+      padding: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      &:hover {
+        background: rgba(145, 89, 89, 0.045);
+      }
+      &.collapse {
+        transform: rotate(180deg);
+      }
+    }
+
+    .el-breadcrumb {
+      margin-left: 4px;
+      font-size: 13px;
+    }
+  }
+
+  .right-menu {
+    .dropdown-menu {
+      margin-right: 20px;
+      .el-dropdown-link {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+}
+</style>
