@@ -1,7 +1,7 @@
 <template>
-  <el-container class="layout-pro">
+  <el-container class="min-h-screen">
     <aside-pro :collapse="isSidebarCollapse"></aside-pro>
-    <el-container class="main-container">
+    <el-container direction="vertical" class="h-screen overflow-y-scroll">
       <header-pro @toggle-collapse="toggleCollapse" :collapse="isSidebarCollapse"></header-pro>
       <main-pro></main-pro>
     </el-container>
@@ -32,22 +32,3 @@ const isSidebarCollapse = computed(() => !appStore.sidebarStatus);
 
 const toggleCollapse = () => appStore.toggleCollapse();
 </script>
-
-<style lang="scss" scoped>
-.layout-pro {
-  min-height: 100vh;
-
-  .main-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-    overflow-y: scroll;
-
-    .el-header {
-      padding: 0;
-      box-shadow: 0 1px 4px rgb(0 0 0 / 11%);
-    }
-  }
-}
-</style>

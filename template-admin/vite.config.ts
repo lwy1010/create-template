@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
+import WindiCSS from "vite-plugin-windicss";
 import svgSpritePlugin from "vite-plugin-svg-sprite-component";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
@@ -11,6 +12,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
+    WindiCSS(),
     Components({ resolvers: [ElementPlusResolver({ importStyle: "sass" })] }),
     svgSpritePlugin({ symbolId: (name) => "icon-" + name }),
   ],
@@ -26,7 +28,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "@/styles/element-custom.scss" as *;`,
+        additionalData: `@use "@/styles/index.scss" as *;`,
       },
     },
   },

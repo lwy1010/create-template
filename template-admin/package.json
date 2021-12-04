@@ -42,6 +42,8 @@
     "unplugin-vue-components": "^0.17.2",
     "vite": "^2.6.10",
     "vite-plugin-svg-sprite-component": "^1.0.8",
+    "vite-plugin-windicss": "^1.5.3",
+    "windicss": "^3.2.1",
     "yorkie": "^2.0.0"
   },
   "eslintConfig": {

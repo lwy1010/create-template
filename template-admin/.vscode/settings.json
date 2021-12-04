@@ -6,5 +6,8 @@
     "source.fixAll.stylelint": true
   },
   "volar.completion.preferredTagNameCase": "kebab",
-  "volar.completion.preferredAttrNameCase": "kebab"
+  "volar.completion.preferredAttrNameCase": "kebab",
+  "editor.quickSuggestions": {
+    "strings": true
+  }
 }

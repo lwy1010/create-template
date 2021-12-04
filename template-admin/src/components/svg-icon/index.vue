@@ -1,5 +1,5 @@
 <template>
-  <svg class="svg-icon" aria-hidden="true">
+  <svg class="svg-icon fill-current overflow-hidden" aria-hidden="true">
     <use :xlink:href="iconHref" />
   </svg>
 </template>
@@ -21,7 +21,5 @@ const iconHref = computed(() => `#icon-${props.iconName}`);
 .svg-icon {
   width: 1em;
   height: 1em;
-  fill: currentColor;
-  overflow: hidden;
 }
 </style>

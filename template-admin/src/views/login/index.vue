@@ -1,12 +1,12 @@
 <template>
-  <div class="login">
+  <div class="flex justify-center">
     <el-form
       :model="loginForm"
       :rules="rules"
       ref="formRef"
-      class="login-form"
       label-position="top"
       @keydown.enter="handleLogin"
+      class="w-90 mt-35"
     >
       <el-form-item prop="email" label="邮箱:">
         <el-input size="medium" v-model.trim="loginForm.email" placeholder="邮箱"></el-input>
@@ -19,13 +19,13 @@
           show-password
         ></el-input>
       </el-form-item>
-      <el-form-item>
+      <el-form-item class="mt-10">
         <el-button
           :loading="isLoading"
           size="medium"
-          class="btn"
           type="primary"
           @click="handleLogin"
+          class="w-full"
           >登录</el-button
         >
       </el-form-item>
@@ -38,6 +38,7 @@ import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useAppStore } from "@/store/app";
 import { ElMessage } from "element-plus";
+import "element-plus/es/components/message/style/css";
 
 const appStore = useAppStore();
 const router = useRouter();
@@ -74,20 +75,3 @@ const handleLogin = () => {
   });
 };
 </script>
-
-<style lang="scss" scoped>
-.login {
-  display: flex;
-  justify-content: center;
-
-  &-form {
-    width: 368px;
-    margin-top: 138px;
-
-    .btn {
-      margin-top: 16px;
-      width: 100%;
-    }
-  }
-}
-</style>
