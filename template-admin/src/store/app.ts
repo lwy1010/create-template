@@ -24,11 +24,10 @@ export const useAppStore = defineStore("app", {
   },
   getters: {
     roles() {
-      // if (this.userInfo?.isAdmin) {
-      //   return ["admin"];
-      // }
-      // return [];
-      return ["admin"];
+      if (this.userInfo?.isAdmin) {
+        return ["admin"];
+      }
+      return [];
     },
   },
   actions: {

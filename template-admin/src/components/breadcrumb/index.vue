@@ -13,10 +13,10 @@ import { computed } from "vue";
 import { useRoute } from "vue-router";
 import { filterHiddenRoute, findRouteItemByPath } from "@/utils/router";
 import { uniqBy } from "lodash-es";
-import { usePermissonStore } from "@/store/permission";
+import { usePermissionStore } from "@/store/permission";
 
 const route = useRoute();
-const permissionStore = usePermissonStore();
+const permissionStore = usePermissionStore();
 
 const routes = filterHiddenRoute(permissionStore.routes);
 

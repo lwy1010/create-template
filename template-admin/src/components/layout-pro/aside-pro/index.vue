@@ -23,7 +23,7 @@ import MenuItem from "./menu-item.vue";
 import { isUrl } from "@/utils/is";
 import { useRoute, useRouter } from "vue-router";
 import { filterHiddenRoute } from "@/utils/router";
-import { usePermissonStore } from "@/store/permission";
+import { usePermissionStore } from "@/store/permission";
 
 const props = defineProps({
   collapse: {
@@ -32,7 +32,7 @@ const props = defineProps({
   },
 });
 
-const permissionStore = usePermissonStore();
+const permissionStore = usePermissionStore();
 const route = useRoute();
 const router = useRouter();
 

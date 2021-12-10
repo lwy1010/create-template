@@ -8,4 +8,5 @@ export interface UserInfo {
   name: string;
   isAdmin: boolean;
   token: string;
+  avatar?: string;
 }

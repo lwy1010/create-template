@@ -1,1 +1,1 @@
-# template-vue-admin
+# template-admin

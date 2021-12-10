@@ -10,7 +10,7 @@ interface PermissionStoreState {
   isAddedAsyncRoutes: boolean;
 }
 
-export const usePermissonStore = defineStore("permission", {
+export const usePermissionStore = defineStore("permission", {
   state(): PermissionStoreState {
     return {
       routes: [],

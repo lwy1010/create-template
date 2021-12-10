@@ -30,9 +30,3 @@ const hasMultiChild = (item: _RouteRecordBase) => {
   return item.children ? item.children.length > 1 : false;
 };
 </script>
-
-<style lang="scss" scoped>
-.el-menu-item * {
-  vertical-align: middle;
-}
-</style>

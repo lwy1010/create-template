@@ -3,7 +3,7 @@ import "nprogress/nprogress.css";
 import { getPageTitle } from "@/utils";
 import { Router } from "vue-router";
 import { useAppStore } from "@/store/app";
-import { usePermissonStore } from "@/store/permission";
+import { usePermissionStore } from "@/store/permission";
 
 NProgress.configure({ showSpinner: false });
 
@@ -12,7 +12,7 @@ const whiteList = ["/login"];
 export function createRouterGuards(router: Router) {
   router.beforeEach((to, from, next) => {
     const appStore = useAppStore();
-    const permissionStore = usePermissonStore();
+    const permissionStore = usePermissionStore();
     NProgress.start();
 
     if (appStore?.userInfo?.token) {

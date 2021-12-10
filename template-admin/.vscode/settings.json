@@ -9,5 +9,16 @@
   "volar.completion.preferredAttrNameCase": "kebab",
   "editor.quickSuggestions": {
     "strings": true
-  }
+  },
+  "cSpell.words": [
+    "commitlint",
+    "unplugin",
+    "vitejs",
+    "windicss",
+    "nprogress",
+    "pinia",
+    "stylelint",
+    "vite",
+    "vueuse"
+  ]
 }
