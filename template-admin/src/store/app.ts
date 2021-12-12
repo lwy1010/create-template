@@ -29,6 +29,9 @@ export const useAppStore = defineStore("app", {
       }
       return [];
     },
+    isSidebarCollapse(): boolean {
+      return !this.sidebarStatus;
+    },
   },
   actions: {
     toggleCollapse() {
@@ -37,14 +40,6 @@ export const useAppStore = defineStore("app", {
     },
     setUserInfo(userInfo: UserInfo | null) {
       this.userInfo = userInfo;
-    },
-    closeCollapse() {
-      this.sidebarStatus = false;
-      updateSidebarStatus("closed");
-    },
-    openCollapse() {
-      this.sidebarStatus = true;
-      updateSidebarStatus("opened");
     },
     login(loginInfo: LoginData) {
       const { email, password } = loginInfo;

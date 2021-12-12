@@ -1,5 +1,5 @@
 <template>
-  <el-aside :width="asideWidth" class="h-screen bg-blue-gray-700 overflow-y-scroll">
+  <el-aside :width="asideWidth" class="h-screen flex flex-col justify-between bg-blue-gray-700">
     <el-scrollbar>
       <el-menu
         background-color="#304156"
@@ -8,35 +8,37 @@
         :default-active="route.path"
         @select="handleSelect"
         :collapse-transition="false"
-        :collapse="collapse"
+        :collapse="appStore.isSidebarCollapse"
         class="!border-r-0"
+        :class="{ '!w-14': appStore.isSidebarCollapse }"
       >
         <menu-item v-for="menu in routes" :key="menu.path" :item="menu"></menu-item>
       </el-menu>
     </el-scrollbar>
+    <div class="py-2 px-5 cursor-pointer group" @click="appStore.toggleCollapse">
+      <svg-icon
+        :icon-name="appStore.isSidebarCollapse ? 'indent' : 'outdent'"
+        class="!fill-white opacity-60 group-hover:opacity-100"
+      ></svg-icon>
+    </div>
   </el-aside>
 </template>
 
 <script setup lang="ts">
-import { defineProps, computed } from "vue";
+import { computed } from "vue";
 import MenuItem from "./menu-item.vue";
 import { isUrl } from "@/utils/is";
 import { useRoute, useRouter } from "vue-router";
 import { filterHiddenRoute } from "@/utils/router";
 import { usePermissionStore } from "@/store/permission";
+import { useAppStore } from "@/store/app";
 
-const props = defineProps({
-  collapse: {
-    type: Boolean,
-    required: true,
-  },
-});
-
-const permissionStore = usePermissionStore();
 const route = useRoute();
 const router = useRouter();
+const permissionStore = usePermissionStore();
+const appStore = useAppStore();
 
-const asideWidth = computed(() => (props.collapse ? "56px" : "210px"));
+const asideWidth = computed(() => (appStore.isSidebarCollapse ? "56px" : "208px"));
 
 const routes = computed(() => filterHiddenRoute(permissionStore.routes));
 
