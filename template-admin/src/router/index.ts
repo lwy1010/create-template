@@ -5,6 +5,7 @@ import { constantRoutes } from "@/router/constantRoutes";
 
 const router = createRouter({
   history: createWebHashHistory(),
+  strict: true,
   scrollBehavior: () => ({ left: 0, top: 0 }),
   routes: constantRoutes,
 });

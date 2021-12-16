@@ -1,23 +1,12 @@
 import { Layout } from "@/router/constants";
 import { RouteRecordRaw } from "vue-router";
 
-/* 
-  meta : {
-    // the name show in sidebar and breadcrumb
-    title: 'title'
-    // the icon show in the sidebar
-    icon: 'svg-name' 
-    // if set true, it will always show the root menu
-    alwaysShow: true  
-  }
-*/
-
 export const asyncRoutes: Array<RouteRecordRaw> = [
   {
     path: "/nested",
     component: Layout,
     redirect: "/nested/menu1",
-    meta: { title: "嵌套菜单", icon: "menu", roles: ["admin"] },
+    meta: { title: "嵌套菜单", icon: "menu", roles: ["admin"], order: 2 },
     children: [
       {
         path: "/nested/menu1",

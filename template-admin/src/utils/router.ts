@@ -1,5 +1,6 @@
 import { RouteRecordRaw } from "vue-router";
-import { CustomRouteMeta } from "@/types";
+import { CustomRouteMeta } from "@/types/router";
+import { sortBy } from "lodash-es";
 
 export function filterHiddenRoute(routes: Array<RouteRecordRaw>) {
   const routeList: Array<RouteRecordRaw> = [];
@@ -54,4 +55,12 @@ export function filterAsyncRoutes(routes: RouteRecordRaw[], roles: string[]) {
     }
   });
   return filterRoutes;
+}
+
+/**
+ * @description 排序侧边栏菜单
+ */
+export function orderRoutes(routes: RouteRecordRaw[]) {
+  const showingRoutes = routes.filter((route) => !route.meta?.hidden);
+  return sortBy(showingRoutes, (item) => item.meta?.order);
 }

@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { RouteRecordRaw } from "vue-router";
 import { asyncRoutes } from "@/router/asyncRoutes";
 import { constantRoutes } from "@/router/constantRoutes";
-import { filterAsyncRoutes } from "@/utils/router";
+import { filterAsyncRoutes, orderRoutes } from "@/utils/router";
 
 interface PermissionStoreState {
   routes: RouteRecordRaw[];
@@ -20,7 +20,7 @@ export const usePermissionStore = defineStore("permission", {
   },
   actions: {
     setRoutes(routes: RouteRecordRaw[]) {
-      this.routes = [...constantRoutes, ...routes];
+      this.routes = orderRoutes([...constantRoutes, ...routes]);
       this.asyncRoutes = routes;
     },
     resetState() {
