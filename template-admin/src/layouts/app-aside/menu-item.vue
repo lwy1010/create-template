@@ -6,7 +6,8 @@
     <svg-icon
       v-if="item.meta?.icon"
       :class="{ 'mr-2.5': !appStore.isSidebarCollapse }"
-      :icon-name="item.meta.icon"
+      :name="item.meta.icon as string"
+      class="w-4 h-4"
     ></svg-icon>
     <template #title>{{ item.meta?.title }}</template>
   </el-menu-item>
@@ -15,7 +16,8 @@
       <svg-icon
         v-if="item.meta?.icon"
         :class="{ 'mr-2.5': !appStore.isSidebarCollapse }"
-        :icon-name="item.meta.icon"
+        :name="item.meta.icon as string"
+        class="w-4 h-4"
       ></svg-icon>
       <span>{{ item.meta?.title }}</span>
     </template>
@@ -27,6 +29,7 @@
 import { defineProps, PropType } from "vue";
 import { _RouteRecordBase } from "vue-router";
 import { useAppStore } from "@/store/app";
+import SvgIcon from "@/components/svg-icon/index.vue";
 
 defineProps({
   item: {
@@ -41,9 +44,3 @@ const hasMultiChild = (item: _RouteRecordBase) => {
   return item.children ? item.children.length > 1 : false;
 };
 </script>
-
-<style lang="scss" scoped>
-.el-menu-item * {
-  vertical-align: middle !important;
-}
-</style>

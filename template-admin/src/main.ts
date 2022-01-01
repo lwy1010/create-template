@@ -1,9 +1,9 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import { setupElementPlus, setupIconComponent } from "@/plugins";
+import { setupElementPlus } from "@/plugins/elementPlus";
 import router, { setupRouter } from "@/router";
 import { setupStore } from "@/store";
-
+import "virtual:svg-icons-register";
 import "virtual:windi.css";
 
 async function bootstrap() {
@@ -11,9 +11,6 @@ async function bootstrap() {
 
   // 配置elementPlus
   setupElementPlus(app);
-
-  // 配置svg图标组件
-  setupIconComponent(app);
 
   // 配置store
   setupStore(app);

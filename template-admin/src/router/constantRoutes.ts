@@ -15,7 +15,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     children: [
       {
         path: "/dashboard",
-        meta: { title: "控制台" },
+        meta: { title: "首页" },
         component: () => import("@/views/dashboard/index.vue"),
       },
     ],

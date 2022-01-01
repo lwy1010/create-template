@@ -1,13 +1,16 @@
 <template>
-  <el-header class="!p-0 flex justify-between items-center shadow shadow-gray-600" height="48px">
-    <div class="flex items-center">
-      <breadcrumb></breadcrumb>
+  <el-header class="flex justify-between items-center border-b border-b-light-700" height="48px">
+    <div class="flex items-center cursor-pointer" @click="handleGoHome">
+      <svg-icon name="vite" class="h-6 w-6 mr-2"></svg-icon>
+      <div class="text-lg">Admin Template</div>
     </div>
-    <div class="flex items-center mr-5">
+    <div class="flex items-center">
       <el-dropdown>
         <div class="inline-block flex items-center cursor-pointer">
-          <el-image :src="avatarSrc" class="w-6 h-6"></el-image>
-          <span class="flex items-center cursor-pointer ml-1">{{ username }}</span>
+          <el-image :src="avatarSrc" class="w-6 h-6 rounded-1"></el-image>
+          <span class="flex items-center cursor-pointer ml-1"
+            >{{ username }} <el-icon class="el-icon--right"><arrow-down></arrow-down></el-icon
+          ></span>
         </div>
         <template #dropdown>
           <el-dropdown-menu>
@@ -23,8 +26,9 @@
 import { computed } from "vue";
 import { useAppStore } from "@/store/app";
 import { useRouter } from "vue-router";
-import Breadcrumb from "@/components/breadcrumb/index.vue";
 import { usePermissionStore } from "@/store/permission";
+import { ArrowDown } from "@element-plus/icons-vue";
+import SvgIcon from "@/components/svg-icon/index.vue";
 
 const appStore = useAppStore();
 const permissionStore = usePermissionStore();
@@ -42,4 +46,6 @@ const handleLogout = () => {
   permissionStore.resetState();
   router.push("/login");
 };
+
+const handleGoHome = () => router.push("/");
 </script>

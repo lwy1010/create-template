@@ -1,10 +1,7 @@
 <template>
-  <el-aside :width="asideWidth" class="h-screen flex flex-col justify-between bg-blue-gray-700">
+  <el-aside :width="asideWidth" class="border-r border-r-light-700">
     <el-scrollbar>
       <el-menu
-        background-color="#304156"
-        text-color="#bfcbd9"
-        active-text-color="#409EFF"
         :default-active="route.path"
         @select="handleSelect"
         :collapse-transition="false"
@@ -15,12 +12,6 @@
         <menu-item v-for="menu in routes" :key="menu.path" :item="menu"></menu-item>
       </el-menu>
     </el-scrollbar>
-    <div class="py-2 px-5 cursor-pointer group" @click="appStore.toggleCollapse">
-      <svg-icon
-        :icon-name="appStore.isSidebarCollapse ? 'indent' : 'outdent'"
-        class="!fill-white opacity-60 group-hover:opacity-100"
-      ></svg-icon>
-    </div>
   </el-aside>
 </template>
 

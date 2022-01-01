@@ -1,5 +1,5 @@
 <template>
-  <el-main class="!p-4">
+  <el-main class="text-sm bg-gray-50">
     <router-view></router-view>
   </el-main>
 </template>
