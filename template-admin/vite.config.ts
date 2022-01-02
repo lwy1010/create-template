@@ -12,9 +12,9 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    WindiCSS(),
-    Components({ resolvers: [ElementPlusResolver({ importStyle: "sass" })] }),
+    Components({ resolvers: [ElementPlusResolver()] }),
     viteSvgIcons({ iconDirs: [path.resolve(process.cwd(), "src/icons")], symbolId: "icon-[name]" }),
+    WindiCSS(),
   ],
   server: {
     proxy: {
@@ -22,13 +22,6 @@ export default defineConfig({
         target: "http://localhost:1010",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ""),
-      },
-    },
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@use "@/styles/index.scss" as *;`,
       },
     },
   },

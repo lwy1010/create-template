@@ -5,6 +5,7 @@ import router, { setupRouter } from "@/router";
 import { setupStore } from "@/store";
 import "virtual:svg-icons-register";
 import "virtual:windi.css";
+import "./styles/index.scss";
 
 async function bootstrap() {
   const app = createApp(App);

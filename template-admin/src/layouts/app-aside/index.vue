@@ -1,5 +1,8 @@
 <template>
-  <el-aside :width="asideWidth" class="border-r border-r-light-700">
+  <el-aside
+    :width="asideWidth"
+    class="flex flex-col justify-between !box-content border-r border-r-light-700"
+  >
     <el-scrollbar>
       <el-menu
         :default-active="route.path"
@@ -12,6 +15,12 @@
         <menu-item v-for="menu in routes" :key="menu.path" :item="menu"></menu-item>
       </el-menu>
     </el-scrollbar>
+    <div class="py-3 px-5 cursor-pointer group" @click="appStore.toggleCollapse">
+      <svg-icon
+        :name="appStore.isSidebarCollapse ? 'indent' : 'outdent'"
+        class="w-4 h-4 group-hover:fill-primary"
+      ></svg-icon>
+    </div>
   </el-aside>
 </template>
 
@@ -23,6 +32,7 @@ import { useRoute, useRouter } from "vue-router";
 import { filterHiddenRoute } from "@/utils/router";
 import { usePermissionStore } from "@/store/permission";
 import { useAppStore } from "@/store/app";
+import SvgIcon from "@/components/svg-icon/index.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -41,5 +51,9 @@ const handleSelect = (path: string) => (isUrl(path) ? window.open(path) : router
   &:hover {
     background-color: var(--el-menu-hover-bg-color) !important;
   }
+}
+.el-menu.el-menu--collapse ::v-deep(.el-menu-item *) {
+  display: flex !important;
+  align-items: center;
 }
 </style>

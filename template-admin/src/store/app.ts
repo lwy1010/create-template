@@ -7,7 +7,7 @@ import {
   deleteUserInfo,
   deleteSidebarStatus,
 } from "@/utils/localStorage";
-import { UserInfo, LoginData } from "@/types";
+import { UserInfo, LoginData } from "@/types/user";
 import { login } from "@/api/user";
 
 interface AppStoreState {

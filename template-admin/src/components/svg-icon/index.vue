@@ -1,6 +1,6 @@
 <template>
-  <svg aria-hidden="true">
-    <use :xlink:href="symbolId" :fill="color" />
+  <svg aria-hidden="true" class="svg-icon fill-dark-800">
+    <use :xlink:href="symbolId" />
   </svg>
 </template>
 
@@ -15,10 +15,6 @@ const props = defineProps({
   name: {
     type: String,
     required: true,
-  },
-  color: {
-    type: String,
-    default: "#333",
   },
 });
 

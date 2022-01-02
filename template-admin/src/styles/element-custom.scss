@@ -1,8 +1,0 @@
-// 自定义主题颜色，见https://element-plus.gitee.io/zh-CN/guide/theming.html#%E9%80%9A%E8%BF%87-scss-%E5%8F%98%E9%87%8F
-@forward "element-plus/theme-chalk/src/common/var.scss" with (
-  $colors: (
-    'primary': (
-      'base': #409eff,
-    ),
-  ),
-);
