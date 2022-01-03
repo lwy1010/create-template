@@ -7,7 +7,7 @@
       v-if="item.meta?.icon"
       :class="{ 'mr-2.5': !appStore.isSidebarCollapse }"
       :name="item.meta.icon as string"
-      class="w-4 h-4"
+      class="h-4 w-4"
     ></svg-icon>
     <template #title>{{ item.meta?.title }}</template>
   </el-menu-item>
@@ -17,7 +17,7 @@
         v-if="item.meta?.icon"
         :class="{ 'mr-2.5': !appStore.isSidebarCollapse }"
         :name="item.meta.icon as string"
-        class="w-4 h-4"
+        class="h-4 w-4"
       ></svg-icon>
       <span>{{ item.meta?.title }}</span>
     </template>

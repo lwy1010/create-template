@@ -6,7 +6,7 @@
       ref="formRef"
       label-position="top"
       @keydown.enter="handleLogin"
-      class="w-90 mt-35"
+      class="mt-35 w-90"
     >
       <el-form-item prop="email" label="邮箱:">
         <el-input size="medium" v-model.trim="loginForm.email" placeholder="邮箱"></el-input>

@@ -1,7 +1,7 @@
 <template>
   <el-aside
     :width="asideWidth"
-    class="flex flex-col justify-between !box-content border-r border-r-light-700"
+    class="border-r flex flex-col border-r-light-700 justify-between !box-content"
   >
     <el-scrollbar>
       <el-menu
@@ -15,10 +15,10 @@
         <menu-item v-for="menu in routes" :key="menu.path" :item="menu"></menu-item>
       </el-menu>
     </el-scrollbar>
-    <div class="py-3 px-5 cursor-pointer group" @click="appStore.toggleCollapse">
+    <div class="cursor-pointer py-3 px-5 group" @click="appStore.toggleCollapse">
       <svg-icon
         :name="appStore.isSidebarCollapse ? 'indent' : 'outdent'"
-        class="w-4 h-4 group-hover:fill-primary"
+        class="h-4 w-4 group-hover:fill-primary"
       ></svg-icon>
     </div>
   </el-aside>

@@ -3,6 +3,8 @@
     "johnsoncodehk.volar",
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "streetsidesoftware.code-spell-checker",
+    "voorjaar.windicss-intellisense"
   ]
 }

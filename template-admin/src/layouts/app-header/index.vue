@@ -1,14 +1,14 @@
 <template>
-  <el-header class="flex justify-between items-center border-b border-b-light-700" height="48px">
-    <div class="flex items-center cursor-pointer" @click="handleGoHome">
-      <svg-icon name="vite" class="h-6 w-6 mr-2"></svg-icon>
+  <el-header class="border-b flex border-b-light-700 justify-between items-center" height="48px">
+    <div class="cursor-pointer flex items-center" @click="handleGoHome">
+      <svg-icon name="vite" class="h-6 mr-2 w-6"></svg-icon>
       <div class="text-lg">Admin Template</div>
     </div>
     <div class="flex items-center">
       <el-dropdown>
-        <div class="inline-block flex items-center cursor-pointer">
-          <el-image :src="avatarSrc" class="w-6 h-6 rounded-1"></el-image>
-          <span class="flex items-center cursor-pointer ml-1"
+        <div class="cursor-pointer flex inline-block items-center">
+          <el-image :src="avatarSrc" class="rounded-1 h-6 w-6"></el-image>
+          <span class="cursor-pointer flex ml-1 items-center"
             >{{ username }} <el-icon class="el-icon--right"><arrow-down></arrow-down></el-icon
           ></span>
         </div>
