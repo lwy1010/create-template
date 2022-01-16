@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "enquirer": "^2.3.6",
-    "kolorist": "^1.2.10",
+    "kolorist": "^1.5.1",
     "minimist": "^1.2.5"
   },
   "repository": {
@@ -21,10 +21,6 @@
   "homepage": "https://github.com/lwy1010/create-7inch-app/blob/main/README.md",
   "bugs": {
     "url": "https://github.com/lwy1010/create-7inch-app/issues"
-  },
-  "prettier": {
-    "printWidth": 100,
-    "tabWidth": 2
   },
   "engines": {
     "node": "^12"

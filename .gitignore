@@ -6,5 +6,5 @@ dist-ssr
 package-lock.json
 miniprogram_npm
 *.log
-pnpm-lock.yaml
+template-*/pnpm-lock.yaml
 yarn.lock
