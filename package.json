@@ -1,10 +1,10 @@
 {
-  "name": "create-7inch-app",
-  "version": "0.7.0-beta.3",
+  "name": "@7inch/create-template",
+  "version": "0.1.0",
   "author": "lwy1010",
   "main": "index.js",
   "bin": {
-    "create-7inch-app": "index.js"
+    "create-template": "index.js"
   },
   "scripts": {
     "release": "npx bumpp --commit --tag --push && npm publish --access public"
@@ -16,11 +16,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lwy1010/create-7inch-app.git"
+    "url": "git+https://github.com/lwy1010/create-template.git"
   },
-  "homepage": "https://github.com/lwy1010/create-7inch-app/blob/main/README.md",
+  "homepage": "https://github.com/lwy1010/create-template/blob/main/README.md",
   "bugs": {
-    "url": "https://github.com/lwy1010/create-7inch-app/issues"
+    "url": "https://github.com/lwy1010/create-template/issues"
   },
   "engines": {
     "node": "^12"

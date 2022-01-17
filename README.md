@@ -1,4 +1,4 @@
-# create-7inch-app
+# create-template
 
 WIP.
 
