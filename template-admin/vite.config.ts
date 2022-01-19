@@ -12,7 +12,7 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    Components({ resolvers: [ElementPlusResolver()] }),
+    Components({ dts: false, resolvers: [ElementPlusResolver()] }),
     viteSvgIcons({ iconDirs: [path.resolve(process.cwd(), "src/icons")], symbolId: "icon-[name]" }),
     WindiCSS(),
   ],

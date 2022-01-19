@@ -1,6 +1,6 @@
 import { localStore } from "@7inch/storage";
-import { LoginData } from "@/types";
-import { UserInfo } from "@/types";
+import { LoginData } from "@/types/user";
+import { UserInfo } from "@/types/user";
 
 const userInfo = "userInfo";
 export const readUserInfo = () => localStore.get<UserInfo>(userInfo);

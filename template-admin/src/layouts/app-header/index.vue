@@ -1,5 +1,5 @@
 <template>
-  <el-header class="border-b flex border-b-light-700 justify-between items-center" height="48px">
+  <el-header class="border-b flex border-b-light-750 justify-between items-center" height="48px">
     <div class="cursor-pointer flex items-center" @click="handleGoHome">
       <svg-icon name="vite" class="h-6 mr-2 w-6"></svg-icon>
       <div class="text-lg">Admin Template</div>

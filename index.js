@@ -8,7 +8,7 @@ const { cyan, green, yellow, stripColors, magenta } = require("kolorist");
 
 const cwd = process.cwd();
 
-const TEMPLATES = [cyan("vue-admin"), green("h5"), yellow("rest-api"), magenta("miniprogram")];
+const TEMPLATES = [cyan("admin"), green("h5"), yellow("rest-api"), magenta("miniprogram")];
 
 const renameFiles = { _gitignore: ".gitignore" };
 
@@ -19,7 +19,7 @@ async function init() {
       type: "input",
       name: "name",
       message: `Project name:`,
-      initial: "7inch-project",
+      initial: "my-app",
     });
     targetDir = name;
   }
@@ -91,14 +91,12 @@ async function init() {
   pkg.name = path.basename(root);
   write("package.json", JSON.stringify(pkg, null, 2));
 
-  const pkgManager = /yarn/.test(process.env.npm_execpath) ? "yarn" : "npm";
-
   console.log(`\nDone. Now run:\n`);
   if (root !== cwd) {
     console.log(`  cd ${path.relative(cwd, root)}`);
   }
-  console.log(`  ${pkgManager === "yarn" ? `yarn` : `npm install`}`);
-  console.log(`  ${pkgManager === "yarn" ? `yarn dev` : `npm run dev`}`);
+  console.log(`  npm install`);
+  console.log(`  npm run dev`);
   console.log();
 }
 

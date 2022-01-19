@@ -1,7 +1,7 @@
 <template>
   <el-aside
     :width="asideWidth"
-    class="border-r flex flex-col border-r-light-700 justify-between !box-content"
+    class="border-r flex flex-col border-r-light-750 justify-between !box-content"
   >
     <el-scrollbar>
       <el-menu

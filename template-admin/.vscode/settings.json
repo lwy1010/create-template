@@ -10,17 +10,5 @@
   "editor.quickSuggestions": {
     "strings": true
   },
-  "windicss.sortOnSave": true,
-  "cSpell.words": [
-    "commitlint",
-    "nprogress",
-    "pinia",
-    "stylelint",
-    "unplugin",
-    "vite",
-    "vitejs",
-    "vueuse",
-    "windi",
-    "windicss"
-  ]
+  "windicss.sortOnSave": true
 }
