@@ -1,5 +1,6 @@
 import config from "config";
-import { errorRes } from "@/utils/response";
+import { StatusCode } from "@/enums/statusCode";
+import { formatRes } from "@/utils";
 import { Response, NextFunction } from "express";
 import { AuthRequest } from "@/types/user";
 
@@ -9,7 +10,7 @@ export default function (req: AuthRequest, res: Response, next: NextFunction) {
   }
 
   if (!req.user?.isAdmin) {
-    return res.send(errorRes(40005));
+    return res.send(formatRes(null, "access denied, no permission", StatusCode.NoPermission));
   }
 
   next();

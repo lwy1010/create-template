@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import config from "config";
-import { errorRes } from "@/utils/response";
+import { StatusCode } from "@/enums/statusCode";
+import { formatRes } from "@/utils";
 import { Response, NextFunction } from "express";
 import { AuthRequest, User } from "@/types/user";
 
@@ -9,9 +10,9 @@ export default function (req: AuthRequest, res: Response, next: NextFunction) {
     return next();
   }
 
-  const token = req.header("auth-token");
+  const token = req.header("Authorization");
   if (!token) {
-    return res.send(errorRes(40006));
+    return res.send(formatRes(null, "token not found", StatusCode.TokenNotFound));
   }
 
   try {
@@ -19,6 +20,6 @@ export default function (req: AuthRequest, res: Response, next: NextFunction) {
     req.user = decoded;
     next();
   } catch (e) {
-    res.send(errorRes(40004));
+    res.send(formatRes(null, "invalid token", StatusCode.InvalidToken));
   }
 }

@@ -1,20 +1,13 @@
 import { Request } from "express";
-import { StringSchema } from "joi";
 
 export interface User {
-  _id?: string;
+  userId: string;
   name: string;
   email: string;
   password: string;
   token?: string;
   isAdmin?: boolean;
   avatar?: string;
-}
-
-export interface UserRule {
-  password: StringSchema;
-  email: StringSchema;
-  name?: StringSchema;
 }
 
 export interface AuthRequest extends Request {

@@ -1,9 +1,10 @@
 export interface Post {
-  banner: string;
   title: string;
-  author: string;
+  authorId: string;
   content: string;
-  readTime: string;
-  createdAt: Date;
-  updatedAt: Date;
+  collectCount: number;
+  readCount: number;
+  agreeCount: number;
+  isHot: boolean;
+  likeCount: number;
 }

@@ -1,33 +1,21 @@
-import { Schema, model, Document, PaginateModel } from "mongoose";
-import Joi from "joi";
+import { Schema, model } from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
-import { Post } from "@/types/post";
+import idPlugin from "mongoose-id";
 
-const schema = new Schema(
-  {
-    banner: { type: String, required: true },
-    title: { type: String, required: true },
-    author: { type: String, required: true },
-    content: { type: String, required: true },
-    readTime: { type: String, required: true },
-  },
-  { versionKey: false, timestamps: true }
-);
+const postSchema = new Schema({
+  title: { type: String, required: true },
+  authorId: { type: Schema.Types.ObjectId, ref: "User" },
+  content: { type: String, required: true },
+  collectCount: { type: Number, default: 0 },
+  readCount: { type: Number, default: 0 },
+  agreeCount: { type: Number, default: 0 },
+  isHot: { type: Boolean, default: false },
+  likeCount: { type: Number, default: 0 },
+});
 
-const validatePost = (post: Post) => {
-  const schema = Joi.object({
-    banner: Joi.string().required(),
-    title: Joi.string().required(),
-    author: Joi.string().required(),
-    content: Joi.string().required(),
-    readTime: Joi.string().required(),
-  });
+postSchema.plugin(idPlugin);
+postSchema.plugin(mongoosePaginate);
 
-  return schema.validate(post);
-};
+const PostModel = model("Post", postSchema);
 
-schema.plugin(mongoosePaginate);
-
-const PostModel: PaginateModel<Post & Document> = model("Post", schema);
-
-export { PostModel, validatePost };
+export { PostModel };
