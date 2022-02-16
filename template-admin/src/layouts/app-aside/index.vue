@@ -1,3 +1,25 @@
+<script setup lang="ts">
+import { computed } from "vue";
+import MenuItem from "./menu-item.vue";
+import { isUrl } from "@/utils/is";
+import { useRoute, useRouter } from "vue-router";
+import { filterHiddenRoute } from "@/utils/router";
+import { usePermissionStore } from "@/store/permission";
+import { useAppStore } from "@/store/app";
+import SvgIcon from "@/components/svg-icon/index.vue";
+
+const route = useRoute();
+const router = useRouter();
+const permissionStore = usePermissionStore();
+const appStore = useAppStore();
+
+const asideWidth = computed(() => (appStore.isSidebarCollapse ? "56px" : "208px"));
+
+const routes = computed(() => filterHiddenRoute(permissionStore.routes));
+
+const handleSelect = (path: string) => (isUrl(path) ? window.open(path) : router.push(path));
+</script>
+
 <template>
   <el-aside
     :width="asideWidth"
@@ -23,28 +45,6 @@
     </div>
   </el-aside>
 </template>
-
-<script setup lang="ts">
-import { computed } from "vue";
-import MenuItem from "./menu-item.vue";
-import { isUrl } from "@/utils/is";
-import { useRoute, useRouter } from "vue-router";
-import { filterHiddenRoute } from "@/utils/router";
-import { usePermissionStore } from "@/store/permission";
-import { useAppStore } from "@/store/app";
-import SvgIcon from "@/components/svg-icon/index.vue";
-
-const route = useRoute();
-const router = useRouter();
-const permissionStore = usePermissionStore();
-const appStore = useAppStore();
-
-const asideWidth = computed(() => (appStore.isSidebarCollapse ? "56px" : "208px"));
-
-const routes = computed(() => filterHiddenRoute(permissionStore.routes));
-
-const handleSelect = (path: string) => (isUrl(path) ? window.open(path) : router.push(path));
-</script>
 
 <style lang="scss" scoped>
 .el-menu ::v-deep(.el-sub-menu__title) {

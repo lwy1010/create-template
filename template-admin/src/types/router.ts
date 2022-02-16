@@ -11,8 +11,8 @@ export interface CustomRouteMeta extends RouteMeta {
   order: number;
   /* 是否为隐藏路由 */
   hidden?: boolean;
-  /*  */
-  alwaysShow?: true;
+  /* 是否显示菜单展开图标 */
+  showExpand?: boolean;
 }
 
 export interface CustomRouteRecordRaw extends Omit<RouteRecordRaw, "meta"> {

@@ -1,13 +1,3 @@
-<template>
-  <el-breadcrumb>
-    <el-breadcrumb-item v-for="item in breadcrumbList" :key="item.path">
-      <router-link :to="item.path">
-        {{ item.meta?.title }}
-      </router-link>
-    </el-breadcrumb-item>
-  </el-breadcrumb>
-</template>
-
 <script setup lang="ts">
 import { computed } from "vue";
 import { useRoute } from "vue-router";
@@ -25,3 +15,13 @@ const breadcrumbList = computed(() => {
   return uniqBy([{ path: "/", meta: { title: "首页" } }, ...filteredRoutes], "path");
 });
 </script>
+
+<template>
+  <el-breadcrumb>
+    <el-breadcrumb-item v-for="item in breadcrumbList" :key="item.path">
+      <router-link :to="item.path">
+        {{ item.meta?.title }}
+      </router-link>
+    </el-breadcrumb-item>
+  </el-breadcrumb>
+</template>

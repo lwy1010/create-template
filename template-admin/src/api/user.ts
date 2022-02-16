@@ -1,8 +1,8 @@
 import request from "@/utils/request";
-import { LoginData } from "@/types/user";
+import { LoginData, UserInfo } from "@/types/user";
 
 export function login(data: LoginData) {
-  return request({
+  return request<UserInfo>({
     url: "/user/login",
     method: "post",
     data,

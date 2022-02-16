@@ -9,13 +9,13 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "skipLibCheck": true,
+    "lib": ["esnext", "dom"],
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
     },
     "types": ["element-plus/global"]
   },
-  "include": ["vite.config.*", "env.d.ts", "src/**/*", "src/**/*.vue"]
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

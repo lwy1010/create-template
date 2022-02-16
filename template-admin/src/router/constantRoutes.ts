@@ -24,7 +24,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     path: "/exception",
     component: Layout,
     redirect: "/exception/403",
-    meta: { title: "异常页", icon: "error", order: 3 },
+    meta: { title: "异常页", icon: "error", order: 4 },
     children: [
       {
         path: "/exception/403",

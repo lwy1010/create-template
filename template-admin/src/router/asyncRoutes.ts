@@ -33,4 +33,17 @@ export const asyncRoutes: Array<RouteRecordRaw> = [
       },
     ],
   },
+  {
+    path: "/curd",
+    component: Layout,
+    redirect: "/curd/demo",
+    meta: { title: "列表页", icon: "table", order: 3, showExpand: true },
+    children: [
+      {
+        path: "/curd/demo",
+        meta: { title: "标准列表" },
+        component: () => import("@/views/curd-demo/index.vue"),
+      },
+    ],
+  },
 ];
