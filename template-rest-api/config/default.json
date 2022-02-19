@@ -1,7 +1,0 @@
-{
-  "jwtPrivateKey": "unsecureKey",
-  "dbName": "template-rest-api",
-  "dbAdmin": "lwy1010",
-  "port": "1010",
-  "requiresAuth": true
-}

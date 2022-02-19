@@ -2,16 +2,17 @@
   "name": "template-rest-api",
   "version": "0.0.1",
   "scripts": {
-    "dev": "nodemon -r tsconfig-paths/register --transpile-only src/app.ts",
-    "build": "rm -fr dist && npm run eslint && tsc",
+    "dev": "export NODE_ENV=development && nodemon -r tsconfig-paths/register --transpile-only src/app.ts",
+    "build": "rm -fr dist  && tsc",
+    "start": "export NODE_ENV=production && npm run build && pm2 start 'node -r ts-node/register/transpile-only -r tsconfig-paths/register dist/app.js'",
+    "stop": "pm2 status && pm2 stop all",
     "eslint": "eslint \"src/**/*.{js,ts}\" --fix",
     "prettier": "prettier \"src/**/*.{js,ts,json,md}\" --write"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "compression": "^1.7.4",
-    "config": "^3.3.6",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
     "joi": "^17.4.1",
@@ -22,7 +23,7 @@
     "mongoose-paginate-v2": "^1.4.2"
   },
   "devDependencies": {
-    "@7inch/eslint-config-node": "^0.4.0",
+    "@7inch/eslint-config-node": "^0.5.0",
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
     "@types/bcryptjs": "^2.4.2",
@@ -33,9 +34,11 @@
     "@types/jsonwebtoken": "^8.5.5",
     "@types/lodash": "^4.14.172",
     "@types/mongoose-paginate-v2": "^1.3.11",
+    "@types/node": "^17.0.18",
     "eslint": "^7.31.0",
     "lint-staged": "^11.1.1",
-    "nodemon": "^2.0.12",
+    "nodemon": "^2.0.15",
+    "pm2": "^5.2.0",
     "prettier": "^2.3.2",
     "ts-node": "^10.2.1",
     "tsconfig-paths": "^3.11.0",

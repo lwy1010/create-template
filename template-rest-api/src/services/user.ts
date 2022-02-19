@@ -3,7 +3,7 @@ import bcryptjs from "bcryptjs";
 import { pick, omit } from "lodash";
 import { Request, Response } from "express";
 import Joi from "joi";
-import { formatRes, setupAvatar } from "@/utils";
+import { formatRes, setupAvatar } from "@/utils/common";
 import { StatusCode } from "@/enums/statusCode";
 
 /**

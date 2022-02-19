@@ -1,11 +1,11 @@
-import config from "config";
+import config from "@/config/config";
 import { StatusCode } from "@/enums/statusCode";
-import { formatRes } from "@/utils";
+import { formatRes } from "@/utils/common";
 import { Response, NextFunction } from "express";
 import { AuthRequest } from "@/types/user";
 
 export default function (req: AuthRequest, res: Response, next: NextFunction) {
-  if (!config.get("requiresAuth")) {
+  if (!config.isAuth) {
     return next();
   }
 

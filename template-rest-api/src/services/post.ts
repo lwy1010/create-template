@@ -1,6 +1,6 @@
 import { StatusCode } from "@/enums/statusCode";
 import { PostModel } from "@/models/post";
-import { formatRes } from "@/utils";
+import { formatRes } from "@/utils/common";
 import { Request, Response } from "express";
 import Joi from "joi";
 
@@ -9,6 +9,11 @@ export async function createPost(req: Request, res: Response) {
     title: Joi.string().required(),
     authorId: Joi.string().required(),
     content: Joi.string().required(),
+    collectCount: Joi.number().required(),
+    readCount: Joi.number().required(),
+    agreeCount: Joi.number().required(),
+    isHot: Joi.boolean().required(),
+    likeCount: Joi.number().required(),
   });
   const { error } = schema.validate(req.body);
   if (error) {

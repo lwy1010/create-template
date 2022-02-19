@@ -1,6 +1,6 @@
 import { Schema, model, Document } from "mongoose";
 import jwt from "jsonwebtoken";
-import config from "config";
+import config from "@/config/config";
 import { User } from "@/types/user";
 import idPlugin from "mongoose-id";
 
@@ -26,7 +26,7 @@ userSchema.methods.generateAuthToken = function () {
       email: this.email,
       isAdmin: this.isAdmin,
     },
-    config.get("jwtPrivateKey"),
+    config.jwtSecret,
     { expiresIn: "1h" }
   );
   return token;
