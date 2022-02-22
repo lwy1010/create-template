@@ -1,15 +1,9 @@
 <script setup lang="ts">
-import { PropType } from "vue";
 import { _RouteRecordBase } from "vue-router";
 import { useAppStore } from "@/store/app";
 import SvgIcon from "@/components/svg-icon/index.vue";
 
-defineProps({
-  item: {
-    type: Object as PropType<_RouteRecordBase>,
-    required: true,
-  },
-});
+defineProps<{ item: _RouteRecordBase }>();
 
 const appStore = useAppStore();
 

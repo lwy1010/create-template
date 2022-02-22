@@ -1,6 +1,6 @@
 import { Paginate } from "./common";
 
-export interface PostPaginate extends Paginate {}
+export type PostPaginate = Paginate;
 
 export interface Post {
   agreeCount: number;
