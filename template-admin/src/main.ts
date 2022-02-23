@@ -17,7 +17,7 @@ async function bootstrap() {
   setupStore(app);
 
   // 挂载路由
-  await setupRouter(app);
+  setupRouter(app);
 
   // 路由准备就绪后挂载APP实例
   await router.isReady();

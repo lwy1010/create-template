@@ -1,11 +1,12 @@
 <template>
-  <div>mine</div>
+  <div @click="handleClick">我的</div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
+import { Toast } from "vant";
+import "vant/es/toast/index.css";
 
-export default defineComponent({
-  name: "Mine",
-});
+const handleClick = () => {
+  Toast.fail("aksdflsjflkjlk");
+};
 </script>

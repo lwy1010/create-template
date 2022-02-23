@@ -2,8 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import { Toast } from "vant";
 
 interface CustomAxiosRequestConfig extends AxiosRequestConfig {
-  /* default: false */
-  hideLoading?: boolean;
+  showLoading?: boolean;
 }
 
 interface CustomResponse<T> {
@@ -19,28 +18,29 @@ const service = axios.create({
 
 service.interceptors.request.use(
   (config: CustomAxiosRequestConfig) => {
-    if (!config.hideLoading) {
-      Toast.loading({ loadingType: "spinner", duration: 0, forbidClick: true });
+    if (config.showLoading) {
+      Toast.loading({ message: "加载中...", forbidClick: true, loadingType: "spinner" });
     }
     return config;
   },
   (error) => {
+    console.log(error);
     return Promise.reject(error);
   }
 );
 
 service.interceptors.response.use(
   (response) => {
-    if (response.data?.code !== 0) {
-      Toast.fail(response.data?.message || "服务出错了:(");
+    Toast.clear();
+    if (response.data.code !== 0) {
       return Promise.reject(response);
     }
-    Toast.clear();
     return response;
   },
   (error) => {
-    Toast.clear();
-    Toast.fail("服务出错了:(");
+    if (error.message.includes("timeout")) {
+      Toast({ type: "fail", message: "网络超时" });
+    }
     return Promise.reject(error);
   }
 );

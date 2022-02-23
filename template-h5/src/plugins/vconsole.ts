@@ -1,6 +1,8 @@
+import { isDevMode } from "@/utils/is";
 import VConsole from "vconsole";
-import settings from "@/settings";
 
-if (settings.isShowVconsole) {
-  new VConsole();
+export function setupVconsole() {
+  if (isDevMode()) {
+    new VConsole();
+  }
 }

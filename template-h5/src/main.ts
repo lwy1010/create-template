@@ -1,13 +1,28 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import router from "@/router";
-import store from "@/store";
+import router, { setupRouter } from "@/router";
+import { setupStore } from "@/store";
+import { setupVconsole } from "@/plugins/vconsole";
+import "virtual:svg-icons-register";
+import "virtual:windi.css";
+import "./styles/index.scss";
 
-import setupVant from "@/plugins/vant";
-import "@/plugins/vconsole";
+async function bootstrap() {
+  const app = createApp(App);
 
-const app = createApp(App);
+  // 配置store
+  setupStore(app);
 
-setupVant(app);
+  // 挂载路由
+  setupRouter(app);
 
-app.use(router).use(store).mount("#app");
+  // 设置vconsole
+  setupVconsole();
+
+  // 路由准备就绪后挂载APP实例
+  await router.isReady();
+
+  app.mount("#app", true);
+}
+
+bootstrap();

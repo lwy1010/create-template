@@ -1,9 +1,23 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
-import { resolve } from "path";
-import styleImport from "vite-plugin-style-import";
+import path from "path";
+import WindiCSS from "vite-plugin-windicss";
+import viteSvgIcons from "vite-plugin-svg-icons";
+import Components from "unplugin-vue-components/vite";
+import { VantResolver } from "unplugin-vue-components/resolvers";
+import styleImport, { VantResolve } from "vite-plugin-style-import";
 
 export default defineConfig({
+  resolve: {
+    alias: { "@": path.resolve(__dirname, "./src") },
+  },
+  plugins: [
+    vue(),
+    Components({ dts: false, resolvers: [VantResolver()] }),
+    viteSvgIcons({ iconDirs: [path.resolve(process.cwd(), "src/icons")], symbolId: "icon-[name]" }),
+    WindiCSS(),
+    styleImport({ resolves: [VantResolve()] }),
+  ],
   server: {
     proxy: {
       "/api": {
@@ -13,29 +27,4 @@ export default defineConfig({
       },
     },
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // global import style variables
-        additionalData: `@import "@/styles/index.scss";`,
-      },
-    },
-  },
-  resolve: {
-    alias: {
-      "@": resolve(__dirname, "./src"),
-    },
-  },
-  plugins: [
-    vue(),
-    styleImport({
-      libs: [
-        {
-          libraryName: "vant",
-          esModule: true,
-          resolveStyle: (name) => `vant/es/${name}/style`,
-        },
-      ],
-    }),
-  ],
 });

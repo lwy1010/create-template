@@ -1,61 +1,36 @@
+<script setup lang="ts">
+import { ref } from "vue";
+import * as postApi from "@/api/posts";
+import { Post } from "@/types/posts";
+import { throttle } from "lodash-es";
+
+const list = ref<Post[]>([]);
+const loading = ref(false);
+const finished = ref(false);
+const pagination = ref({ page: 1, limit: 15 });
+
+const onLoad = throttle(async () => {
+  try {
+    const { data } = await postApi.queryPosts(pagination.value);
+    list.value = [...list.value, ...data.docs];
+    loading.value = false;
+    pagination.value.page++;
+
+    if (list.value.length >= data.totalDocs) {
+      finished.value = true;
+    }
+  } catch (error) {
+    loading.value = false;
+  }
+}, 500);
+</script>
+
 <template>
   <van-list v-model="loading" :finished="finished" finished-text="没有更多了~" @load="onLoad">
-    <van-cell v-for="item in list" :key="item._id">
+    <van-cell v-for="item in list" :key="item.id">
       <template #value>
-        <movie-card :movie="item"></movie-card>
+        <div>{{ item.title }}</div>
       </template>
     </van-cell>
   </van-list>
 </template>
-
-<script lang="ts">
-import { defineComponent, ref } from "vue";
-import { readMovies } from "@/api/home";
-import MovieCard from "@/components/movie-card/index.vue";
-import { Movie, Params } from "@/types/movie";
-import { throttle } from "lodash-es";
-
-export default defineComponent({
-  name: "Home",
-  components: {
-    MovieCard,
-  },
-  setup() {
-    const list = ref<Array<Movie>>([]);
-
-    const loading = ref(false);
-
-    const finished = ref(false);
-
-    const params = ref<Params>({ page: 1, limit: 10 });
-
-    const onLoad = throttle(async () => {
-      try {
-        const { data } = await readMovies(params.value);
-        list.value = [...list.value, ...data.docs];
-        loading.value = false;
-        params.value.page++;
-
-        if (list.value.length >= data.totalDocs) {
-          finished.value = true;
-        }
-      } catch (error) {
-        loading.value = false;
-      }
-    }, 500);
-
-    return {
-      list,
-      loading,
-      finished,
-      onLoad,
-    };
-  },
-});
-</script>
-
-<style lang="scss" scoped>
-.van-cell {
-  padding: 10px 12px;
-}
-</style>

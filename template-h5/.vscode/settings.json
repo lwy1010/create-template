@@ -4,5 +4,11 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
-  }
+  },
+  "volar.completion.preferredTagNameCase": "kebab",
+  "volar.completion.preferredAttrNameCase": "kebab",
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "windicss.sortOnSave": true
 }
