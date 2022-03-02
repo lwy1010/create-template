@@ -4,13 +4,13 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-## Install
+## 安装
 
 ```sh
 $ npm i @7inch/create-template -g
 ```
 
-## Usage
+## 用法
 
 ```sh
 $ create-template
