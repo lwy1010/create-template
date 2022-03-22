@@ -22,8 +22,5 @@
   "bugs": {
     "url": "https://github.com/lwy1010/create-template/issues"
   },
-  "engines": {
-    "node": "^14"
-  },
   "license": "MIT"
 }
