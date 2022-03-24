@@ -1,6 +1,35 @@
 {
   "name": "template-miniprogram",
+  "version": "1.0.0",
+  "scripts": {
+    "eslint": "eslint \"**/*.{js,ts}\" --fix",
+    "stylelint": "stylelint \"**/*.{css,scss}\" --fix",
+    "prettier": "prettier \"**/*.{js,ts,json,css,scss,wxml,md}\" --write"
+  },
   "dependencies": {
-    "@vant/weapp": "^1.8.0"
-  }
+    "@vant/weapp": "^1.10.2"
+  },
+  "devDependencies": {
+    "@7inch/eslint-config-base": "^0.7.0",
+    "@7inch/stylelint-config": "^1.2.0",
+    "@commitlint/cli": "^16.0.2",
+    "@commitlint/config-conventional": "^16.0.0",
+    "eslint": "^7.31.0",
+    "lint-staged": "^10.5.4",
+    "miniprogram-api-typings": "^3.4.5",
+    "prettier": "^2.6.0",
+    "stylelint": "^13.13.1",
+    "typescript": "^4.6.2",
+    "yorkie": "^2.0.0"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --fix",
+    "*.{css,scss}": "stylelint --fix",
+    "*.{js,ts,scss,md,json}": "prettier --write"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "commitlint --edit $1"
+  },
+  "license": "MIT"
 }

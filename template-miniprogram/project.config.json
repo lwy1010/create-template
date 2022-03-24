@@ -3,8 +3,10 @@
   "packOptions": {
     "ignore": []
   },
+  "compileType": "miniprogram",
+  "projectname": "template-miniprogram",
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": true,
     "postcss": true,
@@ -40,40 +42,13 @@
     "minifyWXML": true,
     "showES6CompileOption": false,
     "useCompilerPlugins": [
+      "typescript",
       "sass"
     ]
   },
-  "compileType": "miniprogram",
-  "libVersion": "2.19.1",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "appid": "wxc5d17c516bc94f42",
-  "projectname": "template-miniprogram",
-  "debugOptions": {
-    "hidedInDevtools": []
-  },
-  "scripts": {},
-  "staticServerOptions": {
-    "baseURL": "",
-    "servePath": ""
-  },
-  "isGameTourist": false,
-  "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
-    "game": {
-      "list": []
-    },
-    "plugin": {
-      "list": []
-    },
-    "gamePlugin": {
-      "list": []
-    },
-    "miniprogram": {
-      "list": []
-    }
-  }
+  "libVersion": "2.23.1",
+  "condition": {}
 }
