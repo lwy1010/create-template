@@ -1,7 +1,7 @@
 import { Layout } from "@/router/constants";
 import { RouteRecordRaw } from "vue-router";
 
-export const asyncRoutes: Array<RouteRecordRaw> = [
+export const asyncRoutes: RouteRecordRaw[] = [
   {
     path: "/nested",
     component: Layout,

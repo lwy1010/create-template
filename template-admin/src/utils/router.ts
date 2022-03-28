@@ -2,8 +2,8 @@ import { RouteRecordRaw } from "vue-router";
 import { CustomRouteMeta } from "@/types/router";
 import { sortBy } from "lodash-es";
 
-export function filterHiddenRoute(routes: Array<RouteRecordRaw>) {
-  const routeList: Array<RouteRecordRaw> = [];
+export function filterHiddenRoute(routes: RouteRecordRaw[]) {
+  const routeList: RouteRecordRaw[] = [];
   routes.forEach((route) => {
     if (!route.meta?.hidden) {
       if (route?.children) {
@@ -15,8 +15,8 @@ export function filterHiddenRoute(routes: Array<RouteRecordRaw>) {
   return routeList;
 }
 
-export function findRouteItemByPath(routes: Array<RouteRecordRaw>, path: string) {
-  let routeList: Array<RouteRecordRaw> = [];
+export function findRouteItemByPath(routes: RouteRecordRaw[], path: string) {
+  let routeList: RouteRecordRaw[] = [];
   for (let i = 0; i < routes.length; i++) {
     const item = routes[i];
     if (item.path === path) {

@@ -4,7 +4,7 @@ export interface Paginate {
 }
 
 export interface PaginateRecord<T> {
-  docs: Array<T>;
+  docs: T[];
   hasNextPage: boolean;
   hasPrevPage: boolean;
   limit: number;
