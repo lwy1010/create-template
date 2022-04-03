@@ -7,4 +7,4 @@ package-lock.json
 miniprogram_npm
 *.log
 template-*/pnpm-lock.yaml
-yarn.lock
+template-*/yarn.lock
