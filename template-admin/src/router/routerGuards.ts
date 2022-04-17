@@ -1,6 +1,5 @@
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
-import { getPageTitle } from "@/utils";
 import { Router } from "vue-router";
 import { useAppStore } from "@/store/app";
 import { usePermissionStore } from "@/store/permission";
@@ -49,7 +48,7 @@ export function createRouterGuards(router: Router) {
 
   router.afterEach((to) => {
     NProgress.done();
-    document.title = getPageTitle(to.meta?.title);
+    document.title = (to.meta?.title as string) || "template-admin";
   });
 
   router.onError((error) => {
