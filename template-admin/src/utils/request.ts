@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { ElMessage } from "element-plus";
+import * as storage from "./localStorage";
 
 interface CustomAxiosRequestConfig extends AxiosRequestConfig {
   /* default: false */
@@ -16,6 +17,17 @@ const service = axios.create({
   baseURL: import.meta.env.VITE_BASE_API,
   timeout: 10000,
 });
+
+service.interceptors.request.use(
+  (config: CustomAxiosRequestConfig) => {
+    const token = storage.readUserInfo()?.token;
+    if (token && config.headers) config.headers["Authorization"] = token;
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 service.interceptors.response.use(
   (response) => {

@@ -1,8 +1,13 @@
 import { Paginate } from "./common";
 
-export type PostPaginate = Paginate;
+export type ArticlePaginate = Paginate;
 
-export interface Post {
+export interface QueryForm {
+  title?: string;
+  isHot?: boolean;
+}
+
+export interface Article {
   agreeCount: number;
   authorId: string;
   collectCount: number;
