@@ -8,7 +8,7 @@ import "module-alias/register";
 
 const app = express();
 
-import postRouter from "@/routes/post";
+import articleRouter from "@/routes/article";
 import userRouter from "@/routes/user";
 
 app.use(express.json());
@@ -17,7 +17,7 @@ app.use(helmet());
 app.use(cors());
 app.use(error);
 
-app.use("/post", postRouter);
+app.use("/article", articleRouter);
 app.use("/user", userRouter);
 
 async function start() {

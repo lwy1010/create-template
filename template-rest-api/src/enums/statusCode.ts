@@ -14,7 +14,7 @@ export enum StatusCode {
   // 没有token
   TokenNotFound = 4006,
   // 没有该文章
-  PostNotFound = 4007,
+  ArticleNotFound = 4007,
   // 服务器错误
   ServerError = 5000,
 }

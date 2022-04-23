@@ -1,8 +1,8 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Document, PaginateModel } from "mongoose";
 import mongoosePaginate from "mongoose-paginate-v2";
 import idPlugin from "mongoose-id";
 
-const postSchema = new Schema({
+const artileSchema = new Schema({
   title: { type: String, required: true },
   authorId: { type: Schema.Types.ObjectId, ref: "User" },
   content: { type: String, required: true },
@@ -13,9 +13,9 @@ const postSchema = new Schema({
   likeCount: { type: Number, default: 0 },
 });
 
-postSchema.plugin(idPlugin);
-postSchema.plugin(mongoosePaginate);
+artileSchema.plugin(idPlugin);
+artileSchema.plugin(mongoosePaginate);
 
-const PostModel = model("Post", postSchema);
+const ArticleModel = model<Document, PaginateModel<Document>>("Article", artileSchema);
 
-export { PostModel };
+export { ArticleModel };

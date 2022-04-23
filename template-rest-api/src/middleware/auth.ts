@@ -19,7 +19,7 @@ export default function (req: AuthRequest, res: Response, next: NextFunction) {
     const decoded = jwt.verify(token, config.jwtSecret) as User;
     req.user = decoded;
     next();
-  } catch (e) {
+  } catch (error) {
     res.send(formatRes(null, "invalid token", StatusCode.InvalidToken));
   }
 }
