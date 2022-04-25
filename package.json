@@ -1,6 +1,6 @@
 {
   "name": "@7inch/create-template",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "author": "lwy1010",
   "main": "index.js",
   "bin": {
