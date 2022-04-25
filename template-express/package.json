@@ -1,5 +1,5 @@
 {
-  "name": "template-rest-api",
+  "name": "template-express",
   "version": "0.0.1",
   "scripts": {
     "dev": "export NODE_ENV=development && nodemon -r tsconfig-paths/register --transpile-only src/app.ts",

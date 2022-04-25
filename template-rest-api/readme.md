@@ -1,1 +1,0 @@
-# template-rest-api
