@@ -1,5 +1,6 @@
 <template>
-  <el-main class="bg-gray-100 text-sm !p-3">
+  <el-main class="bg-gray-100 text-sm app-main !p-3">
     <router-view></router-view>
+    <el-backtop target=".app-main"></el-backtop>
   </el-main>
 </template>

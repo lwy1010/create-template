@@ -37,7 +37,7 @@ const handleSelect = (path: string) => (isUrl(path) ? window.open(path) : router
         <menu-item v-for="menu in routes" :key="menu.path" :item="menu"></menu-item>
       </el-menu>
     </el-scrollbar>
-    <div class="cursor-pointer py-3 px-5 group" @click="appStore.toggleCollapse">
+    <div class="cursor-pointer p-5 group" @click="appStore.toggleCollapse">
       <svg-icon
         :name="appStore.isSidebarCollapse ? 'indent' : 'outdent'"
         class="h-4 w-4 group-hover:fill-primary"

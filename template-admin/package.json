@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "@7inch/storage": "^0.1.4",
-    "@element-plus/icons-vue": "^0.2.4",
+    "@element-plus/icons-vue": "^1.1.4",
+    "@vueuse/core": "^8.3.1",
     "axios": "^0.24.0",
     "dayjs": "^1.10.7",
     "element-plus": "^2.0.2",

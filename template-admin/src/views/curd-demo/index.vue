@@ -4,6 +4,7 @@ import * as artileApi from "@/api/article";
 import { Article, QueryForm } from "@/types/article";
 import { ElMessage } from "element-plus";
 import { Search } from "@element-plus/icons-vue";
+import { useDebounceFn } from "@vueuse/core";
 
 const tableData = ref<Article[]>([]);
 const queryForm = ref<QueryForm>({ title: "", isHot: undefined });
@@ -13,6 +14,8 @@ const total = ref(0);
 onMounted(() => {
   handleListQuery();
 });
+
+const handleSearch = useDebounceFn(() => handleListQuery(), 300);
 
 const handleListQuery = async () => {
   const { data } = await artileApi.queryArticles({ ...pagination.value, ...queryForm.value });
@@ -47,7 +50,7 @@ const handleDelete = async (article: Article) => {
     </el-form-item>
     <el-form-item class="w-64">
       <el-input
-        @input="handleListQuery"
+        @input="handleSearch"
         v-model="queryForm.title"
         placeholder="文章标题"
         :suffix-icon="Search"
@@ -77,7 +80,7 @@ const handleDelete = async (article: Article) => {
     </el-table>
 
     <el-pagination
-      class="flex my-4 mr-4 justify-end"
+      class="flex m-3 justify-end"
       v-model:currentPage="pagination.page"
       :page-size="pagination.limit"
       :total="total"
