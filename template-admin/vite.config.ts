@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
 import WindiCSS from "vite-plugin-windicss";
-import viteSvgIcons from "vite-plugin-svg-icons";
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
@@ -13,7 +13,10 @@ export default defineConfig({
   plugins: [
     vue(),
     Components({ dts: false, resolvers: [ElementPlusResolver()] }),
-    viteSvgIcons({ iconDirs: [path.resolve(process.cwd(), "src/icons")], symbolId: "icon-[name]" }),
+    createSvgIconsPlugin({
+      iconDirs: [path.resolve(process.cwd(), "src/icons")],
+      symbolId: "icon-[name]",
+    }),
     WindiCSS(),
   ],
   server: {

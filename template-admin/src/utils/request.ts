@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios";
 import { ElMessage } from "element-plus";
 import * as storage from "./localStorage";
+import { useAppStore } from "@/store/app";
 
 interface CustomAxiosRequestConfig extends AxiosRequestConfig {
   /* default: false */
@@ -31,10 +32,18 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
   (response) => {
-    if (response.data.code !== 0) {
+    const appStore = useAppStore();
+    const { data } = response;
+    if (response.data?.code !== 0) {
+      if (data?.code === 4004) {
+        ElMessage({ type: "error", message: "登录超时，请重新登录" });
+        appStore.logout();
+        location.reload();
+      }
       return Promise.reject(response);
+    } else {
+      return Promise.resolve(response);
     }
-    return response;
   },
   (error) => {
     if (error.message.includes("timeout")) {
