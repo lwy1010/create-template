@@ -3,6 +3,6 @@
     <text class="user-motto">{{motto}}</text>
   </view>
   <view class="vant-demo">
-    <van-button type="info" size="small">确定</van-button>
+    <van-button type="info" size="small" bindtap="handleClick">确定</van-button>
   </view>
 </view>

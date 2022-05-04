@@ -1,10 +1,10 @@
 {
   "name": "template-miniprogram",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "scripts": {
-    "eslint": "eslint \"**/*.{js,ts}\" --fix",
-    "stylelint": "stylelint \"**/*.{css,scss}\" --fix",
-    "prettier": "prettier \"**/*.{js,ts,json,css,scss,wxml,md}\" --write"
+    "eslint": "eslint \"src/**/*.{js,ts}\" --fix",
+    "stylelint": "stylelint \"src/**/*.{css,scss}\" --fix",
+    "prettier": "prettier \"src/**/*.{js,ts,json,css,scss,md}\" --write"
   },
   "dependencies": {
     "@vant/weapp": "^1.10.2"

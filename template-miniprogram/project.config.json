@@ -3,6 +3,7 @@
   "packOptions": {
     "ignore": []
   },
+  "miniprogramRoot": "./src",
   "compileType": "miniprogram",
   "projectname": "template-miniprogram",
   "setting": {
@@ -18,7 +19,7 @@
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
-    "uglifyFileName": false,
+    "uglifyFileName": true,
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
@@ -35,16 +36,18 @@
     "enableEngineNative": false,
     "useIsolateContext": true,
     "userConfirmedBundleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "package.json",
+        "miniprogramNpmDistDir": "./src"
+      }
+    ],
     "minifyWXSS": true,
     "disableUseStrict": false,
     "minifyWXML": true,
     "showES6CompileOption": false,
-    "useCompilerPlugins": [
-      "typescript",
-      "sass"
-    ]
+    "useCompilerPlugins": ["typescript", "sass"]
   },
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
