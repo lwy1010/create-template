@@ -1,80 +1,57 @@
 #!/usr/bin/env node
 const fs = require("fs");
 const path = require("path");
-
-const argv = require("minimist")(process.argv.slice(2));
 const { prompt } = require("enquirer");
 const { cyan, green, yellow, stripColors, magenta } = require("kolorist");
 
 const cwd = process.cwd();
-
 const TEMPLATES = [cyan("admin"), green("h5"), yellow("express"), magenta("miniprogram")];
-
 const renameFiles = { _gitignore: ".gitignore" };
 
 async function init() {
-  let targetDir = argv._[0];
-  if (!targetDir) {
-    const { name } = await prompt({
-      type: "input",
-      name: "name",
-      message: `Project name:`,
-      initial: "my-app",
-    });
-    targetDir = name;
-  }
+  const { name: projectName } = await prompt({
+    type: "input",
+    name: "name",
+    message: `Project name:`,
+    initial: "my-app",
+  });
 
-  const root = path.join(cwd, targetDir);
-  console.log(`\nScaffolding project in ${root}...`);
+  const projectPath = path.join(cwd, projectName);
+  console.log(`\nScaffolding project in ${projectPath}...`);
 
-  if (!fs.existsSync(root)) {
-    fs.mkdirSync(root, { recursive: true });
+  if (!fs.existsSync(projectPath)) {
+    fs.mkdirSync(projectPath, { recursive: true });
   } else {
-    const existing = fs.readdirSync(root);
+    const existing = fs.readdirSync(projectPath);
     if (existing.length) {
       const { yes } = await prompt({
         type: "confirm",
         name: "yes",
         initial: "Y",
         message:
-          `Target directory ${targetDir} is not empty.\n` + `Remove existing files and continue?`,
+          `Target directory ${projectName} is not empty.\n` + `Remove existing files and continue?`,
       });
       if (yes) {
-        emptyDir(root);
+        emptyDir(projectPath);
       } else {
         return;
       }
     }
   }
 
-  // determine template
-  let template = argv.t || argv.template;
-  let message = "Select a template:";
-  let isValidTemplate = false;
-
-  // --template expects a value
-  if (typeof template === "string") {
-    const availableTemplates = TEMPLATES.map(stripColors);
-    isValidTemplate = availableTemplates.includes(template);
-    message = `${template} isn't a valid template. Please choose from below:`;
-  }
-
-  if (!template || !isValidTemplate) {
-    const { t } = await prompt({
-      type: "select",
-      name: "t",
-      message,
-      choices: TEMPLATES,
-    });
-    template = stripColors(t);
-  }
-
+  const { templateName } = await prompt({
+    type: "select",
+    name: "templateName",
+    message: "Select a template:",
+    choices: TEMPLATES,
+  });
+  const template = stripColors(templateName);
   const templateDir = path.join(__dirname, `template-${template}`);
 
   const write = (file, content) => {
     const targetPath = renameFiles[file]
-      ? path.join(root, renameFiles[file])
-      : path.join(root, file);
+      ? path.join(projectPath, renameFiles[file])
+      : path.join(projectPath, file);
     if (content) {
       fs.writeFileSync(targetPath, content);
     } else {
@@ -88,12 +65,12 @@ async function init() {
   }
 
   const pkg = require(path.join(templateDir, `package.json`));
-  pkg.name = path.basename(root);
+  pkg.name = path.basename(projectPath);
   write("package.json", JSON.stringify(pkg, null, 2));
 
   console.log(`\nDone. Now run:\n`);
-  if (root !== cwd) {
-    console.log(`  cd ${path.relative(cwd, root)}`);
+  if (projectPath !== cwd) {
+    console.log(`  cd ${path.relative(cwd, projectPath)}`);
   }
   console.log(`  npm install`);
   console.log(`  npm run dev`);
@@ -124,7 +101,6 @@ function emptyDir(dir) {
   }
   for (const file of fs.readdirSync(dir)) {
     const abs = path.resolve(dir, file);
-    // baseline is Node 12 so can't use rmSync :(
     if (fs.lstatSync(abs).isDirectory()) {
       emptyDir(abs);
       fs.rmdirSync(abs);
