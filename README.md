@@ -4,17 +4,23 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-## Install
+## Scaffolding Your First Project
 
 ```sh
-$ npm i @7inch/create-template -g
+$ npm init @7inch/template
 ```
 
-## Usage
+Then follow the prompts!
 
-```sh
-$ create-template
-```
+Currently supported template presets include:
+
+- [admin](./template-admin/README.md)
+
+- [h5](./template-h5/README.md)
+
+- [express](./template-express/README.md)
+
+- [miniProgram](./template-miniprogram/README.md)
 
 ## License
 

@@ -4,17 +4,23 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-## 安装
+## 初始化项目
 
 ```sh
-$ npm i @7inch/create-template -g
+$ npm init @7inch/template
 ```
 
-## 用法
+然后根据提示来操作即可！
 
-```sh
-$ create-template
-```
+目前预设的模板有：
+
+- [admin](./template-admin/README.md)
+
+- [h5](./template-h5/README.md)
+
+- [express](./template-express/README.md)
+
+- [miniProgram](./template-miniprogram/README.md)
 
 ## License
 
