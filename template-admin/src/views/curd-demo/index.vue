@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import * as artileApi from "@/api/article";
+import * as articleApi from "@/api/article";
 import { Article, QueryForm } from "@/types/article";
 import { ElMessage } from "element-plus";
 import { Search } from "@element-plus/icons-vue";
 import { useDebounceFn } from "@vueuse/core";
+import { vPermission } from "@/directives/vPermission";
 
 const tableData = ref<Article[]>([]);
 const queryForm = ref<QueryForm>({ title: "", isHot: undefined });
@@ -18,7 +19,7 @@ onMounted(() => {
 const handleSearch = useDebounceFn(() => handleListQuery(), 300);
 
 const handleListQuery = async () => {
-  const { data } = await artileApi.queryArticles({ ...pagination.value, ...queryForm.value });
+  const { data } = await articleApi.queryArticles({ ...pagination.value, ...queryForm.value });
   tableData.value = data.docs;
   total.value = data.totalDocs;
 };
@@ -28,8 +29,13 @@ const handlePageChange = (page: number) => {
   handleListQuery();
 };
 
+const handleCheckDetail = (article: Article) => {
+  console.log(article);
+  ElMessage.success({ message: "你点击了查看" });
+};
+
 const handleDelete = async (article: Article) => {
-  await artileApi.deleteArticle(article.id);
+  await articleApi.deleteArticle(article.id);
   await handleListQuery();
   ElMessage.success({ message: "删除成功" });
 };
@@ -70,9 +76,10 @@ const handleDelete = async (article: Article) => {
       </el-table-column>
       <el-table-column label="操作">
         <template #default="{ row }">
+          <el-button size="small" @click="handleCheckDetail(row)">查看</el-button>
           <el-popconfirm title="确定删除吗?" @confirm="handleDelete(row)">
             <template #reference>
-              <el-button size="small" type="danger">删除</el-button>
+              <el-button size="small" v-permission="['admin']" type="danger">删除</el-button>
             </template>
           </el-popconfirm>
         </template>
