@@ -5,6 +5,7 @@ import WindiCSS from "vite-plugin-windicss";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
+import viteSentry from "vite-plugin-sentry";
 
 export default defineConfig({
   resolve: {
@@ -18,6 +19,17 @@ export default defineConfig({
       symbolId: "icon-[name]",
     }),
     WindiCSS(),
+    viteSentry({
+      url: "https://sentry.io/",
+      authToken: "<auth_token>",
+      org: "<org_name>",
+      project: "<project-name>",
+      sourceMaps: {
+        include: ["./dist/assets"],
+        ignore: ["node_modules"],
+        urlPrefix: "~/assets",
+      },
+    }),
   ],
   server: {
     proxy: {
@@ -27,5 +39,8 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
     },
+  },
+  build: {
+    sourcemap: true,
   },
 });
