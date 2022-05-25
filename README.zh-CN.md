@@ -20,7 +20,7 @@ $ npm init @7inch/template
 
 - [express](./template-express/README.md)
 
-- [miniProgram](./template-miniprogram/README.md)
+- [miniprogram](./template-miniprogram/README.md)
 
 ## License
 

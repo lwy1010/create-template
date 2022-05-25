@@ -4,7 +4,7 @@
 
 [English](README.md) | [中文](README.zh-CN.md)
 
-## Scaffolding Your First Project
+## Scaffolding your first project
 
 ```sh
 $ npm init @7inch/template
@@ -20,7 +20,7 @@ Currently supported template presets include:
 
 - [express](./template-express/README.md)
 
-- [miniProgram](./template-miniprogram/README.md)
+- [miniprogram](./template-miniprogram/README.md)
 
 ## License
 
