@@ -4,7 +4,7 @@
     "dbaeumer.vscode-eslint",
     "stylelint.vscode-stylelint",
     "esbenp.prettier-vscode",
-    "streetsidesoftware.code-spell-checker",
+    "lokalise.i18n-ally",
     "voorjaar.windicss-intellisense"
   ]
 }

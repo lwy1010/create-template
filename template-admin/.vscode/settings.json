@@ -10,5 +10,8 @@
   "editor.quickSuggestions": {
     "strings": true
   },
-  "windicss.sortOnSave": true
+  "windicss.sortOnSave": true,
+  "i18n-ally.localesPaths": ["src/locales"],
+  "i18n-ally.sourceLanguage": "zh",
+  "i18n-ally.keystyle": "flat"
 }

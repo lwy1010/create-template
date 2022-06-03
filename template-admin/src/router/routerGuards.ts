@@ -3,6 +3,7 @@ import "nprogress/nprogress.css";
 import { Router } from "vue-router";
 import { useAppStore } from "@/store/app";
 import { usePermissionStore } from "@/store/permission";
+import { i18n } from "@/plugins/i18n";
 
 NProgress.configure({ showSpinner: false });
 
@@ -48,7 +49,7 @@ export function createRouterGuards(router: Router) {
 
   router.afterEach((to) => {
     NProgress.done();
-    document.title = (to.meta?.title as string) || "template-admin";
+    document.title = i18n.global.t(to.meta?.title as string) || "template-admin";
   });
 
   router.onError((error) => {

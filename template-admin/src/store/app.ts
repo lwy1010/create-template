@@ -6,13 +6,17 @@ import {
   updateUserInfo,
   deleteUserInfo,
   deleteSidebarStatus,
+  readLanguage,
+  updateLanguage,
 } from "@/utils/localStorage";
 import { UserInfo, LoginData } from "@/types/user";
 import { login } from "@/api/user";
+import { Language } from "@/enums";
 
 interface AppStoreState {
   sidebarStatus: boolean;
   userInfo: UserInfo | null;
+  currentLanguage: Language;
 }
 
 export const useAppStore = defineStore("app", {
@@ -20,6 +24,7 @@ export const useAppStore = defineStore("app", {
     return {
       sidebarStatus: readSidebarStatus() !== "closed",
       userInfo: readUserInfo(),
+      currentLanguage: readLanguage(),
     };
   },
   getters: {
@@ -40,6 +45,10 @@ export const useAppStore = defineStore("app", {
     },
     setUserInfo(userInfo: UserInfo | null) {
       this.userInfo = userInfo;
+    },
+    setCurrentLanguage(lang: Language) {
+      this.currentLanguage = lang;
+      updateLanguage(lang);
     },
     login(loginInfo: LoginData) {
       const { email, password } = loginInfo;

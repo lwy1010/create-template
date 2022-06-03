@@ -56,9 +56,9 @@ const handleLogin = () => {
         <el-input v-model.trim="loginForm.password" placeholder="密码" show-password></el-input>
       </el-form-item>
       <el-form-item class="mt-10">
-        <el-button :loading="isLoading" type="primary" @click="handleLogin" class="w-full"
-          >登录</el-button
-        >
+        <el-button :loading="isLoading" type="primary" @click="handleLogin" class="w-full">{{
+          $t("common.login")
+        }}</el-button>
       </el-form-item>
     </el-form>
   </div>

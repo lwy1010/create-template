@@ -6,11 +6,13 @@ import { ElMessage } from "element-plus";
 import { Search } from "@element-plus/icons-vue";
 import { useDebounceFn } from "@vueuse/core";
 import { vPermission } from "@/directives/vPermission";
+import { useI18n } from "vue-i18n";
 
 const tableData = ref<Article[]>([]);
 const queryForm = ref<QueryForm>({ title: "", isHot: undefined });
 const pagination = ref({ page: 1, limit: 10 });
 const total = ref(0);
+const { t } = useI18n();
 
 onMounted(() => {
   handleListQuery();
@@ -31,13 +33,12 @@ const handlePageChange = (page: number) => {
 
 const handleCheckDetail = (article: Article) => {
   console.log(article);
-  ElMessage.success({ message: "你点击了查看" });
 };
 
 const handleDelete = async (article: Article) => {
   await articleApi.deleteArticle(article.id);
   await handleListQuery();
-  ElMessage.success({ message: "删除成功" });
+  ElMessage.success({ message: t("common.deleteSuccess") });
 };
 </script>
 
@@ -76,10 +77,14 @@ const handleDelete = async (article: Article) => {
       </el-table-column>
       <el-table-column label="操作">
         <template #default="{ row }">
-          <el-button size="small" @click="handleCheckDetail(row)">查看</el-button>
-          <el-popconfirm title="确定删除吗?" @confirm="handleDelete(row)">
+          <el-button size="small" @click="handleCheckDetail(row)">{{
+            $t("common.view")
+          }}</el-button>
+          <el-popconfirm :title="$t('common.deleteConfirmTitle')" @confirm="handleDelete(row)">
             <template #reference>
-              <el-button size="small" v-permission="['admin']" type="danger">删除</el-button>
+              <el-button size="small" v-permission="['admin']" type="danger">{{
+                $t("common.delete")
+              }}</el-button>
             </template>
           </el-popconfirm>
         </template>

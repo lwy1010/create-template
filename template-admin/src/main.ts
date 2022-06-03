@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import { setupElementPlus } from "@/plugins/elementPlus";
 import { setupSentry } from "@/plugins/sentry";
+import { setupI18n } from "@/plugins/i18n";
 import router, { setupRouter } from "@/router";
 import { setupStore } from "@/store";
 import "virtual:svg-icons-register";
@@ -25,6 +26,9 @@ async function bootstrap() {
 
   // 配置sentry
   setupSentry(app, router);
+
+  // 配置国际化
+  setupI18n(app);
 
   app.mount("#app", true);
 }

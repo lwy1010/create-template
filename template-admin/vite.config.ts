@@ -6,6 +6,7 @@ import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import viteSentry from "vite-plugin-sentry";
+import VueI18n from "@intlify/vite-plugin-vue-i18n";
 
 export default defineConfig({
   resolve: {
@@ -19,6 +20,7 @@ export default defineConfig({
       symbolId: "icon-[name]",
     }),
     WindiCSS(),
+    VueI18n({ include: [path.resolve(__dirname, "src/locales/**")] }),
     viteSentry({
       url: "https://sentry.io/",
       authToken: "<auth_token>",

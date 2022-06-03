@@ -11,11 +11,11 @@ export const constantRoutes: RouteRecordRaw[] = [
     path: "/",
     component: Layout,
     redirect: "/dashboard",
-    meta: { title: "首页", icon: "dashboard", order: 1 },
+    meta: { title: "route.dashboard", icon: "dashboard", order: 1 },
     children: [
       {
         path: "/dashboard",
-        meta: { title: "首页" },
+        meta: { title: "route.dashboard" },
         component: () => import("@/views/dashboard/index.vue"),
       },
     ],
@@ -24,21 +24,21 @@ export const constantRoutes: RouteRecordRaw[] = [
     path: "/exception",
     component: Layout,
     redirect: "/exception/403",
-    meta: { title: "异常页", icon: "error", order: 4 },
+    meta: { title: "route.exception", icon: "error", order: 4 },
     children: [
       {
         path: "/exception/403",
-        meta: { title: "403" },
+        meta: { title: "route.exception403" },
         component: () => import("@/views/exception/exception403.vue"),
       },
       {
         path: "/exception/404",
-        meta: { title: "404" },
+        meta: { title: "route.exception404" },
         component: () => import("@/views/exception/exception404.vue"),
       },
       {
         path: "/exception/500",
-        meta: { title: "500" },
+        meta: { title: "route.exception500" },
         component: () => import("@/views/exception/exception500.vue"),
       },
     ],

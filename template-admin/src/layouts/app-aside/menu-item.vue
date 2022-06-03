@@ -23,7 +23,7 @@ const hasMultiChild = (item: _RouteRecordBase) => {
       :name="item.meta.icon as string"
       class="h-4 w-4"
     ></svg-icon>
-    <template #title>{{ item.meta?.title }}</template>
+    <template #title>{{ $t(item.meta?.title as string) }}</template>
   </el-menu-item>
   <el-sub-menu v-else :index="item.path">
     <template v-if="item.meta?.icon || item.meta?.title" #title>
@@ -33,7 +33,7 @@ const hasMultiChild = (item: _RouteRecordBase) => {
         :name="item.meta.icon as string"
         class="h-4 w-4"
       ></svg-icon>
-      <span>{{ item.meta?.title }}</span>
+      <span>{{ $t(item.meta?.title as string) }}</span>
     </template>
     <menu-item v-for="child in item.children" :key="child.path" :item="child"></menu-item>
   </el-sub-menu>

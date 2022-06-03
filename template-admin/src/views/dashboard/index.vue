@@ -1,3 +1,3 @@
 <template>
-  <el-card shadow="none">首页</el-card>
+  <el-card shadow="none">{{ $t("route.dashboard") }}</el-card>
 </template>

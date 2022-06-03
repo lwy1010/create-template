@@ -11,8 +11,8 @@ const backToHome = () => router.push({ path: "/" });
   <div class="flex flex-col items-center">
     <img :src="exception500" alt="404 not found" class="h-60 mt-25 w-96" />
     <div class="flex flex-col mt-10 items-center">
-      <div class="text-base mb-6 text-gray-500">抱歉，服务器出错了</div>
-      <el-button type="primary" @click="backToHome">返回首页</el-button>
+      <div class="text-base mb-6 text-gray-500">{{ $t("exception.warning500") }}</div>
+      <el-button type="primary" @click="backToHome">{{ $t("common.backToHome") }}</el-button>
     </div>
   </div>
 </template>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import zhCn from "element-plus/lib/locale/lang/zh-cn";
+import { useLocale } from "@/composables/useLocale";
 
-const locale = zhCn;
+const currentLocale = useLocale();
 </script>
 
 <template>
-  <el-config-provider :locale="locale">
+  <el-config-provider :locale="currentLocale">
     <router-view></router-view>
   </el-config-provider>
 </template>
