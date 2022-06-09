@@ -7,9 +7,11 @@ import { Search } from "@element-plus/icons-vue";
 import { useDebounceFn } from "@vueuse/core";
 import { vPermission } from "@/directives/vPermission";
 
+defineOptions({ name: "CurdDemo" });
+
 const tableData = ref<Article[]>([]);
 const queryForm = ref<QueryForm>({ title: "", isHot: undefined });
-const pagination = ref({ page: 1, limit: 10 });
+const pagination = ref({ page: 1, limit: 15 });
 const total = ref(0);
 
 onMounted(() => {
@@ -65,7 +67,7 @@ const handleDelete = async (article: Article) => {
   </el-form>
 
   <el-card shadow="none" :body-style="{ padding: '0px' }">
-    <el-table :data="tableData" stripe>
+    <el-table :data="tableData" stripe style="width: 100%" max-height="540px">
       <el-table-column prop="title" label="标题"></el-table-column>
       <el-table-column prop="readCount" label="阅读量"></el-table-column>
       <el-table-column prop="collectCount" label="收藏量"></el-table-column>

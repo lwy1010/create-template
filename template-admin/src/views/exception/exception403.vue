@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import exception403 from "@/images/403.png";
+import exception403 from "@/assets/images/403.png";
+
+defineOptions({ name: "Exception403" });
 
 const router = useRouter();
 

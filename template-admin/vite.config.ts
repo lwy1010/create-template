@@ -6,6 +6,7 @@ import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 import viteSentry from "vite-plugin-sentry";
+import DefineOptions from "unplugin-vue-define-options/vite";
 
 export default defineConfig({
   resolve: {
@@ -15,10 +16,11 @@ export default defineConfig({
     vue(),
     Components({ dts: false, resolvers: [ElementPlusResolver()] }),
     createSvgIconsPlugin({
-      iconDirs: [path.resolve(process.cwd(), "src/icons")],
+      iconDirs: [path.resolve(process.cwd(), "src/assets/svgs")],
       symbolId: "icon-[name]",
     }),
     WindiCSS(),
+    DefineOptions(),
     viteSentry({
       url: "https://sentry.io/",
       authToken: "<auth_token>",

@@ -1,9 +1,21 @@
+<template>
+  <el-breadcrumb>
+    <el-breadcrumb-item v-for="item in breadcrumbList" :key="item.path">
+      <router-link :to="item.path">
+        {{ item.meta?.title }}
+      </router-link>
+    </el-breadcrumb-item>
+  </el-breadcrumb>
+</template>
+
 <script setup lang="ts">
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 import { filterHiddenRoute, findRouteItemByPath } from "@/utils/router";
 import { uniqBy } from "lodash-es";
 import { usePermissionStore } from "@/store/permission";
+
+defineOptions({ name: "Breadcrumb" });
 
 const route = useRoute();
 const permissionStore = usePermissionStore();
@@ -15,13 +27,3 @@ const breadcrumbList = computed(() => {
   return uniqBy([{ path: "/", meta: { title: "首页" } }, ...filteredRoutes], "path");
 });
 </script>
-
-<template>
-  <el-breadcrumb>
-    <el-breadcrumb-item v-for="item in breadcrumbList" :key="item.path">
-      <router-link :to="item.path">
-        {{ item.meta?.title }}
-      </router-link>
-    </el-breadcrumb-item>
-  </el-breadcrumb>
-</template>

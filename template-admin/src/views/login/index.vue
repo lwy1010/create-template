@@ -3,7 +3,8 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useAppStore } from "@/store/app";
 import { ElMessage } from "element-plus";
-import "element-plus/es/components/message/style/css";
+
+defineOptions({ name: "Login" });
 
 const appStore = useAppStore();
 const router = useRouter();

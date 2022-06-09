@@ -1,25 +1,3 @@
-<script setup lang="ts">
-import { computed } from "vue";
-import MenuItem from "./menu-item.vue";
-import { isUrl } from "@/utils/is";
-import { useRoute, useRouter } from "vue-router";
-import { filterHiddenRoute } from "@/utils/router";
-import { usePermissionStore } from "@/store/permission";
-import { useAppStore } from "@/store/app";
-import SvgIcon from "@/components/svg-icon/index.vue";
-
-const route = useRoute();
-const router = useRouter();
-const permissionStore = usePermissionStore();
-const appStore = useAppStore();
-
-const asideWidth = computed(() => (appStore.isSidebarCollapse ? "56px" : "208px"));
-
-const routes = computed(() => filterHiddenRoute(permissionStore.routes));
-
-const handleSelect = (path: string) => (isUrl(path) ? window.open(path) : router.push(path));
-</script>
-
 <template>
   <el-aside
     :width="asideWidth"
@@ -37,7 +15,10 @@ const handleSelect = (path: string) => (isUrl(path) ? window.open(path) : router
         <menu-item v-for="menu in routes" :key="menu.path" :item="menu"></menu-item>
       </el-menu>
     </el-scrollbar>
-    <div class="cursor-pointer p-5 group" @click="appStore.toggleCollapse">
+    <div
+      class="border-t cursor-pointer border-t-light-700 py-3 px-5"
+      @click="appStore.toggleCollapse"
+    >
       <svg-icon
         :name="appStore.isSidebarCollapse ? 'indent' : 'outdent'"
         class="h-4 w-4 group-hover:fill-primary"
@@ -45,6 +26,30 @@ const handleSelect = (path: string) => (isUrl(path) ? window.open(path) : router
     </div>
   </el-aside>
 </template>
+
+<script setup lang="ts">
+import { computed } from "vue";
+import MenuItem from "./menu-item.vue";
+import { isUrl } from "@/utils/is";
+import { useRoute, useRouter } from "vue-router";
+import { filterHiddenRoute } from "@/utils/router";
+import { usePermissionStore } from "@/store/permission";
+import { useAppStore } from "@/store/app";
+import SvgIcon from "@/components/svg-icon/index.vue";
+
+defineOptions({ name: "AppAside" });
+
+const route = useRoute();
+const router = useRouter();
+const permissionStore = usePermissionStore();
+const appStore = useAppStore();
+
+const asideWidth = computed(() => (appStore.isSidebarCollapse ? "56px" : "208px"));
+
+const routes = computed(() => filterHiddenRoute(permissionStore.routes));
+
+const handleSelect = (path: string) => (isUrl(path) ? window.open(path) : router.push(path));
+</script>
 
 <style lang="scss" scoped>
 .el-menu ::v-deep(.el-sub-menu__title) {

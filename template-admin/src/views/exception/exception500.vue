@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import exception500 from "@/images/500.png";
+import exception500 from "@/assets/images/500.png";
+
+defineOptions({ name: "Exception500" });
 
 const router = useRouter();
 

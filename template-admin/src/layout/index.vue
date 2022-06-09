@@ -1,9 +1,3 @@
-<script setup lang="ts">
-import AppAside from "@/layouts/app-aside/index.vue";
-import AppHeader from "@/layouts/app-header/index.vue";
-import AppMain from "@/layouts/app-main/index.vue";
-</script>
-
 <template>
   <el-container direction="vertical" class="h-screen">
     <app-header></app-header>
@@ -15,3 +9,11 @@ import AppMain from "@/layouts/app-main/index.vue";
     </el-container>
   </el-container>
 </template>
+
+<script setup lang="ts">
+import AppAside from "@/layout/app-aside/index.vue";
+import AppHeader from "@/layout/app-header/index.vue";
+import AppMain from "@/layout/app-main/index.vue";
+
+defineOptions({ name: "Layout" });
+</script>
