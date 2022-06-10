@@ -1,3 +1,28 @@
+<template>
+  <div class="flex justify-center">
+    <el-form
+      :model="loginForm"
+      :rules="rules"
+      ref="formRef"
+      label-position="top"
+      @keydown.enter="handleLogin"
+      class="mt-35 w-90"
+    >
+      <el-form-item prop="email" label="邮箱:">
+        <el-input v-model.trim="loginForm.email" placeholder="邮箱"></el-input>
+      </el-form-item>
+      <el-form-item prop="password" label="密码:">
+        <el-input v-model.trim="loginForm.password" placeholder="密码" show-password></el-input>
+      </el-form-item>
+      <el-form-item class="mt-10">
+        <el-button :loading="isLoading" type="primary" @click="handleLogin" class="w-full"
+          >登录</el-button
+        >
+      </el-form-item>
+    </el-form>
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { useRouter } from "vue-router";
@@ -39,28 +64,3 @@ const handleLogin = () => {
   });
 };
 </script>
-
-<template>
-  <div class="flex justify-center">
-    <el-form
-      :model="loginForm"
-      :rules="rules"
-      ref="formRef"
-      label-position="top"
-      @keydown.enter="handleLogin"
-      class="mt-35 w-90"
-    >
-      <el-form-item prop="email" label="邮箱:">
-        <el-input v-model.trim="loginForm.email" placeholder="邮箱"></el-input>
-      </el-form-item>
-      <el-form-item prop="password" label="密码:">
-        <el-input v-model.trim="loginForm.password" placeholder="密码" show-password></el-input>
-      </el-form-item>
-      <el-form-item class="mt-10">
-        <el-button :loading="isLoading" type="primary" @click="handleLogin" class="w-full"
-          >登录</el-button
-        >
-      </el-form-item>
-    </el-form>
-  </div>
-</template>
