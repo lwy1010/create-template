@@ -4,9 +4,10 @@
 
 <script setup lang="ts">
 import { Toast } from "vant";
-import "vant/es/toast/index.css";
+
+defineOptions({ name: "Mine" });
 
 const handleClick = () => {
-  Toast.fail("aksdflsjflkjlk");
+  Toast.fail("Hello");
 };
 </script>
