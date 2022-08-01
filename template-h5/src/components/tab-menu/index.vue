@@ -4,7 +4,3 @@
     <van-tabbar-item replace to="/mine" icon="setting-o">我的</van-tabbar-item>
   </van-tabbar>
 </template>
-
-<script lang="ts" setup>
-defineOptions({ name: "TabMenu" });
-</script>

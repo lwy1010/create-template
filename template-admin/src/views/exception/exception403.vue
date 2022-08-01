@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import { useRouter } from "vue-router";
+import exception403 from "@/assets/images/403.png";
+
+const router = useRouter();
+
+const backToHome = () => router.push({ path: "/" });
+</script>
+
 <template>
   <div class="flex flex-col items-center">
     <img :src="exception403" alt="404 not found" class="h-60 mt-25 w-96" />
@@ -7,14 +16,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useRouter } from "vue-router";
-import exception403 from "@/assets/images/403.png";
-
-defineOptions({ name: "Exception403" });
-
-const router = useRouter();
-
-const backToHome = () => router.push({ path: "/" });
-</script>

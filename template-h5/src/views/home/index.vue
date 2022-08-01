@@ -1,20 +1,8 @@
-<template>
-  <van-list v-model="loading" :finished="finished" finished-text="没有更多了~" @load="onLoad">
-    <van-cell v-for="item in list" :key="item.id">
-      <template #value>
-        <div>{{ item.title }}</div>
-      </template>
-    </van-cell>
-  </van-list>
-</template>
-
 <script setup lang="ts">
 import { ref } from "vue";
 import * as postApi from "@/api/article";
 import { Article } from "@/types/article";
 import { throttle } from "lodash-es";
-
-defineOptions({ name: "Home" });
 
 const list = ref<Article[]>([]);
 const loading = ref(false);
@@ -36,3 +24,13 @@ const onLoad = throttle(async () => {
   }
 }, 500);
 </script>
+
+<template>
+  <van-list v-model="loading" :finished="finished" finished-text="没有更多了~" @load="onLoad">
+    <van-cell v-for="item in list" :key="item.id">
+      <template #value>
+        <div>{{ item.title }}</div>
+      </template>
+    </van-cell>
+  </van-list>
+</template>

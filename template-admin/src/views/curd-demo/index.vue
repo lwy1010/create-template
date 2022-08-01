@@ -1,3 +1,46 @@
+<script setup lang="ts">
+import { ref, onMounted } from "vue";
+import * as articleApi from "@/api/article";
+import { Article, QueryForm } from "@/types/article";
+import { ElMessage } from "element-plus";
+import { Search } from "@element-plus/icons-vue";
+import { useDebounceFn } from "@vueuse/core";
+import { vPermission } from "@/directives/vPermission";
+
+const tableData = ref<Article[]>([]);
+const queryForm = ref<QueryForm>({ title: "", isHot: undefined });
+const pagination = ref({ page: 1, limit: 15 });
+const total = ref(0);
+
+onMounted(() => {
+  handleListQuery();
+});
+
+const handleSearch = useDebounceFn(() => handleListQuery(), 300);
+
+const handleListQuery = async () => {
+  const { data } = await articleApi.queryArticles({ ...pagination.value, ...queryForm.value });
+  tableData.value = data.docs;
+  total.value = data.totalDocs;
+};
+
+const handlePageChange = (page: number) => {
+  pagination.value.page = page;
+  handleListQuery();
+};
+
+const handleCheckDetail = (article: Article) => {
+  console.log(article);
+  ElMessage.success({ message: "你点击了查看" });
+};
+
+const handleDelete = async (article: Article) => {
+  await articleApi.deleteArticle(article.id);
+  await handleListQuery();
+  ElMessage.success({ message: "删除成功" });
+};
+</script>
+
 <template>
   <el-form class="flex justify-end" :model="queryForm">
     <el-form-item class="mr-3 w-36">
@@ -56,48 +99,3 @@
     </el-pagination>
   </el-card>
 </template>
-
-<script setup lang="ts">
-import { ref, onMounted } from "vue";
-import * as articleApi from "@/api/article";
-import { Article, QueryForm } from "@/types/article";
-import { ElMessage } from "element-plus";
-import { Search } from "@element-plus/icons-vue";
-import { useDebounceFn } from "@vueuse/core";
-import { vPermission } from "@/directives/vPermission";
-
-defineOptions({ name: "CurdDemo" });
-
-const tableData = ref<Article[]>([]);
-const queryForm = ref<QueryForm>({ title: "", isHot: undefined });
-const pagination = ref({ page: 1, limit: 15 });
-const total = ref(0);
-
-onMounted(() => {
-  handleListQuery();
-});
-
-const handleSearch = useDebounceFn(() => handleListQuery(), 300);
-
-const handleListQuery = async () => {
-  const { data } = await articleApi.queryArticles({ ...pagination.value, ...queryForm.value });
-  tableData.value = data.docs;
-  total.value = data.totalDocs;
-};
-
-const handlePageChange = (page: number) => {
-  pagination.value.page = page;
-  handleListQuery();
-};
-
-const handleCheckDetail = (article: Article) => {
-  console.log(article);
-  ElMessage.success({ message: "你点击了查看" });
-};
-
-const handleDelete = async (article: Article) => {
-  await articleApi.deleteArticle(article.id);
-  await handleListQuery();
-  ElMessage.success({ message: "删除成功" });
-};
-</script>

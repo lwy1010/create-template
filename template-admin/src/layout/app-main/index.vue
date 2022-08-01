@@ -4,7 +4,3 @@
     <el-backtop target=".app-main"></el-backtop>
   </el-main>
 </template>
-
-<script lang="ts" setup>
-defineOptions({ name: "AppMain" });
-</script>

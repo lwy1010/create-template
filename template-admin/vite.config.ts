@@ -5,7 +5,6 @@ import WindiCSS from "vite-plugin-windicss";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import Components from "unplugin-vue-components/vite";
 import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
-import DefineOptions from "unplugin-vue-define-options/vite";
 
 export default defineConfig({
   resolve: {
@@ -19,7 +18,6 @@ export default defineConfig({
       symbolId: "icon-[name]",
     }),
     WindiCSS(),
-    DefineOptions(),
   ],
   server: {
     proxy: {

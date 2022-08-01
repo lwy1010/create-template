@@ -1,3 +1,31 @@
+<script setup lang="ts">
+import { computed } from "vue";
+import { useAppStore } from "@/store/app";
+import { useRouter } from "vue-router";
+import { usePermissionStore } from "@/store/permission";
+import { ArrowDown } from "@element-plus/icons-vue";
+import SvgIcon from "@/components/svg-icon/index.vue";
+
+const appStore = useAppStore();
+const permissionStore = usePermissionStore();
+const router = useRouter();
+
+const username = computed(() => appStore.userInfo?.name);
+
+const avatarSrc = computed(() => {
+  const defaultAvatar = "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png";
+  return appStore.userInfo?.avatar ?? defaultAvatar;
+});
+
+const handleLogout = () => {
+  appStore.logout();
+  permissionStore.resetState();
+  router.push("/login");
+};
+
+const handleGoHome = () => router.push("/");
+</script>
+
 <template>
   <el-header class="border-b flex border-b-light-750 justify-between items-center" height="48px">
     <div class="cursor-pointer flex items-center" @click="handleGoHome">
@@ -21,33 +49,3 @@
     </div>
   </el-header>
 </template>
-
-<script setup lang="ts">
-import { computed } from "vue";
-import { useAppStore } from "@/store/app";
-import { useRouter } from "vue-router";
-import { usePermissionStore } from "@/store/permission";
-import { ArrowDown } from "@element-plus/icons-vue";
-import SvgIcon from "@/components/svg-icon/index.vue";
-
-defineOptions({ name: "AppHeader" });
-
-const appStore = useAppStore();
-const permissionStore = usePermissionStore();
-const router = useRouter();
-
-const username = computed(() => appStore.userInfo?.name);
-
-const avatarSrc = computed(() => {
-  const defaultAvatar = "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png";
-  return appStore.userInfo?.avatar ?? defaultAvatar;
-});
-
-const handleLogout = () => {
-  appStore.logout();
-  permissionStore.resetState();
-  router.push("/login");
-};
-
-const handleGoHome = () => router.push("/");
-</script>
